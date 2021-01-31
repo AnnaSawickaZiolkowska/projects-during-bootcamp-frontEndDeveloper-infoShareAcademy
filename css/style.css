@@ -5,4 +5,26 @@
 
 body{
     background-color: #f8f8f8;
+    text-decoration: none;
+    text-transform: none;
+
+}
+
+.nav-menu-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav ul{
+    display: flex;
+    justify-content: flex-start; 
+    font-size: ;
+}
+
+nav li{
+    font-size: 20px;
+    padding: 50px;
+    text-decoration: none;
+
+
 }
