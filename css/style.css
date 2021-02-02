@@ -13,18 +13,32 @@ body{
 .nav-menu-container{
     display: flex;
     justify-content: flex-start;
+    padding: 50px;    
 }
 
 nav ul{
     display: flex;
     justify-content: flex-start; 
     font-size: ;
+    list-style-type: none;
 }
 
 nav li{
+    display: inline;
     font-size: 20px;
-    padding: 50px;
     text-decoration: none;
+    padding-right: 50px;
+}
 
+li a{
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    justify-content: center;
 
+}
+
+li a:hover{
+    text-decoration: underline;
+    color: crimson;
 }
