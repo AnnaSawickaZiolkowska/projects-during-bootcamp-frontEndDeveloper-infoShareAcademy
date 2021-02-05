@@ -11,9 +11,16 @@ body{
 }
 
 .nav-menu-container{
+    font-family: Nunito Sans;
     display: flex;
     justify-content: flex-start;
-    padding: 50px;    
+    padding: 10px 15px;
+    
+}
+
+.main-logo-img {
+    padding: 50px 0px;
+    margin-left: 30px;
 }
 
 nav ul{
@@ -24,18 +31,20 @@ nav ul{
 }
 
 nav li{
-    display: inline;
+    display: inline-block;
     font-size: 20px;
     text-decoration: none;
-    padding-right: 50px;
+    padding: 38px 0px;
 }
 
 li a{
     text-decoration: none;
-    color: #000;
+    color: #696969;
     text-transform: uppercase;
     justify-content: center;
-
+    font-size: 14px;
+    padding: 10px 50px 10px 0px;
+    font-weight: bold;
 }
 
 li a:hover{
