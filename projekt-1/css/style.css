@@ -1,53 +1,100 @@
-/* ///////////////////
-// na podstawie szablonu
-// http://themes.g5plus.net/april/home-01/
-//////////////////////*/
-
-body{
+body {
+    font-family: 'Nunito Sans', sans-serif;
     background-color: #f8f8f8;
     text-decoration: none;
     text-transform: none;
 
+
 }
 
-.nav-menu-container{
-    font-family: Nunito Sans;
+nav{
     display: flex;
-    justify-content: flex-start;
-    padding: 10px 15px;
-    
+    align-items: center;
+    padding: 0px 100px;
+}
+.div-nav-logo{
+    padding: 10px 60px 10px 0px;
 }
 
-.main-logo-img {
-    padding: 50px 0px;
-    margin-left: 30px;
+nav img{
+    padding: 5px 0px;
 }
 
 nav ul{
     display: flex;
-    justify-content: flex-start; 
-    font-size: ;
-    list-style-type: none;
-}
-
-nav li{
-    display: inline-block;
-    font-size: 20px;
-    text-decoration: none;
-    padding: 38px 0px;
-}
-
-li a{
-    text-decoration: none;
-    color: #696969;
-    text-transform: uppercase;
-    justify-content: center;
     font-size: 14px;
-    padding: 10px 50px 10px 0px;
-    font-weight: bold;
+    list-style-type: none;
+    padding: 0px;
+
+}
+nav li{
+    margin-right: 30px;
+    letter-spacing: 1,4px;
+
 }
 
-li a:hover{
+nav a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bolder;
+
+}
+nav a:hover{
+text-decoration: underline;
+}
+
+header h2 span{
+    display: block;
+}
+
+header{
+    display: flex;
+}
+
+.header-div-left{
+    display: block;
+    text-align: center;
+}
+
+.header-img-right{
+    text-align: right;
+}
+
+/*.header-button{
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 18px;
+} */
+
+header nav{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bolder;
+    font-size: 18px;
+
+}
+
+header a{
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 18px;
+    text-decoration: none;
+    background-color: black;
+    color: #ffffff;
+    padding: 13px 36px;
+}
+
+header a:hover{
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+header nav a:hover{
     text-decoration: underline;
-    color: crimson;
 }

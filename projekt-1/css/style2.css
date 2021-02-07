@@ -1,0 +1,54 @@
+/* ///////////////////
+// na podstawie szablonu
+// http://themes.g5plus.net/april/home-01/
+//////////////////////*/
+
+body{
+    background-color: #f8f8f8;
+    text-decoration: none;
+    text-transform: none;
+
+}
+
+.nav-menu-container{
+    font-family: Nunito Sans;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    
+}
+
+.main-logo-img {
+    padding: 50px 0px;
+    margin-left: 30px;
+}
+
+nav ul{
+    display: flex;
+    justify-content: flex-start; 
+    font-size: ;
+    list-style-type: none;
+}
+
+nav li{
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 38px 0px;
+    line-height: 24px;
+}
+
+li a{
+    text-decoration: none;
+    color: #696969;
+    text-transform: uppercase;
+    justify-content: center;
+    font-size: 14px;
+    padding: 10px 50px 10px 0px;
+    font-weight: bold;
+}
+
+li a:hover{
+    text-decoration: underline;
+    color: crimson;
+}
