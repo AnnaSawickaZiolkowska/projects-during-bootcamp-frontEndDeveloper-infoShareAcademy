@@ -17,7 +17,8 @@ nav{
 }
 
 .div-nav-logo img{
-    padding: 5px 0px;
+    padding: 20px 0px 5px 0px;
+    height: 70px;
 }
 
 .menu{
@@ -86,14 +87,20 @@ header h2 span{
 header{
     display: flex;
 }
+/*
+.header{
+    display: grid;
+} */
 
-.header-div-left{
+.header-left{
     display: block;
     text-align: center;
+    grid-area: header-content;
 }
 
 .header-img-right{
     text-align: right;
+    grid-area: header-img;
 }
 
 /*.header-button{
@@ -102,16 +109,8 @@ header{
     line-height: 18px;
 } */
 
-header nav{
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #333333;
-    font-weight: bolder;
-    font-size: 18px;
 
-}
-
-header a{
+.header-button{
     font-size: 13px;
     text-transform: uppercase;
     line-height: 18px;
@@ -121,13 +120,33 @@ header a{
     padding: 13px 36px;
 }
 
-header a:hover{
+.header-button:hover{
     background-color: white;
     color: black;
     border-color: black;
     border-style: solid;
     border-width: 1px;
 }
+.header-nav-bottom{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bolder;
+    font-size: 18px;
+
+}
+.header-nav-bottom li a{
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bolder; 
+}
+
+
 
 
 header nav a:hover{
