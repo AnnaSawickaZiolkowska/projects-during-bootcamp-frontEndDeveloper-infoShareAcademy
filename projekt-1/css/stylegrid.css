@@ -86,9 +86,10 @@ nav ul{
 .page-navigation li{
     margin-right: 30px;
     letter-spacing: 1,4px;
-
 }
 
+.loop {
+padding-left: 300px;}
 
 .header{
     display: grid;
@@ -130,6 +131,7 @@ nav ul{
     letter-spacing: 10px;
     line-height: 23px;
     text-align: center;
+    padding-top: 200px;
 
 }
 .header-left h2{
