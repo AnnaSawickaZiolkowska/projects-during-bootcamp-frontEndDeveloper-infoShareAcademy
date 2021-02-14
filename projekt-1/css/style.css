@@ -1,6 +1,6 @@
 body {
     font-family: 'Nunito Sans', sans-serif;
-    background-color: #f8f8f8;
+    background-color: #f2f2f0;
     text-decoration: none;
     text-transform: none;
 
@@ -56,9 +56,11 @@ nav{
 .menu li:hover ul{
     display: block;
 }
-.menu li ul li{
+.menu li ul li {
     display: block;
     width: 100%;
+    padding: 15px 0;
+    margin: 0;
 }
 .menu li ul li a{
     width: 100%;
@@ -72,30 +74,40 @@ nav ul{
     padding: 0px;
 
 }
-nav li{
+.page-navigation li{
     margin-right: 30px;
     letter-spacing: 1,4px;
 
 }
 
 
-
-header h2 span{
-    display: block;
-}
-
-header{
-    display: flex;
-}
-/*
 .header{
     display: grid;
-} */
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+    "header-content header-img";
+} 
 
-.header-left{
+.header span{
     display: block;
+}
+/*
+.header-left{
+    display:block;
+    grid-template-columns: repeat(1, 100%);
+    grid-auto-flow: column;
     text-align: center;
     grid-area: header-content;
+}*/
+
+.header-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.li-gap{
+    margin-right: 30px;
 }
 
 .header-img-right{
@@ -128,8 +140,8 @@ header{
     border-width: 1px;
 }
 .header-nav-bottom{
+    display: flex;
     text-decoration: none;
-    text-transform: uppercase;
     color: #333333;
     font-weight: bolder;
     font-size: 18px;
@@ -137,18 +149,20 @@ header{
 }
 .header-nav-bottom li a{
     display: inline-block;
+    bottom: 15%;
+    margin: 0, auto;
     text-decoration: none;
     position: relative;
     z-index: 1;
-    text-decoration: none;
-    text-transform: uppercase;
     color: #333333;
     font-weight: bolder; 
+    text-align: center;    
+
 }
 
 
 
 
-header nav a:hover{
+.header-nav-bottom li a:hover{
     text-decoration: underline;
 }
