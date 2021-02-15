@@ -35,4 +35,13 @@ body {
 
 .product-gallery{
     grid-area: product-gallery;
+    display: grid;
+    grid-template-columns: repeat(3, 1f);
+    grid-template-rows: ;
+}
+
+.container-product-grid{
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 50% 50%;
 }
