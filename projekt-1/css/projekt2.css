@@ -9,9 +9,14 @@ body {
     margin: 0px;
 }
 
+img{
+    width: 100%;
+    height: auto;
+}
+
 .grid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 33.3%);
     grid-template-rows: 80px 80px auto;
     height: 100vh;
     width: 100%;
@@ -33,6 +38,7 @@ body {
     justify-content: flex-start;
     list-style-type: none;
     margin-bottom: 50px;
+    cursor: pointer;
 }
 .shop-navigation-products li{
 
@@ -67,7 +73,52 @@ body {
 
 .aside{
     grid-area: aside;
+    justify-content: center;
 }
+
+.aside-title{
+    display: grid;
+    justify-content: center;
+    font-size: 80px;
+    line-height: 80px;
+    width: fit-content;
+    color: #333;
+    margin: 0px auto;
+    padding: 0px;
+    border-bottom: 5px solid #333;  
+}
+.aside-baner-container{
+    position: relative;
+}
+
+.baner-aside{
+    padding: 80px 15px 0px 15px;
+    width: 100%;    
+}
+
+.aside-button{
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #fff;
+    padding: 16px 35px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-decoration: 0;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.aside-button:hover{
+    background-color: transparent;
+    color: #fff;
+}
+
 
 .product-gallery{
     grid-area: product-gallery;
