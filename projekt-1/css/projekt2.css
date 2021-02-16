@@ -119,14 +119,27 @@ img{
     color: #fff;
 }
 
+/* SECTION PRODUCTS */
 
 .product-gallery{
     grid-area: product-gallery;
-
+    padding-left: 70px;
+    text-align: center;
 }
 
 .container-product-grid{
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
     grid-template-rows: 50% 50%;
+    padding: 0px 15px;
+}
+
+.product-grid{
+    padding: 0px 15px 30px 15px;
+}
+
+.product-info{
+    padding-top: 18px;
+    margin: 0px;
+
 }
