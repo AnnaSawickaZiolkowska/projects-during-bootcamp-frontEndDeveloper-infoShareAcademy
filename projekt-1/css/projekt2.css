@@ -27,6 +27,16 @@ img{
     "aside product-gallery product-gallery"
     ;
 }
+
+/* SECTION HEADER */
+
+.header{
+    display: flex;
+}
+.header-logo{
+    max-width: 80px;
+}
+   
 /* SECTION SHOP NAVIGATION */
 
 .shop-navigation{
@@ -66,6 +76,10 @@ img{
 }
 
 .shop-navigation-products a:active{
+    color: #333;
+    border-bottom: 2px solid #333;
+}
+.active{
     color: #333;
     border-bottom: 2px solid #333;
 }
@@ -140,6 +154,26 @@ img{
 
 .product-info{
     padding-top: 18px;
-    margin: 0px;
+    margin: 0px 0px 5px 0px;
+    color: #696969;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+.product-info:hover{
+    color: #f76b6a;
+}
 
+.product-price{
+    color: #333;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+    margin: 0px;
+}
+.product-price-regular{
+    text-decoration: line-through;
+}
+.product-price-sale{
+    color: #f76b6a;
 }
