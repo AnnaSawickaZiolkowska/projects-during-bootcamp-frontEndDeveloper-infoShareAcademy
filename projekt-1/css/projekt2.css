@@ -18,7 +18,7 @@ img{
     display: grid;
     grid-template-columns: repeat(3, 33.3%); 
    
-    grid-template-rows: 80px 80px auto;
+    grid-template-rows: 80px 80px auto auto;
     height: 100vh;
     width: 100%;
     margin: 0 auto;
@@ -26,6 +26,7 @@ img{
     "header header header"
     ". shop-navigation shop-navigation"
     "aside product-gallery product-gallery"
+    "banner-content banner-content banner-content"
     ;
 }
 
@@ -247,4 +248,10 @@ nav ul{
 }
 .product-price-sale{
     color: #f76b6a;
+}
+
+/* SECTION BANNER CONTENT */
+
+.banner-content{
+    grid-area: banner-content;
 }
