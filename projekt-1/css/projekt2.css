@@ -254,4 +254,36 @@ nav ul{
 
 .banner-content{
     grid-area: banner-content;
+    position: relative;
+
+}
+
+.banner-content-img{
+
+}
+.banner-content-h2{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate3d(-50%, -20%, 0);
+    list-style: none;
+    font-size: 56px;
+}
+
+.banner-content-h2 a{
+    text-decoration: none;
+    color: rgb(247, 107, 106);
+
+}
+.banner-content-p a{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate3d(-50%, -70%, 0);
+    text-decoration: none;
+    text-transform: none;
+    list-style: none;
+    color: black;
+    
+
 }
