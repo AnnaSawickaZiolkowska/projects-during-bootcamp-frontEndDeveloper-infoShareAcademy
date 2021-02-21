@@ -16,7 +16,8 @@ img{
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(3, 33.3%);
+    grid-template-columns: repeat(3, 33.3%); 
+   
     grid-template-rows: 80px 80px auto;
     height: 100vh;
     width: 100%;
@@ -28,14 +29,82 @@ img{
     ;
 }
 
-/* SECTION HEADER */
+/* SECTION HEADER + HEADER MENU*/
 
 .header{
     display: flex;
+    align-items: center;
+    padding: 0px 100px;
 }
 .header-logo{
     max-width: 80px;
 }
+
+.menu{
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin: 0px 0px 0px 30px;
+    position: relative;
+}
+.menu li{
+    float: left;
+    list-style: none;
+    margin: 10px;
+}
+.menu li a{
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bolder; 
+    width: auto;
+}
+
+.menu li:hover a{
+    text-decoration: underline;
+}
+
+.menu li ul{
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    z-index: 100;
+    display: none;
+    background-color: #fafaf5;
+    
+
+}
+.menu li:hover ul{
+    display: block;
+}
+.menu li ul li {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    margin: 0;
+}
+.menu li ul li a{
+    width: 100%;
+}
+
+
+nav ul{
+    display: flex;
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0px;
+
+}
+.page-navigation li{
+    margin-right: 30px;
+    letter-spacing: 1,4px;
+}
+
+
    
 /* SECTION SHOP NAVIGATION */
 
@@ -65,9 +134,7 @@ img{
     font-weight: 800;
     letter-spacing: 1.4px;
     line-height: 16.8px;
-    border-bottom: 2px solid transparent;
-
-
+    border-bottom: 2px solid transparent;.
 }
 
 .shop-navigation-products a:hover{
@@ -78,6 +145,10 @@ img{
 .shop-navigation-products a:active{
     color: #333;
     border-bottom: 2px solid #333;
+}
+
+.shop-navigation-makijaz:hover{
+
 }
 .active{
     color: #333;
