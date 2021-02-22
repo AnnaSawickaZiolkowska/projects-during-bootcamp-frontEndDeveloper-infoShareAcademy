@@ -17,7 +17,7 @@ img{
 .grid{
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%; 
-    grid-template-rows: 80px auto 80px auto 80px auto;
+    grid-template-rows: 80px auto 80px auto auto 80px auto;
     height: 100vh;
     width: 100%;
     margin: 0 auto;
@@ -26,6 +26,7 @@ img{
     "banner-content banner-content banner-content"
     ". shop-navigation shop-navigation"
     "aside product-gallery product-gallery"
+    "banner-content-between banner-content-between banner-content-between"
     "shop-navigation-men shop-navigation-men ."
     "product-gallery-men product-gallery-men aside-men"
     ;
@@ -112,7 +113,7 @@ nav ul{
 
 .shop-navigation{
     grid-area: shop-navigation;
-    padding-left: 100px;
+    padding-left: 85px;
 }
 
 .shop-navigation-products{
@@ -220,13 +221,14 @@ nav ul{
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
     grid-template-rows: 50% 50%;
-    padding: 0px 0px 0px 15px; */
+    padding: 0px 0px 0px 15px; 
     gap: 30px;
+
 }
 
 .product-grid{
-   /* padding: 0px 15px 30px 15px; */
    width: 77%;
+   padding-bottom: 25px;
 
 }
 
@@ -260,22 +262,57 @@ nav ul{
 
 .banner-content{
     grid-area: banner-content;
+    margin: 20px 0;
     position: relative;
-    margin-top: 20px;
 }
 
-
-.banner-content-img{
-
+.p-women{
+    word-wrap: break-word;
+    width: 14px;    
+    position: absolute;
+    top: 50%;
+    left: 98%;
+    transform: translate3d(-98%, -50%, 0);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.p-men{
+    word-wrap: break-word;
+    width: 14px;
+    position: absolute;
+    top: 50%;
+    left: 2%;    
+    transform: translate3d(-2%, -50%, 0);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 /*
-.banner-content:hover {
-    width: 100%;
-    height: auto;
-    z-index: 1;
-    background-color: rgba(51, 51, 51, 0.3);
+.p-sale{
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%,0);
+    background-color: rgba(255, 255,255, 0.8);
+    width: 160px;
+    height: 80px;
+    text-align: center;
+    padding-top: 30px;
+} */
+
+.banner-content-between{
+    grid-area: banner-content-between;
+    position: relative;
+margin-top: 40px;
 }
-*/
+
+
 .banner-content-h2{
     position: absolute;
     top: 20%;
@@ -328,7 +365,8 @@ nav ul{
     grid-template-rows: 50% 50%;
     /*padding: 0px 15px 0px 0px; */
     gap: 0px; 
-  
+    margin 30px;
+
 
 }
 
@@ -336,3 +374,4 @@ nav ul{
     grid-area: aside-men;
     padding-left: 5px;
 }
+
