@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+    background-color: #fafafa;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 50vh 50vh;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "banner login"
+    "footer footer";
+    justify-content: center;
+    margin-top: 32px;
+    padding-bottom: 32px;
+    width: 100%;
+    height: auto;
+}
+.banner{
+    grid-area: banner;
+    /*text-align: right; 
+    align-items: center;    */
+    text-align: right;    
+    margin: 32px 15px 0px 35px;
+    background-size: 454px 618px;
+
+}
+
+.article{
+    margin: 32px 0px;
+    width: 350px;
+    height: 675px;
+}
+
+.login-container{
+    margin-top: 12px;
+    margin-left: 30px;
+    display: grid;
+    grid-area: login;
+    padding: 10px 0px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 1px;
+    width: 350px;
+    height: 380px;
+    text-align: center;
+    background-color: #fff;
+    
+}
+
+.login-container h1{
+    background-image: url(https://logofirmy.net/wp-content/uploads/2020/04/Instagram-Logo-680x383.png);
+    back
+   /* background-position-x: 0px;
+    background-position-y: -130px; */
+background-size: height: 55px;;
+}
+
+.footer{
+    grid-area: footer;
+}
