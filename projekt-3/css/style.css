@@ -18,16 +18,32 @@ body{
     margin-top: 32px;
     padding-bottom: 32px;
     width: 100%;
-    height: auto;
+    height: auto; 
 }
 .banner{
     grid-area: banner;
-    /*text-align: right; 
-    align-items: center;    */
     text-align: right;    
     margin: 32px 15px 0px 35px;
     background-size: 454px 618px;
+    position: relative;
+}
 
+.slider{
+    position: absolute;
+    top: 14%;
+    left: 33.5%;
+    width: 240px;
+    height: 427px;
+    background: tomato;  
+    animation: slide 20s infinite;
+}
+
+@keyframes slide {
+20% { background: rosybrown; }
+40% { background: indigo }
+60% { background: olivedrab }
+80% { background: seagreen }
+100% { background: darkblue;}
 }
 
 .article{
@@ -53,11 +69,10 @@ body{
 
 .login-container h1{
     background-image: url(https://logofirmy.net/wp-content/uploads/2020/04/Instagram-Logo-680x383.png);
-    back
    /* background-position-x: 0px;
-    background-position-y: -130px; */
-background-size: height: 55px;;
-}
+    background-position-y: -130px; 
+    background-size: height: 55px; */
+} 
 
 .footer{
     grid-area: footer;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #313131;
+        }
+        .banner{
+            position: relative;
+            top: 0%;
+        }
+        .slider{
+            position: absolute;
+            top: 50%;
+            left: 10.5%;
+            transform: translate(-10.5%,-50%);
+            width: 240px;
+            height: 427px;
+            background:url(img/slide-1.jpg);  
+            /* margin: 100px auto; */
+            animation: slide 20s infinite;
+
+}
+
+    @keyframes slide {
+    20% { background: url(img/slide-2.jpg); }
+    40% { background: url(img/slide-3.jpg); }
+    60% { background: url(img/slide-4.jpg); }
+    80% { background: url(img/slide-5.jpg); }
+    100% { background: url(img/slide-1.jpg);}
+    }
+    </style>
+</head>
+<body>
+    
+    <section class="grid-container">
+        <section class="banner">
+         <div><img class="banner-img" src="img/banner-1.png" alt="">
+           </div> 
+          
+            <div class="slider"></div> 
+       
+        </section>
+
+</body>
+</html>
