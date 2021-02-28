@@ -19,23 +19,22 @@
             </div>
         </section>
 
-        <article class="article">
-            <div class="login-container">
-                <h1></h1>  
-                <div class="input">
-                    <div>
-                        <label for="login"><span>Numer telefonu, nazwa urzytkownika lub adrese-mail </span>
-                        <input type="text" name="username" id="login" max="75"></label>
-                    </div>
+        <div class="form-box">
+            <h1 class="form-box__logo"></h1>  
+            <form class="form-box__form form">
+                <input class="form__input" type="text" name="username" id="username" max="75" placeholder="Numer telefonu, nazwa urzytkownika lub adrese-mail">
+                <input class="form__input" type="password" name="password" id="password" placeholder="Hasło">
+                <button class="form-box__button">Zaloguj się</button>
+                <span class="form-box__span">------------ LUB ------------</span>
+                <div class="form-box__facebook">
+                    <span class="form-box__facebook-logo"></span>
+                    <span class="form-box__facebook-span">Zaloguj się przez Facebooka</span>
                 </div>
-                <div class="input">
-                    <div>
-                        <label for="Numer "></label>
-                        <input type="password">
-                    </div>
-                </div>          
-            </div>
-        </article>
+                <a class="form-box__link">Nie pamiętasz hasła?</a>
+            </form>
+
+        </div>
+
         <footer class="footer">
             <p></p>
             <p></p>
