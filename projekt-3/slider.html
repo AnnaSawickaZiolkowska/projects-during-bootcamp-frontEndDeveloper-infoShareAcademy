@@ -1,80 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             margin: 0;
             padding: 0;
-            background-color: #313131;
+            padding-top: 100px;
+            background-color: #fafafa;
+        }
+        .main-container{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
         .banner{
-            position: relative;
-            top: 0%;
+            margin-top: 85px;
         }
-        .slider{
-            position: absolute;
-            top: 50%;
+
+        .slider {
+            /*top: 50%;
             left: 10.5%;
-            transform: translate(-10.5%,-50%);
+            transform: translate(-10.5%, -50%); */
             width: 240px;
             height: 427px;
-            background:url(img/slide-1.jpg);  
+            background: url(img/slide-1.jpg);
             /* margin: 100px auto; */
             animation: slide 20s infinite;
 
+        }
+
+        @keyframes slide {
+            20% {
+                background: url(img/slide-2.jpg);
+            }
+
+            40% {
+                background: url(img/slide-3.jpg);
+            }
+
+            60% {
+                background: url(img/slide-4.jpg);
+            }
+
+            80% {
+                background: url(img/slide-5.jpg);
+            }
+
+            100% {
+                background: url(img/slide-1.jpg);
+            }
+        }
+
+        .LoginForm {
+            border-radius: 3px;
+            border: 1px solid rgb(142, 142, 142);
+            color: rgb(38, 38, 38);
+            height: 38px;
+            width: 268px;
+            font-weight: 400;
+        }
+
+        .LoginForm input {
+            width: 258px;
+            height: 36px;
+            line-height: 18px;
+            font-size: 14px;
+            background-color: #fafafa;
+            margin: auto;
+            margin-top: 18px;
+            padding: 10px;
+        }
+.form-box{
+    margin-top: 100px;
+    /*margin-left: 30px; */
+    grid-area: login;
+    padding: 10px 0px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 1px;
+    width: 350px;
+    height: 380px;
+    text-align: center;
+    background-color: #fff;
+    
 }
 
-    @keyframes slide {
-    20% { background: url(img/slide-2.jpg); }
-    40% { background: url(img/slide-3.jpg); }
-    60% { background: url(img/slide-4.jpg); }
-    80% { background: url(img/slide-5.jpg); }
-    100% { background: url(img/slide-1.jpg);}
-    }
+.form-box__logo{
+    background-image: url(https://logofirmy.net/wp-content/uploads/2020/04/Instagram-Logo-680x383.png);
+    background-size: 184px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    margin: 0px;
+    height: 100px;
+    padding-bottom: 42px;
+} 
+.form-box__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image:
+}
 
-    .LoginForm{
-        border-radius: 3px;
-        border: 1px solid rgb(142, 142, 142);
-        color: rgb(38, 38, 38);
-        height: 38px;
-        width: 268px;
-        font-weight: 400;
-    }
-    .LoginForm input{
-        width: 258px;
-        height: 36px;
-        line-height: 18px;
-        font-size: 14px;
-        background-color: #fafafa;
-        margin: auto;
-        margin-top: 18px;
-        padding: 10px;
-    }
+.form__input{
+    margin: 0px 40px 6px 40px;
+    color: rgb(38, 38, 38);
+    font-size: 12px;
+    font-weight: 400;
+    height: 38px;
+    width: 268px;
+    line-height: 18px;
+    vertical-align: baseline;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 1px solid rgb(219, 219, 219);
+    background-color: rgb(250, 250, 250);
+    border-radius: 2px;
+}
+
+.form-box__button{
+    margin: 8px 40px;
+    border-radius: 4px;
+    width: 268px;
+    height: 30px;
+    color: white;
+    background-color: #b2defb;
+    border: none;
+    font-size: 14px;
+    font-weight: 800;
+
+}
+.form-box__span{
+    margin: 10px 40px 18px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #8E8E8E;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.form-box__facebook{
+    margin: 0px 40px 0px 40px;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    vertical-align: baseline;
+
+
+}
+.form-box__facebook-logo img{
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+
+}
+
+.form-box__facebook-span{
+    color: #385185;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.form-box__link{
+    margin: 12px 0px 0px 0px;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.box{
+    width: 350px;
+    height: 63px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 1px;
+    background-color: #fff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.box__register{
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #262626;
+    font-weight: 400;
+}
+.box__register a{
+    color: rgb(0, 149, 246);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+
+}
+
+.box-app{
+    width: 350px;
+    height: 102px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.box-app__img{
+    display: flex;
+    flex-direction: row;
+    width: 136px;
+    height: 44px;
+    margin-top: 10px;
+    margin-left: 25px;
+  
+}
+.box-app__paragraf{
+    margin: 10px 20px;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #363636;
+
+}
+.box-app__img img{
+    margin-right: 8px;
+}
     </style>
 </head>
+
 <body>
-    
-    <section class="grid-container">
+
+    <main class="main-container">
         <section class="banner">
-         <div><img class="banner-img" src="img/banner-1.png" alt="">
-           </div> 
-          
-            <div class="slider"></div> 
-       
-        </section>
+            <div><img class="banner-img" src="img/banner-1.png" alt="">
+            </div>
 
-
-        <section class="LoginForm">
-            <input type="text" id="txt1" placeholder="Numer telefonu, nazwa urzytkownika lub adrese-mail" name="UserN" value="">
-            <input type="password" id="txt1" placeholder="password" name="PassN" value="">
-            <input type="button" id="button" placeholder="Hasło" name="UserN" value="">
-
+            <div class="slider"></div>
 
         </section>
+
+        <div class="form-box">
+            <h1 class="form-box__logo"></h1>  
+            <form class="form-box__form form">
+                <input class="form__input" type="text" name="username" id="username" max="75" placeholder="Numer telefonu, nazwa urzytkownika lub adrese-mail">
+                <input class="form__input" type="password" name="password" id="password" placeholder="Hasło">
+                <button class="form-box__button">Zaloguj się</button>
+                <span class="form-box__span">------------ LUB ------------</span>
+                <div class="form-box__facebook">
+                    <span class="form-box__facebook-logo"><img src="img/facebook-logo.png" alt=""></span>
+                    <span class="form-box__facebook-span">Zaloguj się przez Facebooka</span>
+                </div>
+                <a class="form-box__link">Nie pamiętasz hasła?</a>
+            </form>
+
+            <div class="box">
+                <p class="box__register">Nie masz konta?<a href="">Zarejestruj się</a></p>
+            </div>
+
+            <div class="box-app">
+                <p class="box-app__paragraf">Pobierz aplikację</p>
+                <div class="box-app__img">
+                    <img src="img/app store.png" alt="">
+                    <img src="img/google-play.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
 
 </body>
+
 </html>

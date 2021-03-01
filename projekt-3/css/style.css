@@ -27,16 +27,19 @@ body{
     margin: 32px 15px 0px 35px;
     background-size: 454px 618px;
     position: relative;
-}
 
+ 
+}
+.banner-img{
+}
 .slider{
     position: absolute;
-    top: 8.7%;
-    left: 82%;
-    transform: translate3d(-82%, 8.7%, 0);
+    top: 9.5%;
+    left: 70.4%;
+    transform: translate3d(-70.4%, 9.5%, 0);
     width: 240px;
     height: 427px;
-    background: tomato;  
+    background-image: tomato;
     animation: slide 20s infinite;
 }
 
