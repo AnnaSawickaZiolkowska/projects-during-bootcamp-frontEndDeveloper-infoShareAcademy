@@ -12,7 +12,7 @@ body{
 
 }
 
-.grid-container{
+.grid-container{ 
     /* display: grid;
     grid-template-columns: 50vh 50vh;
     grid-template-rows: auto auto;
@@ -29,7 +29,7 @@ body{
 .banner{
     grid-area: banner;
     text-align: right;    
-    margin: 32px 15px 0px 35px;
+    margin: 0px 15px 0px 35px;
     background-size: 454px 618px;
     position: relative;
 
@@ -63,7 +63,7 @@ body{
 }
 
 .form-box{
-    margin-top: 68px;
+    margin-top: 36px;
     /*margin-left: 30px; */
     display: grid;
     grid-area: login;
@@ -222,6 +222,8 @@ body{
     height: 151px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+
 }
 
 .footer__first-line{
@@ -244,4 +246,6 @@ body{
 
 .footer__theerd-line{
     margin-top: 12px;
+    margin-bottom: 20px;
 }
+
