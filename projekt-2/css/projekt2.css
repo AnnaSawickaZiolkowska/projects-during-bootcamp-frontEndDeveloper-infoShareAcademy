@@ -37,10 +37,11 @@ img{
 .header{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 30px 0px;
 }
 .header-logo{
-    /* max-width: 80px; */
+    max-width: 80px;
 }
 
 .menu{
@@ -93,7 +94,13 @@ img{
 .menu li ul li a{
     width: 100%;
 }
-
+.menu-right{
+    display: flex;
+    
+}
+.menu-right,span{
+    margin-left: 10px;
+}
 
 nav ul{
     display: flex;
@@ -163,15 +170,14 @@ nav ul{
 .aside{
     grid-area: aside;
     justify-content: center;
-    display: grid;
 }
 
 .aside-title{
-    /* display: grid; */
+    display: grid;
     justify-content: center;
     font-size: 80px;
     line-height: 80px;
-    /* width: fit-content; */
+    width: fit-content;
     color: #333;
     margin: 0px auto;
     padding: 0px;
