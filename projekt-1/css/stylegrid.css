@@ -1,8 +1,13 @@
+* { box-sizing: border-box; }
+   
+
+
 body {
     font-family: 'Nunito Sans', sans-serif;
     background-color: #f2f2f0;
     text-decoration: none;
     text-transform: none;
+    margin: 0px
 }
 .wrapper{
     height: 100vh;
@@ -34,11 +39,14 @@ nav{
     padding: 0px;
     margin: 0px;
     position: relative;
+    box-sizing: border-box;
+
 }
 .menu li{
     float: left;
     list-style: none;
     margin: 10px;
+
 }
 .menu li a{
     display: inline-block;
@@ -53,6 +61,10 @@ nav{
 
 .menu li:hover a{
     text-decoration: underline;
+     /* border-bottom: 2px solid #333;  */
+    /* Dlaczego menu się buja? */
+    
+
 }
 
 .menu li ul{
@@ -68,7 +80,7 @@ nav{
 .menu li ul li {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 0;
     margin: 0;
 }
 .menu li ul li a{
@@ -88,8 +100,15 @@ nav ul{
     letter-spacing: 1,4px;
 }
 
+.page-navigation-right{
+    position: absolute;
+    right: 100px;
+}
+
 .loop {
-padding-left: 300px;
+/* padding-left: 300px; */
+/* position: absolute;
+right: 100px; */
 }
 
 .header{
@@ -210,11 +229,13 @@ padding-left: 300px;
     font-weight: 800;
     font-size: 18px;   
     height: 19px;
+    line-height: 22px;
+    padding-bottom: 5px;
 }
 
 
 
 
 .header-nav-bottom li a:hover{
-    text-decoration: underline;
+border-bottom: 2px solid #333;
 }
