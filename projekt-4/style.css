@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+body{
+    
+    background: url("img/img-background.jpg") no-repeat center center fixed;
+    background-attachment: fixed;
+    background-size: 100% 100vh;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 200px auto auto 200px;
+    grid-template-areas: 
+    "header"
+    "logo"
+    "countdown"
+    "footer";
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+.countdown{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+ .countdown div{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    line-height: 90px;
+    border-radius: 5px; 
+    text-align: center;
+    background: #224775;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 44px;
+    font-weight: 500;
+    align-items: center;
+} 
+
+.countdown div::before{
+    content: "";
+    align-items: center;
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background:#D3B170;
+    color: #333;
+    font-size: 20px;
+    line-height: 45px;
+    font-weight: 300;
+    border-radius: 0 0 5px 5px; 
+}
+.countdown #day::before{
+    content: "Days";
+}
+.countdown #hour::before{
+    content: "Hours";
+}
+.countdown #minute::before{
+    content: "Minutes";
+}
+.countdown #second::before{
+    content: "Seconds";
+}
+
+
+.header{
+ grid-area: header;
+}
+
+.logo{
+    grid-area: logo;
+}
+.logo img{
+    width: 300px;
+    z-index: 1;
+}
+
+.countdown{
+    grid-area: countdown;
+}
+
+.footer{
+    grid-area: footer;
+}
