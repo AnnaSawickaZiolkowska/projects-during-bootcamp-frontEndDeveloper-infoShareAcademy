@@ -1,14 +1,18 @@
 
 
 // ustawienie daty, do której odliczam
+// ustawienie aktualnej daty
+//ustalenie czasu pomiędzy tymi datami
+//przeliczenie czasu na sekundy
+// dodanie do DOM teksty na div::before
+// dodanie setInterval
 
-// let countDownDate = new Date('march 21, 2021 22:57:50').getTime();
-let countDownDate = new Date('Aug 8, 2021 00:00:00').getTime();
 
 
-setInterval(function(){
+function pageCountDown(){
 
-function pageStart(){
+    let countDownDate = new Date('Aug 8, 2021 00:00:00').getTime();
+
     const now = new Date().getTime();
         timeToStart = countDownDate - now;
 
@@ -29,11 +33,20 @@ function pageStart(){
     
   
 };
+    setInterval(function(){
+    pageCountDown();
 
-    pageStart();
-
-    if (timeToStart < 0) {
-        clearInterval();
-        document.querySelector("#countdown").innerText = "TO JUŻ DZISIAJ! ZAPRASZAMY NA STRONĘ";
-    }
+   
 }, 1000);
+
+
+
+// chciałabym dodać zatrzymanie odliczania np.
+// jeszcze nie wiem w którym miejscu zeby działało
+
+// if (timeToStart < 0) {
+//     clearInterval();
+//     document.querySelector("#countdown").innerText = "TO JUŻ DZISIAJ! ZAPRASZAMY NA STRONĘ";
+// }
+
+//Jak zatrzyma się odliczanie to zmiana grafiki i jakiś eventListener , który włączył by stronę docelową
