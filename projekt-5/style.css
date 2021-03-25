@@ -15,8 +15,112 @@ body{
     height: 100vh;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: 150px 150px auto auto;
     grid-template-areas: "header" "menu" "input" "timer";
     justify-content: center;
 }
 
+h1{
+    color: aliceblue;
+}
+
+.header{
+    grid-area: header;
+    text-align: center;
+}
+
+/* .form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+} */
+.form__input{
+    width: 400px;
+    margin: 0 auto;
+    font-size: 16px;
+    position: relative;
+}
+.form__field{
+    width: 400px;
+    height: 60px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #4EA5D9;
+    /* border-top: 3px solid #4EA5D9; */
+    outline: none;
+    color: #ffffff;
+    padding-left: 10px
+}
+.form__label{
+    display: block;
+    left: 10px;
+    top: 40px;
+    font-size: 20px;
+    cursor: text;
+    color: #44CFCB;    
+    transition: all .3s;    
+  }
+  .form__field:focus ~ .form__label {
+      top: 0px;
+      font-size: 14px;
+      transition: all 0.3s;
+  }
+
+/* .input{
+    display: grid;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 10px;
+} */
+/* .buttonInput{
+    margin-top: 20px;
+} */
+
+
+/* STOP WATCH */
+
+.stopwatch{
+    display: grid;
+    justify-content: center;
+}
+.circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 270px;
+    width: 270px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+.time{
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 200;
+
+}
+.controls{
+    margin-top: 10px;
+
+}
+.buttonClock{
+    background: transparent;
+    border: transparent;
+}
