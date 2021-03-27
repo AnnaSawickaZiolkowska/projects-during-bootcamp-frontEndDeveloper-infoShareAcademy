@@ -71,8 +71,10 @@ h1{
     left: 10px;
     top: 40px;
     font-size: 20px;
+    font-weight: 500;
     cursor: text;
-    color: #44CFCB;    
+    /* color: #44CFCB;     */
+    color: #000851;
     transition: all .3s;    
   }
   .form__field:focus ~ .form__label {
@@ -100,6 +102,8 @@ h1{
 .stopwatch{
     display: grid;
     justify-content: center;
+
+    width: 100%;
 }
 .circle{
     display: flex;
@@ -114,13 +118,26 @@ h1{
     color: #ffffff;
     font-size: 48px;
     font-weight: 200;
+    letter-spacing: 9px;
 
 }
 .controls{
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    display: flex;
+    justify-content: space-around;
+
+    width: 300px;
 
 }
 .buttonClock{
     background: transparent;
     border: transparent;
 }
+#playButton {
+    display: block;
+  }
+  
+  #pauseButton {
+    display: none;
+  }
+  
