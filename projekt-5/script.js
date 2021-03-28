@@ -32,3 +32,14 @@ function timeToString(time) {
   
     return `${formattedMM}:${formattedSS}`;
   }
+
+
+  // Modify watch textContent
+
+const watchTextContent = document.querySelector('#display').textContent = timeToString(0);
+
+// function print(txt){
+//     document.querySelector('#display').textContent = txt;
+// };
+
+console.log(timeToString(0));
