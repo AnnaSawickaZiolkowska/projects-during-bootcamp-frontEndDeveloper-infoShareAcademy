@@ -1,8 +1,9 @@
+
 // Add buttons and create function for Toggle button 
 
-const  playButton = document.querySelector('#playButton');
-const  pauseButton = document.querySelector("#pauseButton");
-const  resetButton = document.querySelector("#resetButton");
+let  playButton = document.querySelector('#playButton');
+let  pauseButton = document.querySelector('#pauseButton');
+let  resetButton = document.querySelector('#resetButton');
 
 function toggleButton(buttonKey) {
     const buttonVisible = buttonKey === "PLAY" ? playButton : pauseButton;
@@ -36,10 +37,30 @@ function timeToString(time) {
 
   // Modify watch textContent
 
-const watchTextContent = document.querySelector('#display').textContent = timeToString(0);
+// const watchTextContent = document.querySelector('#display').textContent = timeToString(0);
+// console.log(timeToString(0));
 
-// function print(txt){
-//     document.querySelector('#display').textContent = txt;
-// };
+function displayTime(txt){
+    document.querySelector('#display').textContent = txt;
+};
 
-console.log(timeToString(0));
+// Create function to start, stop and reset watch
+
+let startTime;
+let elapsedTime = 0;
+let timerInterval;
+
+
+function start() {
+  startTime = Date.now() - elapsedTime;
+  timerInterval = setInterval(function printTime() {
+    elapsedTime = Date.now() - startTime;
+    displayTime(timeToString(elapsedTime));
+  }, 1000);
+  toggleButton("PAUSE");
+  pauseButton.style.display = "block"
+  playButton.style.display = "none";
+};
+
+
+ playButton.addEventListener('click', start);
