@@ -63,4 +63,16 @@ function start() {
 };
 
 
- playButton.addEventListener('click', start);
+ function pause() {
+    clearInterval(timerInterval);
+    toggleButton("PLAY");
+    pauseButton.style.display = "none"
+    playButton.style.display = "block";
+  };
+  
+  playButton.addEventListener('click', start);
+  pauseButton.addEventListener("click", pause);
+ 
+ 
+
+  
