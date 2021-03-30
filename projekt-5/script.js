@@ -10,6 +10,7 @@ function toggleButton(buttonKey) {
     const buttonHidden = buttonKey === "PAUSE" ? pauseButton : playButton;
     buttonVisible.style.display = "block";
     buttonHidden.style.display = "none";
+    //nie wiem czemu nie działają tutaj ostatnie dwie linijki
 };
 
 
@@ -69,10 +70,18 @@ function start() {
     pauseButton.style.display = "none"
     playButton.style.display = "block";
   };
+   
+  function reset() {
+    clearInterval(timerInterval);
+    displayTime("00:00");
+    elapsedTime = 0;
+    toggleButton("PLAY");
+    playButton.style.display = "block";
+    pauseButton.style.display = "none"
+  };
+  
   
   playButton.addEventListener('click', start);
   pauseButton.addEventListener("click", pause);
- 
- 
-
+  resetButton.addEventListener("click", reset);
   
