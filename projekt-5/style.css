@@ -17,7 +17,7 @@ body{
     grid-template-columns: 100%;
     grid-template-rows: 150px 150px auto auto;
     grid-template-areas: "header" "menu" "input" "timer";
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 h1{
@@ -29,72 +29,71 @@ h1{
     text-align: center;
 }
 
-/* .form__group {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 50%;
+ .form {
+  display: inline-block;
 }
-.form__field {
-    font-family: inherit;
-    width: 100%;
-    border: 0;
-    border-bottom: 2px solid gray;
-    outline: 0;
-    font-size: 1.3rem;
-    color: white;
-    padding: 7px 0;
-    background: transparent;
-    transition: border-color 0.2s;
-
-} */
-.form__input{
-    width: 400px;
-    margin: 0 auto;
+.field {
+    margin: 0 auto;;
+    width: 800px;
     font-size: 16px;
-    position: relative;
-}
-.form__field{
-    width: 400px;
-    height: 60px;
-    font-size: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input{
     background-color: transparent;
     border: none;
-    border-bottom: 3px solid #4EA5D9;
-    /* border-top: 3px solid #4EA5D9; */
+    border-bottom: 2px solid #4EA5D9;
     outline: none;
-    color: #ffffff;
-    padding-left: 10px
-}
-.form__label{
-    display: block;
-    left: 10px;
-    top: 40px;
+      height: 40px;
+    font-size: 26px;
+  
+  }
+  
+  label {
+    order: -1;
+    padding-left: 5px;
+    transition: all 0.3s ease-in;
+    transform: translateY(33px);
+    pointer-events: none;
+    color: #fff;
+    font-size: 26px;
+      line-height:26px
+  
+  }
+  input:focus + label {
+    transform: translateY(0px);
     font-size: 20px;
-    font-weight: 500;
-    cursor: text;
-    /* color: #44CFCB;     */
-    color: #000851;
-    transition: all .3s;    
+      line-height:26px
+  
   }
-  .form__field:focus ~ .form__label {
-      top: 0px;
-      font-size: 14px;
-      transition: all 0.3s;
-  }
-
-/* .input{
-    display: grid;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 200px;
+  .input-buttons {
     height: 10px;
-} */
-/* .buttonInput{
-    margin-top: 20px;
-} */
+    padding: 0;
+    border-bottom: white;
+    z-index: 1;
+
+  }
+  .input-buttons i {
+      padding: 0 12px;
+      border-left: white;
+      color: white;
+      float: right;
+    }
+  .fa-plus {
+    color: white;
+    border-left: white;
+  }
+  .fa-plus:hover {
+    color: #69f0ae;
+  }
+  .fa-trash-alt {
+    color: white;
+  }
+  .fa-trash-alt:hover {
+    color: red;
+  }
 
 
 /* STOP WATCH */
@@ -127,14 +126,20 @@ h1{
     justify-content: space-around;
 
     width: 300px;
+    outline: none;
+
 
 }
 .buttonClock{
     background: transparent;
     border: transparent;
+    outline: none;
+
 }
 #playButton {
     display: block;
+    outline: none;
+
   }
   
   #pauseButton {

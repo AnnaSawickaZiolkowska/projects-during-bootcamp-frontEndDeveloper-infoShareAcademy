@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Manager</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    
 
 </head>
 
@@ -23,16 +25,25 @@
 
 
 
-        <section class="form__group input">
-            <div class="form__input">
-                <label class="form__label" for="yourtask">Your task to do</label>
-                <input class="form__field" type="text" name="yourtask" id="yourtask">
+        <form class="form">
+            <div class="field">
+                <div class="input-buttons">
+                    <a href="#" class="clear-text"><i class="far fa-trash-alt fa-2x"></i>
+
+                        <i class="fa fa-trash-o fa-2x"></i></a>
+                    <a href="#" class="add-todo"><i class="fa fa-plus fa-2x"></i></a>
+                  </div>
+                <input type="text" name="yourtask" id="yourtask">
+                <label for="yourtask">Your task to do</label>
+
+                
             </div>
             <!-- <button class="buttonInput" type="submit">Let's Flow</button> -->
 
-        </section>
+        </form>
+
         <div class="stopwatch">
-            <h1>your task to do</h1>
+            <h1 class="current-to-do" >your task to do</h1>
             <div class="circle">
                 <span class="time" id="display">00:00</span>
                 <!-- <span class="time" id="display2">00:00</span> -->
