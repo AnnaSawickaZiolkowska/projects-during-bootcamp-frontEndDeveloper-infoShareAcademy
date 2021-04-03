@@ -1,28 +1,3 @@
-// INPUT EVENTS
-
-const input = document.querySelector('input');
-const label = document.querySelector('label');
-const fromInputToDo = document.querySelector('.current-to-do')
-
-
-input.addEventListener('input', currentToDo);
-
-    function currentToDo(e) {
-        // console.log({e});
-        fromInputToDo.textContent = e.target.value;
-        e.preventDefault();
-
-}
-// input.addEventListener('input', currentToDo);
-
-//     function currentToDo(e) {
-//         console.log(e);
-//         fromInputToDo.textContent = e.target.value;
-//         e.preventDefault();
-
-// }
-
-
 // Add buttons and create function for Toggle button 
 
 let  playButton = document.querySelector('#playButton');
@@ -112,4 +87,40 @@ function start() {
 
   // TO DO LIST
 
+  const addToDoButton = document.querySelector('.add-todo');
+  const todoContainer = document.querySelector('.todoList');
+  const inputField = document.querySelector('#yourtask');
   
+  addToDoButton.addEventListener('click', function (){
+      const paragraph = document.createElement('p');
+      paragraph.classList.add('paragraph__styling')
+      paragraph.textContent = inputField.value;
+      todoContainer.appendChild(paragraph);
+  });
+  
+
+
+
+  // INPUT EVENTS
+
+// const input = document.querySelector('input');
+// const label = document.querySelector('label');
+// const fromInputToDo = document.querySelector('.current-to-do')
+
+
+// input.addEventListener('input', currentToDo);
+
+//     function currentToDo(e) {
+//         // console.log({e});
+//         fromInputToDo.textContent = e.target.value;
+//         e.preventDefault();
+
+// };
+// input.addEventListener('input', currentToDo);
+
+//     function currentToDo(e) {
+//         console.log(e);
+//         fromInputToDo.textContent = e.target.value;
+//         e.preventDefault();
+
+// }

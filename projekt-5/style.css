@@ -31,11 +31,11 @@ h1{
  .form {
   display: inline-block;
 }
-.field {
+.form__field {
     margin: 0 auto;;
     width: 800px;
     font-size: 16px;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     display: flex;
     flex-direction: column;
   }
@@ -43,10 +43,10 @@ h1{
   input{
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #4EA5D9;
+    border-bottom: 3px solid #4EA5D9;
     outline: none;
-      height: 40px;
-    font-size: 26px;
+    height: 40px;
+    font-size: 26px;   
   
   }
   
@@ -67,19 +67,20 @@ h1{
       line-height:26px
   
   }
-  .input-buttons {
+  .form-buttons {
     height: 10px;
     padding: 0;
-    border-bottom: white;
     z-index: 1;
 
   }
-  .input-buttons i {
+  .form-buttons i {
       padding: 0 12px;
       border-left: white;
       color: white;
       float: right;
+      
     }
+
   .fa-plus {
     color: white;
     border-left: white;
@@ -94,6 +95,27 @@ h1{
     color: red;
   }
 
+  .paragraph__styling{
+    margin: 0;
+    width: 800px;
+    position: relative;
+    list-style: none;
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 8px;
+    background: #f2f2f2;
+    border-radius: 3px;
+    padding: 0 15px;
+    cursor: default;
+    overflow: hidden;
+}
+.todoList{
+    padding: 0;
+}
+.paragraph__styling:first-child{
+    margin-top: 40px;
+
+}
 
 /* STOP WATCH */
 
