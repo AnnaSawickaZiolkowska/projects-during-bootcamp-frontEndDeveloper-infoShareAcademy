@@ -8,7 +8,7 @@ const fromInputToDo = document.querySelector('.current-to-do')
 input.addEventListener('input', currentToDo);
 
     function currentToDo(e) {
-        console.log({e});
+        // console.log({e});
         fromInputToDo.textContent = e.target.value;
         e.preventDefault();
 
@@ -109,5 +109,7 @@ function start() {
   pauseButton.addEventListener("click", pause);
   resetButton.addEventListener("click", reset);
   
+
+  // TO DO LIST
 
   
