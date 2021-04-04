@@ -96,6 +96,10 @@ function start() {
       paragraph.classList.add('paragraph__styling')
       paragraph.textContent = inputField.value;
       todoContainer.appendChild(paragraph);
+      //BUTTONS START STOP RESET/DELATE
+    //   const playButton$ = document.createElement('i');
+    //   playButton$.classList.add('playIcon');
+
   });
   
 

@@ -14,8 +14,8 @@ body{
     height: 100vh;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 150px 150px auto auto;
-    grid-template-areas: "header" "menu" "input" "timer";
+    grid-template-rows: 100px 20px 350px auto;
+    grid-template-areas: "header" "menu" "timer" "input";
     /* justify-content: center; */
 }
 
@@ -29,6 +29,8 @@ h1{
 }
 
  .form {
+     margin-top: 60px;
+     grid-area: input;
   display: inline-block;
 }
 .form__field {
@@ -95,7 +97,46 @@ h1{
     color: red;
   }
 
+  /*  TO DO PARAGRAPH CONTAINER */
+
+
+.todoList{
+    margin-top: 40px;
+    padding: 0;
+    display: inline-block;
+}
+.todoList__user-input{
+    margin: 0 auto;;
+    width: 800px;
+    font-size: 16px;
+    /* padding-top: 10px; */
+    display: flex;
+    flex-direction: column;
+}
+.todoList__buttons{
+    height: 10px;
+    padding: 0;
+    z-index: 1;
+}
+.todoList__buttons i{
+    transform: translateY(-46px);
+    padding: 0 12px;
+    border-left: white;
+    color: white;
+    float: right;
+    color: #4EA5D9;
+
+}
+.start{
+    display: block;
+}
+.stop{
+    display: none;
+}
+.todoList__buttons .reset{
+}
   .paragraph__styling{
+      order: -1;
     margin: 0;
     width: 800px;
     position: relative;
@@ -109,17 +150,19 @@ h1{
     cursor: default;
     overflow: hidden;
 }
-.todoList{
-    padding: 0;
-}
+
 .paragraph__styling:first-child{
     margin-top: 40px;
 
 }
 
+
+
+
 /* STOP WATCH */
 
 .stopwatch{
+    grid-area: timer;
     display: grid;
     justify-content: center;
 
