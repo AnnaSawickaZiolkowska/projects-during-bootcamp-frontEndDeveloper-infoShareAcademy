@@ -104,6 +104,7 @@ h1{
     margin-top: 40px;
     padding: 0;
     display: inline-block;
+    /* display: none; */
 }
 .todoList__user-input{
     margin: 0 auto;;

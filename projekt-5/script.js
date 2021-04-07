@@ -89,19 +89,93 @@ function start() {
 
   const addToDoButton = document.querySelector('.add-todo');
   const todoContainer = document.querySelector('.todoList');
+//   const todoContainer = document.querySelector('.todoList').content.cloneNode(true);
   const inputField = document.querySelector('#yourtask');
-  
+  const userInputBox = document.querySelector('.todoList__user-input .todoList__buttons');
+  todoContainer.append(userInputBox);
+
+  const addForm = document.querySelector('.form');
+
+// create template for user to do tasks
+
+// const generateTemplate = (todo) =>{
+//     const item = `<div class="todoList__user-input userInputBox">
+//     <div class="todoList__buttons">
+//         <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
+//         <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
+//         <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
+//          </div>   
+//          <p class="paragraph__styling">${todo}</p>
+
+//          </div>`;
+//          todoContainer.textContent += item;
+//          todoContainer.appendChild(item);
+         
+// };
+
+// addToDoButton.addEventListener('submit', (e)=>{
+//     e.preventDefault();
+//     const todo = inputField.value.trim();
+//     if(todo == '' || todo ==' '){
+//        alert('Wyznacz sobie cel');
+//     }else{
+//         generateTemplate(todo)
+//         addToDoButton.reset()
+//     }
+// });
+
+
+// addForm.addEventListener('submit', (e)=>{
+//     e.preventDefault();
+//     const todo = inputField.value.trim();
+//     if(todo.lenght){
+//         generateTemplate(todo)
+//         addForm.reset()
+//     }
+// });
+
+
+
+// const todoObjectList = [];
+
   addToDoButton.addEventListener('click', function (){
       const paragraph = document.createElement('p');
       paragraph.classList.add('paragraph__styling')
       paragraph.textContent = inputField.value;
       todoContainer.appendChild(paragraph);
+        const item = `<div class="todoList__user-input userInputBox">
+        <div class="todoList__buttons">
+            <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
+            <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
+            <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
+             </div>   
+             <p class="paragraph__styling">${inputField.value}</p>
+    
+             </div>`;
+         todoContainer.append(item);
+             
+  
+    // userInputBox.append(paragraph);
+    // userInputBox.style.display = "inline-block";
+  });
+
+
+//   addToDoButton.addEventListener('click',function() {
+        // const userInputBox = document.querySelector('todoList__user-input');
+        // const todoList__buttons = document.createElement('div');
+        // todoList__buttons.classList.add('todoList__buttons');
+
+        
+        // userInputBox.style.display = "inline-block";
+        // userInputBox.textContent = inputField.value;
+        // todoContainer.appendChild(userInputBox);
+//   } );
       //BUTTONS START STOP RESET/DELATE
     //   const playButton$ = document.createElement('i');
     //   playButton$.classList.add('playIcon');
-
-  });
+//   });
   
+
 
 
 
