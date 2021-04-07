@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Manager</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+<style>
+    * { box-sizing: border-box;
+}
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* background: url("./img/background-2.jpeg") no-repeat center center fixed; */
+    /* background-size: cover; */
+    background: linear-gradient(180deg, #1CB5E0 0%, #000851 100%);
+ 
+
+}
+
+.container{
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 150px 150px auto auto;
+    grid-template-areas: "header" "menu" "input" "timer";
+    /* justify-content: center; */
+}
+
+h1{
+    color: aliceblue;
+}
+
+.header{
+    grid-area: header;
+    text-align: center;
+}
+
+ .form {
+  display: inline-block;
+}
+.form__field {
+    margin: 0 auto;;
+    width: 800px;
+    font-size: 16px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #4EA5D9;
+    outline: none;
+      height: 40px;
+    font-size: 26px;
+  
+  }
+  
+  label {
+    order: -1;
+    padding-left: 5px;
+    transition: all 0.3s ease-in;
+    transform: translateY(33px);
+    pointer-events: none;
+    color: #fff;
+    font-size: 26px;
+      line-height:26px
+  
+  }
+  input:focus + label {
+    transform: translateY(0px);
+    font-size: 20px;
+      line-height:26px
+  
+  }
+  .form__buttons {
+    height: 10px;
+    padding: 0;
+    border-bottom: white;
+    z-index: 1;
+
+  }
+  .form__buttons i {
+      padding: 0 12px;
+      border-left: white;
+      color: white;
+      float: right;
+    }
+  .fa-plus {
+    color: white;
+    border-left: white;
+  }
+  .fa-plus:hover {
+    color: #69f0ae;
+  }
+  .fa-trash-alt {
+    color: white;
+  }
+  .fa-trash-alt:hover {
+    color: red;
+  }
+
+
+/* STOP WATCH */
+
+.stopwatch{
+    display: grid;
+    justify-content: center;
+
+    width: 100%;
+}
+.circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 270px;
+    width: 270px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+.time{
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 200;
+    letter-spacing: 9px;
+
+}
+.controls{
+    /* margin-top: 10px; */
+    display: flex;
+    justify-content: space-around;
+
+    width: 300px;
+    outline: none;
+
+
+}
+.buttonClock{
+    background: transparent;
+    border: transparent;
+    outline: none;
+
+}
+#playButton {
+    display: block;
+    outline: none;
+
+  }
+  
+  #pauseButton {
+    display: none;
+  }
+  
+
+</style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <header class="header">
+
+            <h1>Time Manager</h1>
+        </header>
+
+
+
+
+
+        <form class="form">
+            <div class="form__field">
+                <label for="yourtask">Your task to do</label>
+                <div class="form__buttons">
+                    <a href="#" class="clear-text"><i class="far fa-trash-alt fa-2x"></i>
+                    <a href="#" class="add-todo"><i class="fa fa-plus fa-2x"></i></a>
+                    <!-- <a href="#" class="add-todo" onclick="todoList()"><i class="fa fa-plus fa-2x"></i></a> -->
+                </div>
+                <input type="text" name="yourtask" id="yourtask">
+    
+            </div>
+    
+    
+            <ul class="todoList col-xs-12">
+            </ul>
+    
+        </form>
+
+        <div class="stopwatch">
+            <h1 class="current-to-do" >your task to do</h1>
+            <div class="circle">
+                <span class="time" id="display">00:00</span>
+                <!-- <span class="time" id="display2">00:00</span> -->
+
+            </div>
+
+            <div class="controls">
+                <button class="buttonClock buttonPlay">
+                    <img id="playButton"
+                        src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/play-button_opkxmt.svg" />
+
+                    <img id="pauseButton"
+                        src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/pause-button_pinhpy.svg" />
+                </button>
+
+                <button class="buttonClock buttonReset">
+                    <img id="resetButton"
+                        src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/reset-button_mdv6wf.svg" />
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -138,25 +138,36 @@ function start() {
 
 // const todoObjectList = [];
 
-  addToDoButton.addEventListener('click', function (){
-      const paragraph = document.createElement('p');
-      paragraph.classList.add('paragraph__styling')
-      paragraph.textContent = inputField.value;
-      todoContainer.appendChild(paragraph);
-        const item = `<div class="todoList__user-input userInputBox">
-        <div class="todoList__buttons">
-            <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
-            <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
-            <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
-             </div>   
-             <p class="paragraph__styling">${inputField.value}</p>
-    
-             </div>`;
-         todoContainer.append(item);
-             
+  addToDoButton.addEventListener('click', function (e){
+        e.preventDefault();
+        const userEnteredValue = inputField.value;
+        if(userEnteredValue.trim() !=0){
+            const paragraph = document.createElement('p');
+            paragraph.classList.add('paragraph__styling')
+            paragraph.textContent = userEnteredValue;
+            todoContainer.appendChild(paragraph);
+               // powyszy kod działa
+      // jak zresetować input?
+              inputField = document.querySelector('#yourtask').reset();   
+      
+            
+            // JAK DODAĆ SZABLON
+              const template = `<div class="todoList__user-input userInputBox">
+              <div class="todoList__buttons">
+                  <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
+                  <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
+                  <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
+                   </div>   
+                   <p class="paragraph__styling">${inputField.value}</p>
+          
+                   </div>`;
+               todoContainer.append(template);
+        }else{
+     
+         alert('Wyznacz sobie cel')
+
+        }       
   
-    // userInputBox.append(paragraph);
-    // userInputBox.style.display = "inline-block";
   });
 
 
