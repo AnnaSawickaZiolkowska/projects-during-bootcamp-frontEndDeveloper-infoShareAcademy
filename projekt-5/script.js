@@ -148,7 +148,8 @@ function start() {
             todoContainer.appendChild(paragraph);
                // powyszy kod działa
       // jak zresetować input?
-              inputField = document.querySelector('#yourtask').reset();   
+            //   document.querySelector('#yourtask').reset(); 
+              inputField.value = '';  
       
             
             // JAK DODAĆ SZABLON
