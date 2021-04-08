@@ -135,6 +135,24 @@ function start() {
 // });
 
 
+//CREATE LABEL FOCUS EVENT 
+
+const label = document.querySelector('label');
+const userEnteredValue = inputField.value;
+
+
+const labelEvent = document.querySelector('input[type="text"]');
+ labelEvent.addEventListener('focus', (e)=>{
+    label.style.fontSize = '20px'; 
+    label.style.transform = 'translateY(0px)';
+    label.style.lineHeight = '26px';  
+});
+
+labelEvent.addEventListener('blur', (e)=>{
+    label.style.fontSize = '26px'; 
+    label.style.transform = 'translateY(33px)';
+    label.style.lineHeight = '26px';  
+});
 
 // const todoObjectList = [];
 
