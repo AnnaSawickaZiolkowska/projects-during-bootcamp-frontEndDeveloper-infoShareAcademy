@@ -63,12 +63,12 @@ h1{
       line-height:26px
   
   }
-  input:focus + label {
+  /* input:focus + label {
     transform: translateY(0px);
     font-size: 20px;
       line-height:26px
   
-  }
+  } */
   .form-buttons {
     height: 10px;
     padding: 0;

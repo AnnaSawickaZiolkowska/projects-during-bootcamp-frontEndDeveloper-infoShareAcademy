@@ -141,46 +141,71 @@ const label = document.querySelector('label');
 const userEnteredValue = inputField.value;
 
 
-const labelEvent = document.querySelector('input[type="text"]');
- labelEvent.addEventListener('focus', (e)=>{
-    label.style.fontSize = '20px'; 
-    label.style.transform = 'translateY(0px)';
-    label.style.lineHeight = '26px';  
-});
+// const labelUpDownEvent = (value)=>{
+        const labelUpEvent = document.querySelector('input[type="text"]');
 
-labelEvent.addEventListener('blur', (e)=>{
-    label.style.fontSize = '26px'; 
-    label.style.transform = 'translateY(33px)';
-    label.style.lineHeight = '26px';  
-});
+        labelUpEvent.addEventListener('focus', (e)=>{
+            label.style.fontSize = '20px'; 
+            label.style.transform = 'translateY(0px)';
+            label.style.lineHeight = '26px';  
+        });
 
-// const todoObjectList = [];
+        const labelDownEvent = document.querySelector('input[type="text"]');
+
+        labelDownEvent.addEventListener('blur', (e)=>{
+            if(e.target.value !=0){
+                label.style.fontSize = '20px'; 
+            label.style.transform = 'translateY(0px)';
+            label.style.lineHeight = '26px';
+            }else{
+                label.style.fontSize = '26px'; 
+            label.style.transform = 'translateY(33px)';
+            label.style.lineHeight = '26px'; 
+            }
+        });
+// };
+// labelUpDownEvent(userEnteredValue);
+
+const todoObjectList = [{
+        task: '',
+        time: '',
+
+}];
+
+
+// CREATE TODO EVENT LISTENER FOR ADD BUTTON
 
   addToDoButton.addEventListener('click', function (e){
         e.preventDefault();
         const userEnteredValue = inputField.value;
         if(userEnteredValue.trim() !=0){
-            const paragraph = document.createElement('p');
-            paragraph.classList.add('paragraph__styling')
-            paragraph.textContent = userEnteredValue;
-            todoContainer.appendChild(paragraph);
+            // const paragraph = document.createElement('p');
+            // paragraph.classList.add('paragraph__styling')
+            // paragraph.textContent = userEnteredValue;
+            // todoContainer.appendChild(paragraph);
                // powyszy kod działa
       // jak zresetować input?
             //   document.querySelector('#yourtask').reset(); 
               inputField.value = '';  
+
       
             
             // JAK DODAĆ SZABLON
-              const template = `<div class="todoList__user-input userInputBox">
-              <div class="todoList__buttons">
-                  <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
-                  <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
-                  <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
-                   </div>   
-                   <p class="paragraph__styling">${inputField.value}</p>
+            todoContainer.insertAdjacentHTML('afterbegin', `<div class="todoList__user-input userInputBox"><div class="todoList__buttons"><a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i><a href="#" class="start "><i class="fa fa-play fa-2x"></i><a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a></div><p class="paragraph__styling">${userEnteredValue}</p></div>`);
+
+            //POD ELEMENTEM WYŚWIETLA SIĘ NULL NIE WIEM GDZIE TO PORAWIĆ
+
+
+            //   const template = `<div class="todoList__user-input userInputBox">
+            //   <div class="todoList__buttons">
+            //       <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
+            //       <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
+            //       <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
+            //        </div>   
+            //        <p class="paragraph__styling">${inputField.value}</p>
           
-                   </div>`;
-               todoContainer.append(template);
+            //        </div>`;
+            //    todoContainer.append(template);
         }else{
      
          alert('Wyznacz sobie cel')
