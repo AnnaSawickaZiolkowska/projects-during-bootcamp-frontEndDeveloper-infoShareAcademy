@@ -173,6 +173,14 @@ const todoObjectList = [{
 }];
 
 
+// CREATE TODO EVENT LISTENER FOR INPUT 
+inputField.addEventListener('keydown', (e)=>{
+    if(e.keyCode === 13){
+        e.preventDefault();
+        document.querySelector('.add-todo').click();
+    }
+});
+
 // CREATE TODO EVENT LISTENER FOR ADD BUTTON
 
   addToDoButton.addEventListener('click', function (e){
@@ -186,10 +194,8 @@ const todoObjectList = [{
                // powyszy kod działa
       // jak zresetować input?
             //   document.querySelector('#yourtask').reset(); 
-              inputField.value = '';  
 
-      
-            
+                
             // JAK DODAĆ SZABLON
             todoContainer.insertAdjacentHTML('afterbegin', `<div class="todoList__user-input userInputBox"><div class="todoList__buttons"><a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i><a href="#" class="start "><i class="fa fa-play fa-2x"></i><a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a></div><p class="paragraph__styling">${userEnteredValue}</p></div>`);
 
@@ -206,6 +212,9 @@ const todoObjectList = [{
           
             //        </div>`;
             //    todoContainer.append(template);
+
+            inputField.value = '';  
+
         }else{
      
          alert('Wyznacz sobie cel')
