@@ -84,8 +84,13 @@ function start() {
   pauseButton.addEventListener("click", pause);
   resetButton.addEventListener("click", reset);
   
+  // STWORZYĆ FUNKCJĘ KTÓRA PO 25 MINUTACH ZAPROPONUJE PAUZE I MUZYKE NP. RELAKSACYJNĄ
+  //ALBO MUZYKĘ NA ROZŁADOWANIE NAPIĘCIA
 
+
+//////////////////////////////
   // TO DO LIST
+//////////////////////////////
 
   const addToDoButton = document.querySelector('.add-todo');
   const todoContainer = document.querySelector('.todoList');
@@ -141,7 +146,7 @@ const label = document.querySelector('label');
 const userEnteredValue = inputField.value;
 
 
-// const labelUpDownEvent = (value)=>{
+const labelUpDownEvent = (value)=>{
         const labelUpEvent = document.querySelector('input[type="text"]');
 
         labelUpEvent.addEventListener('focus', (e)=>{
@@ -149,7 +154,6 @@ const userEnteredValue = inputField.value;
             label.style.transform = 'translateY(0px)';
             label.style.lineHeight = '26px';  
         });
-
         const labelDownEvent = document.querySelector('input[type="text"]');
 
         labelDownEvent.addEventListener('blur', (e)=>{
@@ -163,14 +167,11 @@ const userEnteredValue = inputField.value;
             label.style.lineHeight = '26px'; 
             }
         });
-// };
-// labelUpDownEvent(userEnteredValue);
+};
 
-const todoObjectList = [{
-        task: '',
-        time: '',
-
-}];
+//WYWOŁANIE FUNKCJI NA FOCUS LABEL DO WRZUCENIA DO MAIN.JS
+labelUpDownEvent(userEnteredValue);
+//--------
 
 
 // CREATE TODO EVENT LISTENER FOR INPUT 
@@ -224,16 +225,15 @@ inputField.addEventListener('keydown', (e)=>{
   });
 
 
-//   addToDoButton.addEventListener('click',function() {
-        // const userInputBox = document.querySelector('todoList__user-input');
-        // const todoList__buttons = document.createElement('div');
-        // todoList__buttons.classList.add('todoList__buttons');
+// LOCAL STORAGE - ARRAY DO PRZECHOWYWANIA NAZWY ZADANIA I FUNKCJI, KTÓRA BY POKAZYWAŁA ŁĄCZNY CZAS PRACY NAD ZADANIEM
 
-        
-        // userInputBox.style.display = "inline-block";
-        // userInputBox.textContent = inputField.value;
-        // todoContainer.appendChild(userInputBox);
-//   } );
+const todoObjectList = [{
+  task: 'task name',
+  time: 'function sum time',
+
+}];
+
+
       //BUTTONS START STOP RESET/DELATE
     //   const playButton$ = document.createElement('i');
     //   playButton$.classList.add('playIcon');
@@ -245,24 +245,24 @@ inputField.addEventListener('keydown', (e)=>{
 
   // INPUT EVENTS
 
-// const input = document.querySelector('input');
+const input = document.querySelector('input');
 // const label = document.querySelector('label');
-// const fromInputToDo = document.querySelector('.current-to-do')
+const fromInputToDo = document.querySelector('.current-to-do')
 
 
-// input.addEventListener('input', currentToDo);
 
-//     function currentToDo(e) {
-//         // console.log({e});
-//         fromInputToDo.textContent = e.target.value;
-//         e.preventDefault();
+/////////////////////
+// FUNKCJA KTÓRA WYŚWIETLA AKTUALNE ZADANIE, DO KTÓREGO BĘDZIE MIERZON CZAS
+///////////////////
 
-// };
-// input.addEventListener('input', currentToDo);
+function displayCurrentToDo(){
+  input.addEventListener('input', currentToDo);
 
-//     function currentToDo(e) {
-//         console.log(e);
-//         fromInputToDo.textContent = e.target.value;
-//         e.preventDefault();
-
-// }
+  function currentToDo(e) {
+      console.log(e);
+      fromInputToDo.textContent = e.target.value;
+      e.preventDefault();
+}
+};
+//WYWOŁANIE FUNKCJI DO DODANIA GDY USER WCIŚNIE PLAY
+displayCurrentToDo()
