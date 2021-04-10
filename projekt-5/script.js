@@ -188,6 +188,9 @@ inputField.addEventListener('keydown', (e)=>{
         e.preventDefault();
         const userEnteredValue = inputField.value;
         if(userEnteredValue.trim() !=0){
+          addTodoItems(userEnteredValue) //function push new items into array
+
+
             // const paragraph = document.createElement('p');
             // paragraph.classList.add('paragraph__styling')
             // paragraph.textContent = userEnteredValue;
@@ -215,6 +218,8 @@ inputField.addEventListener('keydown', (e)=>{
             //    todoContainer.append(template);
 
             inputField.value = '';  
+            inputField.blur();
+          
 
         }else{
      
@@ -227,21 +232,23 @@ inputField.addEventListener('keydown', (e)=>{
 
 // LOCAL STORAGE - ARRAY DO PRZECHOWYWANIA NAZWY ZADANIA I FUNKCJI, KTÓRA BY POKAZYWAŁA ŁĄCZNY CZAS PRACY NAD ZADANIEM
 
-const todoObjectList = [{
-  task: 'task name',
-  time: 'function sum time',
+const todoItemsArray = [];
 
-}];
-
+function addTodoItems(userEnteredValue){
+  const todoItems ={
+  task: userEnteredValue,  
+  id: Date.now(), //co by monzna zrobić z tą datą, a moze niepotrzebna
+  time: 'function sum time', //to jeszcze do wymyślenia 
+};
+  todoItemsArray.push(todoItems);
+  console.log(todoItemsArray);
+};
 
       //BUTTONS START STOP RESET/DELATE
     //   const playButton$ = document.createElement('i');
     //   playButton$.classList.add('playIcon');
 //   });
   
-
-
-
 
   // INPUT EVENTS
 
@@ -259,7 +266,7 @@ function displayCurrentToDo(){
   input.addEventListener('input', currentToDo);
 
   function currentToDo(e) {
-      console.log(e);
+      // console.log(e);
       fromInputToDo.textContent = e.target.value;
       e.preventDefault();
 }
