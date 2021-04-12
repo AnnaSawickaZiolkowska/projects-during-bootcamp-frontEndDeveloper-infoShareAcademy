@@ -94,7 +94,6 @@ resetButton.addEventListener("click", reset);
 
 const addToDoButton = document.querySelector('.add-todo');
 const todoContainer = document.querySelector('.todoList');
-//   const todoContainer = document.querySelector('.todoList').content.cloneNode(true);
 const inputField = document.querySelector('#yourtask');
 const addForm = document.querySelector('.form');
 
@@ -114,18 +113,6 @@ const addForm = document.querySelector('.form');
 //          todoContainer.appendChild(item);
 
 // };
-
-// addToDoButton.addEventListener('submit', (e)=>{
-//     e.preventDefault();
-//     const todo = inputField.value.trim();
-//     if(todo == '' || todo ==' '){
-//        alert('Wyznacz sobie cel');
-//     }else{
-//         generateTemplate(todo)
-//         addToDoButton.reset()
-//     }
-// });
-
 
 // addForm.addEventListener('submit', (e)=>{
 //     e.preventDefault();
@@ -193,7 +180,9 @@ const template = (todoItem) => `<div class="todoList__user-input userInputBox" d
 
 const updateTaskList = () => {
   todoContainer.innerHTML = todoItemsArray.map(template).join('')
+
 }
+
 
 addToDoButton.addEventListener('click', function (e) {
   e.preventDefault();
@@ -258,10 +247,54 @@ displayCurrentToDo();
 const playTodoItems = document.querySelector('.start');
 const deleteTodoItems = document.querySelector('.delete')
 
+////-----działa od Bartosza
+// todoContainer.addEventListener('click', (e) => {
+//   console.log(e.target);
+//   if (e.target.classList.contains('fa-trash-alt')) {
+//     console.log(e.target.closest('.userInputBox').dataset.taskId)
+//   }
+// })
+///--------
 
 todoContainer.addEventListener('click', (e) => {
   console.log(e.target);
   if (e.target.classList.contains('fa-trash-alt')) {
     console.log(e.target.closest('.userInputBox').dataset.taskId)
+    const itemIdString = e.target.closest('.userInputBox').dataset.taskId;
+    console.log(itemIdString);
+   console.log(typeof itemIdString);
+   const itemId = parseInt(itemIdString);
+   console.log(typeof itemId);
+
+  const removeItem = todoItemsArray.filter((item)=>{
+    return item.id != itemId;
+  })
+ 
+
+    // const removeItemFromArray = removeItem(todoItemsArray, itemId)
+    console.log(removeItem);
+    // console.log(removeItemFromArray);
+    // console.log(removeItem(todoItemsArray, itemId));
+
   }
-})
+  const updateTaskList = () => {
+    todoContainer.innerHTML = removeItem
+  
+  }}
+  )
+
+// const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+
+
+
+
+/// PRZYKŁAD
+// function arrayRemove(arr, value) { 
+    
+//   return arr.filter(function(ele){ 
+//       return ele != value; 
+//   });
+// }
+
+// var result = arrayRemove(array, 6);
+// // result = [1, 2, 3, 4, 5, 7, 8, 9, 0]
