@@ -97,38 +97,10 @@ const todoContainer = document.querySelector('.todoList');
 const inputField = document.querySelector('#yourtask');
 const addForm = document.querySelector('.form');
 
-// create template for user to do tasks
-
-// const generateTemplate = (todo) =>{
-//     const item = `<div class="todoList__user-input userInputBox">
-//     <div class="todoList__buttons">
-//         <a href="#" class="reset"><i class="far fa-trash-alt fa-2x"></i>
-//         <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
-//         <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
-//          </div>   
-//          <p class="paragraph__styling">${todo}</p>
-
-//          </div>`;
-//          todoContainer.textContent += item;
-//          todoContainer.appendChild(item);
-
-// };
-
-// addForm.addEventListener('submit', (e)=>{
-//     e.preventDefault();
-//     const todo = inputField.value.trim();
-//     if(todo.lenght){
-//         generateTemplate(todo)
-//         addForm.reset()
-//     }
-// });
-
-
 //CREATE LABEL FOCUS EVENT 
 
 const label = document.querySelector('label');
 const userEnteredValue = inputField.value;
-
 
 const labelUpDownEvent = (value) => {
   const labelUpEvent = document.querySelector('input[type="text"]');
@@ -157,7 +129,6 @@ const labelUpDownEvent = (value) => {
 labelUpDownEvent(userEnteredValue);
 //--------
 
-
 // CREATE TODO EVENT LISTENER FOR INPUT 
 inputField.addEventListener('keydown', (e) => {
   if (e.keyCode === 13) {
@@ -166,31 +137,30 @@ inputField.addEventListener('keydown', (e) => {
   }
 });
 
-// CREATE TODO EVENT LISTENER FOR ADD BUTTON
+
 
 const template = (todoItem) => `<div class="todoList__user-input userInputBox" data-task-id="${todoItem.id}">
               <div class="todoList__buttons">
-                  <a href="#" class="reset" ><i class="far fa-trash-alt fa-2x"></i>
+                  <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
                   <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
                   <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
                    </div>   
                    <p class="paragraph__styling">${todoItem.task}</p>
-          
                    </div>`;
 
 const updateTaskList = () => {
   todoContainer.innerHTML = todoItemsArray.map(template).join('')
+};
 
-}
 
+
+// CREATE TODO EVENT LISTENER FOR ADD BUTTON
 
 addToDoButton.addEventListener('click', function (e) {
   e.preventDefault();
   const userEnteredValue = inputField.value;
   if (userEnteredValue.trim() != 0) {
     addTodoItems(userEnteredValue) //function push new items into array
-
-
     inputField.value = '';  // jak jeszcze zresetować input?
     inputField.blur();
 
@@ -215,17 +185,13 @@ function addTodoItems(userEnteredValue) {
   updateTaskList()
 };
 
-// INPUT EVENTS
-
-const input = document.querySelector('input');
-// const label = document.querySelector('label');
-const fromInputToDo = document.querySelector('.current-to-do')
-
 
 
 /////////////////////
 // FUNKCJA KTÓRA WYŚWIETLA AKTUALNE ZADANIE, DO KTÓREGO BĘDZIE MIERZON CZAS
 ///////////////////
+const input = document.querySelector('input');
+const fromInputToDo = document.querySelector('.current-to-do')
 
 function displayCurrentToDo() {
   input.addEventListener('input', currentToDo);
@@ -245,7 +211,6 @@ displayCurrentToDo();
 //CZY POTRZEBNY ZNAK $ PRZY KLASIE PRZYCISKU
 
 const playTodoItems = document.querySelector('.start');
-const deleteTodoItems = document.querySelector('.delete')
 
 ////-----działa od Bartosza
 // todoContainer.addEventListener('click', (e) => {
@@ -256,45 +221,38 @@ const deleteTodoItems = document.querySelector('.delete')
 // })
 ///--------
 
-todoContainer.addEventListener('click', (e) => {
-  console.log(e.target);
-  if (e.target.classList.contains('fa-trash-alt')) {
-    console.log(e.target.closest('.userInputBox').dataset.taskId)
-    const itemIdString = e.target.closest('.userInputBox').dataset.taskId;
-    console.log(itemIdString);
-   console.log(typeof itemIdString);
-   const itemId = parseInt(itemIdString);
-   console.log(typeof itemId);
+  todoContainer.addEventListener('click', (e) => {
+    console.log(e.target);
+    if (e.target.classList.contains('fa-trash-alt')) {
+      console.log(e.target.closest('.userInputBox').dataset.taskId)
 
-  const removeItem = todoItemsArray.filter((item)=>{
-    return item.id != itemId;
-  })
- 
+      const itemIdString = e.target.closest('.userInputBox').dataset.taskId;
+      console.log(itemIdString);
+      console.log(typeof itemIdString);
 
-    // const removeItemFromArray = removeItem(todoItemsArray, itemId)
-    console.log(removeItem);
-    // console.log(removeItemFromArray);
-    // console.log(removeItem(todoItemsArray, itemId));
-
-  }
-  const updateTaskList = () => {
-    todoContainer.innerHTML = removeItem
+      //zamieniam typ string na int aby móc porównać id 
+     const itemId = parseInt(itemIdString);
+      console.log(typeof itemId);
   
-  }}
-  )
 
-// const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+      //porównuję id w istniejącej tablicy i filtruję,  aby nie zawierała id usuniętego przez urzytkownika
+    const removeItem = todoItemsArray.filter((item)=>{
+      return item.id != itemId;
+    });
+    console.log(todoItemsArray);
+    console.log(removeItem);
+
+    // zautkualizowana wyświetlana lista zadań urzytkownika
+    todoContainer.innerHTML = removeItem.map(template).join('')
+// !!!!!!!!!!!!!!!!!!
+//!!!!! nie wiem dlaczego działa tylko dla pierwszego kliknięcia w trash, kolejnych elementów nie usuwa
+// i po dodaniu kolejnego elementu przywraca ten juz usunięty
 
 
-
-
-/// PRZYKŁAD
-// function arrayRemove(arr, value) { 
-    
-//   return arr.filter(function(ele){ 
-//       return ele != value; 
-//   });
-// }
-
-// var result = arrayRemove(array, 6);
-// // result = [1, 2, 3, 4, 5, 7, 8, 9, 0]
+//     const updatedArray = ()=>{
+//       todoContainer.innerHTML = removeItem.map(template).join('')
+//     }  
+// updatedArray();
+  
+  }
+ });
