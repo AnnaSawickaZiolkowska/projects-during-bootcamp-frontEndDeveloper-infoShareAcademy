@@ -211,43 +211,12 @@ displayCurrentToDo();
 //CZY POTRZEBNY ZNAK $ PRZY KLASIE PRZYCISKU
 
 
-////-----działa od Bartosza
-// todoContainer.addEventListener('click', (e) => {
-//   console.log(e.target);
-//   if (e.target.classList.contains('fa-trash-alt')) {
-//     console.log(e.target.closest('.userInputBox').dataset.taskId)
-//   }
-// })
-///--------
-
-// const removeTaskById = (id) => { ...some removal magic here... }
-function removeTaksById(arrOriginal, elementToRemove){
-  return arrOriginal.filter((item)=>{
-    return item.id !== elementToRemove
-  });
-}
-
-
-
-todoContainer.addEventListener('click', (e) => {
-  console.log(e.target);
-  if (e.target.classList.contains('fa-trash-alt')) {
-    console.log(e.target.closest('.userInputBox').dataset.taskId)
-
-    const itemIdString = e.target.closest('.userInputBox').dataset.taskId;
-    console.log(itemIdString);
-    console.log(typeof itemIdString);
-
-    //zamieniam typ string na int aby móc porównać id 
-   const itemId = parseInt(itemIdString);
-    console.log(typeof itemId);
-    console.log(itemId);
-
-    // removeTaskById(itemId);
-    // removeTaksById(todoItemsArray, itemId);
-
-  }
-});
+//!!!!!!!! dlaczego nie działa
+// function removeTaksById(arrOriginal, elementToRemove){
+//   return arrOriginal.filter((item)=>{
+//     return item.id !== elementToRemove
+//   });
+// }
 
   todoContainer.addEventListener('click', (e) => {
     console.log(e.target);
@@ -261,8 +230,9 @@ todoContainer.addEventListener('click', (e) => {
       //zamieniam typ string na int aby móc porównać id 
      const itemId = parseInt(itemIdString);
       console.log(typeof itemId);
-  
+
       // removeTaksById(todoItemsArray, itemId);
+
 
       //porównuję id w istniejącej tablicy i filtruję,  aby nie zawierała id usuniętego przez urzytkownika
     const removeItem = todoItemsArray.filter((item)=>{
@@ -271,13 +241,19 @@ todoContainer.addEventListener('click', (e) => {
     console.log(todoItemsArray);
     console.log(removeItem);
 
-todoItemsArray = removeItem;
+todoItemsArray = removeItem; // Czy mona to jakoś inaczej zrobić?
 
 updateTaskList();
 fromInputToDo.textContent = 'Nothing to do :)';
-
   }
  });
+
+
+
+
+
+
+
 
 //-----------------
 
