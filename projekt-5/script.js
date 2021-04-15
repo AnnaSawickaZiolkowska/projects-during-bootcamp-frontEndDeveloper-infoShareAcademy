@@ -173,7 +173,7 @@ addToDoButton.addEventListener('click', function (e) {
 // LOCAL STORAGE - ARRAY DO PRZECHOWYWANIA NAZWY ZADANIA I FUNKCJI, KTÓRA BY POKAZYWAŁA ŁĄCZNY CZAS PRACY NAD ZADANIEM
 // create function addTodoItems which create todoItems object based on the userEnteredValue, and push it into array
 // wywołanie funkcji przypisane do warunku, w którym value nie jest pustym polem
-const todoItemsArray = [];
+let todoItemsArray = [];
 
 function addTodoItems(userEnteredValue) {
   const todoItems = {
@@ -210,7 +210,6 @@ displayCurrentToDo();
 //CZY TU MA BYĆ JAKAŚ PĘTLA ABY DZIAŁAŁO DO KAZDEGO TASK Z OSOBNA
 //CZY POTRZEBNY ZNAK $ PRZY KLASIE PRZYCISKU
 
-const playTodoItems = document.querySelector('.start');
 
 ////-----działa od Bartosza
 // todoContainer.addEventListener('click', (e) => {
@@ -220,6 +219,35 @@ const playTodoItems = document.querySelector('.start');
 //   }
 // })
 ///--------
+
+// const removeTaskById = (id) => { ...some removal magic here... }
+function removeTaksById(arrOriginal, elementToRemove){
+  return arrOriginal.filter((item)=>{
+    return item.id !== elementToRemove
+  });
+}
+
+
+
+todoContainer.addEventListener('click', (e) => {
+  console.log(e.target);
+  if (e.target.classList.contains('fa-trash-alt')) {
+    console.log(e.target.closest('.userInputBox').dataset.taskId)
+
+    const itemIdString = e.target.closest('.userInputBox').dataset.taskId;
+    console.log(itemIdString);
+    console.log(typeof itemIdString);
+
+    //zamieniam typ string na int aby móc porównać id 
+   const itemId = parseInt(itemIdString);
+    console.log(typeof itemId);
+    console.log(itemId);
+
+    // removeTaskById(itemId);
+    // removeTaksById(todoItemsArray, itemId);
+
+  }
+});
 
   todoContainer.addEventListener('click', (e) => {
     console.log(e.target);
@@ -234,6 +262,7 @@ const playTodoItems = document.querySelector('.start');
      const itemId = parseInt(itemIdString);
       console.log(typeof itemId);
   
+      // removeTaksById(todoItemsArray, itemId);
 
       //porównuję id w istniejącej tablicy i filtruję,  aby nie zawierała id usuniętego przez urzytkownika
     const removeItem = todoItemsArray.filter((item)=>{
@@ -242,17 +271,47 @@ const playTodoItems = document.querySelector('.start');
     console.log(todoItemsArray);
     console.log(removeItem);
 
-    // zautkualizowana wyświetlana lista zadań urzytkownika
-    todoContainer.innerHTML = removeItem.map(template).join('')
-// !!!!!!!!!!!!!!!!!!
-//!!!!! nie wiem dlaczego działa tylko dla pierwszego kliknięcia w trash, kolejnych elementów nie usuwa
-// i po dodaniu kolejnego elementu przywraca ten juz usunięty
+todoItemsArray = removeItem;
 
+updateTaskList();
+fromInputToDo.textContent = 'Nothing to do :)';
 
-//     const updatedArray = ()=>{
-//       todoContainer.innerHTML = removeItem.map(template).join('')
-//     }  
-// updatedArray();
-  
   }
  });
+
+//-----------------
+
+// Add buttons and create function for Toggle button 
+
+//  const playTodoTime = document.querySelector('.fa-play');
+//  const stopTodoTime = document.querySelector('.fa-plus');
+
+// function toggleTodoButton(buttonKey) {
+//   const buttonVisible = buttonKey === "PLAY" ? playTodoTime : stopTodoTime;
+//   const buttonHidden = buttonKey === "PAUSE" ? stopTodoTime : playTodoTime;
+//   buttonVisible.style.display = "block";
+//   buttonHidden.style.display = "none";
+// }
+
+//   function startTodo() {
+//     startTime = Date.now() - elapsedTime;
+//     timerInterval = setInterval(function printTime() {
+//       elapsedTime = Date.now() - startTime;
+//       displayTime(timeToString(elapsedTime));
+//     }, 1000);
+//     toggleTodoButton("PAUSE");
+//     stopTodoTime.style.display = "block"
+//     playTodoTime.style.display = "none";
+//   };
+  
+
+  
+//   function pauseTodo() {
+//     clearInterval(timerInterval);
+//     toggleTodoButton("PLAY");
+//     pauseButton.style.display = "none"
+//     playButton.style.display = "block";
+//   };
+
+//   playTodoTime.addEventListener('click', startTodo);
+//   stopTodoTime.addEventListener("click", pauseTodo);
