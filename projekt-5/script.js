@@ -1,3 +1,15 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyAuWQvzIPe1o2rf9wtfb8I0HuMfdve5qf4",
+  authDomain: "time-manager-a020f.firebaseapp.com",
+  databaseURL: "https://time-manager-a020f-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "time-manager-a020f",
+  storageBucket: "time-manager-a020f.appspot.com",
+  messagingSenderId: "1091022402112",
+  appId: "1:1091022402112:web:30322b448c92dd12fde5a5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 // Add buttons and create function for Toggle button 
 
 let playButton = document.querySelector('#playButton');
@@ -160,6 +172,19 @@ addToDoButton.addEventListener('click', function (e) {
   e.preventDefault();
   const userEnteredValue = inputField.value;
   if (userEnteredValue.trim() != 0) {
+    const key = firebase.database().ref().child('user_task').push().key;
+    console.log(key);
+    const dataTask = { 
+      task: userEnteredValue,
+      time: 'function sum time',
+      id: Date.now(),
+      key: key,
+    };
+
+    const updates = {}
+      updates["/user_task/" + key] = dataTask;
+      firebase.database().ref().update(updates)
+
     addTodoItems(userEnteredValue) //function push new items into array
     inputField.value = '';  // jak jeszcze zresetować input?
     inputField.blur();
@@ -245,6 +270,16 @@ todoItemsArray = removeItem; // Czy mona to jakoś inaczej zrobić?
 
 updateTaskList();
 fromInputToDo.textContent = 'Nothing to do :)';
+
+// fetch("https://time-manager-a020f-default-rtdb.europe-west1.firebasedatabase.app.json", {
+//   method: 'POST',
+//     body: JSON.stringify([{
+//       id: Date.now(), 
+//       task: userEnteredValue,
+//       time: 'function sum time',}])
+// })
+
+
   }
  });
 
