@@ -12,6 +12,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // Add buttons and create function for Toggle button 
 
+
+
 let playButton = document.querySelector('#playButton');
 let pauseButton = document.querySelector('#pauseButton');
 let resetButton = document.querySelector('#resetButton');
@@ -151,18 +153,35 @@ inputField.addEventListener('keydown', (e) => {
 
 
 
-const template = (todoItem) => `<div class="todoList__user-input userInputBox" data-task-id="${todoItem.id}">
+// const template = (todoItem) => `<div class="todoList__user-input userInputBox" data-task-id="${todoItem.id}">
+//               <div class="todoList__buttons">
+//                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
+//                   <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
+//                   <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
+//                    </div>   
+//                    <p class="paragraph__styling">${todoItem.task}</p>
+//                    </div>`;
+
+// const updateTaskList = () => {
+//   todoContainer.innerHTML = todoItemsArray.map(template).join('')
+// };
+
+// !!!!!!!!!!
+// JAK ZROBIĆ ABY ZADANIA NIE ZNIKAŁY PO ODŚWIEZENIU STRONY
+
+const template = (key) => `<div class="todoList__user-input userInputBox" data-task-id="${key.id}">
               <div class="todoList__buttons">
                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
                   <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
                   <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
                    </div>   
-                   <p class="paragraph__styling">${todoItem.task}</p>
+                   <p class="paragraph__styling">${key.task}</p>
                    </div>`;
 
 const updateTaskList = () => {
   todoContainer.innerHTML = todoItemsArray.map(template).join('')
 };
+
 
 
 
@@ -192,6 +211,7 @@ addToDoButton.addEventListener('click', function (e) {
   } else {
     alert('Wyznacz sobie cel')
   }
+
 });
 
 
@@ -209,6 +229,19 @@ function addTodoItems(userEnteredValue) {
   todoItemsArray.push(todoItems);
   updateTaskList()
 };
+
+// function addTodoItems(userEnteredValue) {
+//  firebase.database().ref('user_task').once('value', function(snapshot){
+//    snapshot.forEach(function(childSnapshot){
+//      const childKey = childSnapschot.key;
+//      todoItemsArray.push(Object.values(childKey)); 
+     
+//    });
+//  })
+//   // todoItemsArray.push(todoItems);
+//   updateTaskList()
+// };
+
 
 
 
@@ -281,6 +314,17 @@ fromInputToDo.textContent = 'Nothing to do :)';
 
 
   }
+
+if(e.target.classList.contains('fa-play')){
+  start();
+}
+
+
+if(e.target.classList.contains('fa-plus')){
+  displayTime(timeToString(elapsedTime))
+}
+
+
  });
 
 
