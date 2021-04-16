@@ -316,20 +316,39 @@ fromInputToDo.textContent = 'Nothing to do :)';
   }
 
 if(e.target.classList.contains('fa-play')){
-  start();
+  startTodo();
+  getElapsedTime();
 }
 
 
 if(e.target.classList.contains('fa-plus')){
-  displayTime(timeToString(elapsedTime))
-}
-
+  pauseTodo(); 
+  
+  addTimeToArray();
+  console.log(timeArray);
+  }
 
  });
 
+let todoTimerInterval;
 
+const getElapsedTime = (time) =>{
+  startTime = Date.now() - elapsedTime;
+  todoTimerInterval = setInterval(function printTime() {
+    elapsedTime = Date.now() - startTime;
+    displayTime(timeToString(elapsedTime));
+  }, 1000);
+  return timeToString(elapsedTime);
+};
 
+const timeArray = [];
 
+function addTimeToArray(elapsedTime){
+  const taskTime = {
+    elapsedTime: getElapsedTime(elapsedTime),
+  }
+  timeArray.push(taskTime);
+};
 
 
 
@@ -338,35 +357,35 @@ if(e.target.classList.contains('fa-plus')){
 
 // Add buttons and create function for Toggle button 
 
-//  const playTodoTime = document.querySelector('.fa-play');
-//  const stopTodoTime = document.querySelector('.fa-plus');
+ const playTodoTime = document.querySelector('.fa-play');
+ const stopTodoTime = document.querySelector('.fa-plus');
 
-// function toggleTodoButton(buttonKey) {
-//   const buttonVisible = buttonKey === "PLAY" ? playTodoTime : stopTodoTime;
-//   const buttonHidden = buttonKey === "PAUSE" ? stopTodoTime : playTodoTime;
-//   buttonVisible.style.display = "block";
-//   buttonHidden.style.display = "none";
-// }
+function toggleTodoButton(buttonKey) {
+  const buttonVisible = buttonKey === "PLAY" ? playTodoTime : stopTodoTime;
+  const buttonHidden = buttonKey === "PAUSE" ? stopTodoTime : playTodoTime;
+  // buttonVisible.style.display = "block";
+  // buttonHidden.style.display = "none";
+}
 
-//   function startTodo() {
-//     startTime = Date.now() - elapsedTime;
-//     timerInterval = setInterval(function printTime() {
-//       elapsedTime = Date.now() - startTime;
-//       displayTime(timeToString(elapsedTime));
-//     }, 1000);
-//     toggleTodoButton("PAUSE");
-//     stopTodoTime.style.display = "block"
-//     playTodoTime.style.display = "none";
-//   };
+  function startTodo() {
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(function printTime() {
+      elapsedTime = Date.now() - startTime;
+      displayTime(timeToString(elapsedTime));
+    }, 1000);
+    toggleTodoButton("PAUSE");
+    return timeToString(elapsedTime);
+
+    // stopTodoTime.style.display = "block"
+    // playTodoTime.style.display = "none";
+  };
   
 
   
-//   function pauseTodo() {
-//     clearInterval(timerInterval);
-//     toggleTodoButton("PLAY");
-//     pauseButton.style.display = "none"
-//     playButton.style.display = "block";
-//   };
+  function pauseTodo() {
+    clearInterval(timerInterval);
+    toggleTodoButton("PLAY");
+    // pauseButton.style.display = "none"
+    // playButton.style.display = "block";
+  };
 
-//   playTodoTime.addEventListener('click', startTodo);
-//   stopTodoTime.addEventListener("click", pauseTodo);
