@@ -136,6 +136,11 @@ h1{
 .stop{
     display: block;
 }
+
+.btn-is-hidden{
+  display: none;
+}
+
 .todoList__buttons .delete{
 }
   .paragraph__styling{
