@@ -172,8 +172,8 @@ inputField.addEventListener('keydown', (e) => {
 const template = (key) => `<div class="todoList__user-input userInputBox" data-task-id="${key.id}">
               <div class="todoList__buttons">
                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
-                  <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
-                  <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
+                  <a href="#" class="start "><i class="far fa-play-circle fa-2x"></i>
+                  <a href="#" class="stop"><i class="far fa-pause-circle fa-2x"></i></a>
                    </div>   
                    <p class="paragraph__styling">${key.task}</p>
                    </div>`;
@@ -315,13 +315,13 @@ fromInputToDo.textContent = 'Nothing to do :)';
 
   }
 
-if(e.target.classList.contains('fa-play')){
+if(e.target.classList.contains('fa-play-circle')){
   startTodo();
   getElapsedTime();
 }
 
 
-if(e.target.classList.contains('fa-plus')){
+if(e.target.classList.contains('fa-pause-circle')){
   pauseTodo(); 
   
   addTimeToArray();
@@ -333,11 +333,10 @@ if(e.target.classList.contains('fa-plus')){
 let todoTimerInterval;
 
 const getElapsedTime = (time) =>{
-  startTime = Date.now() - elapsedTime;
-  todoTimerInterval = setInterval(function printTime() {
+   startTime = Date.now() - elapsedTime;
     elapsedTime = Date.now() - startTime;
     displayTime(timeToString(elapsedTime));
-  }, 1000);
+ 
   return timeToString(elapsedTime);
 };
 
@@ -346,7 +345,7 @@ const timeArray = [];
 function addTimeToArray(elapsedTime){
   const taskTime = {
     elapsedTime: getElapsedTime(elapsedTime),
-  }
+    }
   timeArray.push(taskTime);
 };
 
@@ -374,7 +373,6 @@ function toggleTodoButton(buttonKey) {
       displayTime(timeToString(elapsedTime));
     }, 1000);
     toggleTodoButton("PAUSE");
-    return timeToString(elapsedTime);
 
     // stopTodoTime.style.display = "block"
     // playTodoTime.style.display = "none";

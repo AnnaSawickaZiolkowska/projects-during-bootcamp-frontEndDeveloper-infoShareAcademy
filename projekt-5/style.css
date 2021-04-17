@@ -134,7 +134,7 @@ h1{
     display: block;
 }
 .stop{
-    display: none;
+    display: block;
 }
 .todoList__buttons .delete{
 }
