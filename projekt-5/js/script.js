@@ -1,4 +1,5 @@
-// Your web app's Firebase configuration
+import {timeToString} from "./timeToString.js";
+// import {firebaseConfig} from "./config-firebase.js";
 var firebaseConfig = {
   apiKey: "AIzaSyAuWQvzIPe1o2rf9wtfb8I0HuMfdve5qf4",
   authDomain: "time-manager-a020f.firebaseapp.com",
@@ -9,9 +10,8 @@ var firebaseConfig = {
   messagingSenderId: "1091022402112",
   appId: "1:1091022402112:web:30322b448c92dd12fde5a5",
 };
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// Add buttons and create function for Toggle button
+
 
 let playButton = document.querySelector("#playButton");
 let pauseButton = document.querySelector("#pauseButton");
@@ -23,25 +23,6 @@ function toggleButton(buttonKey) {
   buttonVisible.style.display = "block";
   buttonHidden.style.display = "none";
   //nie wiem czemu nie działają tutaj ostatnie dwie linijki
-}
-
-// Convert time to a format of hours, minutes, seconds.
-
-function timeToString(time) {
-  const timeInHrs = time / 3600000;
-  const hh = Math.floor(timeInHrs);
-
-  const timeInMin = (timeInHrs - hh) * 60;
-  const mm = Math.floor(timeInMin);
-
-  const timeInSec = (timeInMin - mm) * 60;
-  const ss = Math.floor(timeInSec);
-
-  const formattedHH = hh.toString().padStart(2, "0");
-  const formattedMM = mm.toString().padStart(2, "0");
-  const formattedSS = ss.toString().padStart(2, "0");
-
-  return `${formattedMM}:${formattedSS}`;
 }
 
 // Modify watch textContent
@@ -163,7 +144,7 @@ const template = (
 ) => `<div class="todoList__user-input userInputBox" data-task-id="${key.id}">
               <div class="todoList__buttons">
                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
-                  <a href="#" class="start "><i class="far fa-play-circle fa-2x"></i>
+                  <a href="#" class="start"><i class="far fa-play-circle fa-2x"></i>
                   <a href="#" class="stop"><i class="far fa-pause-circle fa-2x"></i></a>
                    </div>   
                    <p class="paragraph__styling">${key.task}</p>
@@ -171,7 +152,7 @@ const template = (
 
 const updateTaskList = () => {
   todoContainer.innerHTML = todoItemsArray.map(template).join("");
-  if(todoItemsArray.length == 0){
+  if (todoItemsArray.length == 0) {
     fromInputToDo.textContent = "Nothing to do :)";
   }
 };
@@ -196,10 +177,10 @@ addToDoButton.addEventListener("click", function (e) {
     firebase.database().ref().update(updates);
 
     addTodoItems(userEnteredValue); //function push new items into array
-    inputField.value = ""; // jak jeszcze zresetować input?
+    addForm.reset(); // albo  inputField.value = "";
     inputField.blur();
   } else {
-    alert("Wyznacz sobie cel");
+    alert("Wyznacz sobie cel"); //confirm
   }
 });
 
@@ -217,18 +198,6 @@ function addTodoItems(userEnteredValue) {
   todoItemsArray.push(todoItems);
   updateTaskList();
 }
-
-// function addTodoItems(userEnteredValue) {
-//  firebase.database().ref('user_task').once('value', function(snapshot){
-//    snapshot.forEach(function(childSnapshot){
-//      const childKey = childSnapschot.key;
-//      todoItemsArray.push(Object.values(childKey));
-
-//    });
-//  })
-//   // todoItemsArray.push(todoItems);
-//   updateTaskList()
-// };
 
 /////////////////////
 // FUNKCJA KTÓRA WYŚWIETLA AKTUALNE ZADANIE, DO KTÓREGO BĘDZIE MIERZON CZAS
@@ -290,11 +259,12 @@ todoContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("fa-play-circle")) {
     startTodo();
     getElapsedTime();
+    // stopTodoTime.style.display = "block"
+    // playTodoTime.style.display = "none";
   }
 
   if (e.target.classList.contains("fa-pause-circle")) {
     pauseTodo();
-
     addTimeToArray();
     console.log(timeArray);
   }
@@ -321,8 +291,8 @@ function addTimeToArray(elapsedTime) {
 
 // Add buttons and create function for Toggle button
 
-const playTodoTime = document.querySelector(".fa-play");
-const stopTodoTime = document.querySelector(".fa-plus");
+const playTodoTime = document.querySelector(".fa-play-circle");
+const stopTodoTime = document.querySelector(".fa-pause-circle");
 
 function toggleTodoButton(buttonKey) {
   const buttonVisible = buttonKey === "PLAY" ? playTodoTime : stopTodoTime;
