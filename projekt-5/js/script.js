@@ -5,6 +5,7 @@ import {toggleTodoButton} from "./toggleTodoButton.js";
 import {startTodoTimer, pauseTodoTimer} from "./startStopTodoTimer.js";
 import {displayTime} from "./displayTimeOnWatch.js";
 import {start, pause, reset} from "./startStopResetMainTimer.js";
+import {addTimeToArray, timeArray} from "./addTimeToArray.js"
 
 
 // import {firebaseConfig} from "./config-firebase.js";
@@ -203,14 +204,6 @@ todoContainer.addEventListener("click", (e) => {
 });
 
 
-const timeArray = [];
-
-function addTimeToArray(elapsedTime) {
-  const taskTime = {
-    elapsedTime: getElapsedTime(elapsedTime),
-  };
-  timeArray.push(taskTime);
-}
 
 //-----------------
 
