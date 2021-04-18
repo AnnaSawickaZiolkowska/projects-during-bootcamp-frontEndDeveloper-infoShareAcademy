@@ -3,7 +3,9 @@ import {labelUpDownEvent, labelFocusEnter} from "./labelUpDownEvent.js";
 import {toggleTodoButton} from "./toggleTodoButton.js";
 
 import {startTodoTimer, pauseTodoTimer} from "./startStopTodoTimer.js";
-import {displayTime} from "./displayTimeOnWatch.js"
+import {displayTime} from "./displayTimeOnWatch.js";
+import {start, pause, reset} from "./startStopResetMainTimer.js";
+
 
 // import {firebaseConfig} from "./config-firebase.js";
 
@@ -21,48 +23,6 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-let playButton = document.querySelector("#playButton");
-let pauseButton = document.querySelector("#pauseButton");
-let resetButton = document.querySelector("#resetButton");
-
-function toggleButton(buttonKey) {
-  const buttonVisible = buttonKey === "PLAY" ? playButton : pauseButton;
-  const buttonHidden = buttonKey === "PAUSE" ?  playButton : pauseButton;
-  buttonVisible.style.display = "block";
-  buttonHidden.style.display = "none";
-}
-
-
-// Create function to start, stop and reset watch
-
-let startTime;
-let elapsedTime = 0;
-let timerInterval;
-
-function start() {
-  startTime = Date.now() - elapsedTime;
-  timerInterval = setInterval(function printTime() {
-    elapsedTime = Date.now() - startTime;
-    displayTime(timeToString(elapsedTime));
-  }, 1000);
-  toggleButton("PAUSE");
- 
-}
-
-function pause() {
-  clearInterval(timerInterval);
-  toggleButton("PLAY");
-
-}
-
-function reset() {
-  clearInterval(timerInterval);
-  displayTime("00:00");
-  elapsedTime = 0;
-  toggleButton("PLAY");
-  playButton.style.display = "block";
-  pauseButton.style.display = "none";
-}
 
 playButton.addEventListener("click", start);
 pauseButton.addEventListener("click", pause);
