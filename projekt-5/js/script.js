@@ -1,6 +1,10 @@
 import {timeToString} from "./timeToString.js";
 import {labelUpDownEvent, labelFocusEnter} from "./labelUpDownEvent.js";
 import {toggleTodoButton} from "./toggleTodoButton.js";
+
+import {startTodoTimer, pauseTodoTimer} from "./startStopTodoTimer.js";
+import {displayTime} from "./displayTimeOnWatch.js"
+
 // import {firebaseConfig} from "./config-firebase.js";
 
 var firebaseConfig = {
@@ -28,12 +32,6 @@ function toggleButton(buttonKey) {
   buttonHidden.style.display = "none";
 }
 
-// Modify watch textContent
-
-// const watchTextContent = document.querySelector('#display').textContent = txt
-function displayTime(txt) {
-  document.querySelector("#display").textContent = txt;
-}
 
 // Create function to start, stop and reset watch
 
@@ -232,12 +230,12 @@ todoContainer.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("fa-play-circle")) {
-    startTodo();
+    startTodoTimer();
     getElapsedTime();
   }
 
   if (e.target.classList.contains("fa-pause-circle")) {
-    pauseTodo();
+    pauseTodoTimer();
     addTimeToArray();
     console.log(timeArray);
   }
@@ -262,24 +260,10 @@ function addTimeToArray(elapsedTime) {
 
 //-----------------
 
-// Add buttons and create function for Toggle button
-
 // toggleTodoButton("PLAY");
 
 
 
 
 
-function startTodo() {
-  startTime = Date.now() - elapsedTime;
-  timerInterval = setInterval(function printTime() {
-    elapsedTime = Date.now() - startTime;
-    displayTime(timeToString(elapsedTime));
-  }, 1000);
-  toggleTodoButton("PAUSE");
-}
 
-function pauseTodo() {
-  clearInterval(timerInterval);
-  toggleTodoButton("PLAY");
-}
