@@ -1,6 +1,6 @@
-import {displayTime} from "./displayTimeOnWatch.js"
+import {displayTime} from "./displayTimeOnWatch.js";
 import {timeToString} from "./timeToString.js";
-import {toggleButton} from "./toggleButtonMainWatch.js"
+import {toggleButton} from "./toggleButtonMainWatch.js";
 
 
 // Create function to start, stop and reset watch

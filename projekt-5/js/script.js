@@ -161,6 +161,7 @@ displayCurrentToDo();
 // todoContainer.querySelectorAll('.fa-play-circle').forEach((button)=>{
 
 // })
+import {getElapsedTime} from "./getElapsedTime.js"
 
 todoContainer.addEventListener("click", (e) => {
 
@@ -201,13 +202,6 @@ todoContainer.addEventListener("click", (e) => {
   }
 });
 
-const getElapsedTime = (time) => {
-  startTime = Date.now() - elapsedTime;
-  elapsedTime = Date.now() - startTime;
-  displayTime(timeToString(elapsedTime));
-
-  return timeToString(elapsedTime);
-};
 
 const timeArray = [];
 
