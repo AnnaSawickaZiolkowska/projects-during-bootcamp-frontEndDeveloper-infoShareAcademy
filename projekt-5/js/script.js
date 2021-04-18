@@ -1,5 +1,6 @@
 import {timeToString} from "./timeToString.js";
 import {labelUpDownEvent, labelFocusEnter} from "./labelUpDownEvent.js";
+import {toggleTodoButton} from "./toggleTodoButton.js";
 // import {firebaseConfig} from "./config-firebase.js";
 
 var firebaseConfig = {
@@ -13,9 +14,6 @@ var firebaseConfig = {
   appId: "1:1091022402112:web:30322b448c92dd12fde5a5",
 };
 firebase.initializeApp(firebaseConfig);
-
-
-
 
 
 
@@ -110,8 +108,8 @@ const template = (
 ) => `<div class="todoList__user-input userInputBox" data-task-id="${key.id}">
               <div class="todoList__buttons">
                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
-                  <a href="#" class="start"><i class="far fa-play-circle fa-2x"></i>
-                  <a href="#" class="stop"><i class="far fa-pause-circle fa-2x"></i></a>
+                  <a href="#" class="start"><i class="far fa-play-circle fa-2x" data-id="${key.id}"></i>
+                  <a href="#" class="stop"><i class="far fa-pause-circle fa-2x" data-id="${key.id}"></i></a>
                    </div>   
                    <p class="paragraph__styling">${key.task}</p>
                    </div>`;
@@ -145,6 +143,7 @@ addToDoButton.addEventListener("click", function (e) {
     addTodoItems(userEnteredValue); //function push new items into array
     addForm.reset(); // albo  inputField.value = "";
     inputField.blur();
+    toggleTodoButton('PLAY');
   } else {
     alert("Wyznacz sobie cel"); //confirm
   }
@@ -155,15 +154,21 @@ addToDoButton.addEventListener("click", function (e) {
 // wywołanie funkcji przypisane do warunku, w którym value nie jest pustym polem
 let todoItemsArray = [];
 
+
+
 function addTodoItems(userEnteredValue) {
   const todoItems = {
     task: userEnteredValue,
     id: Date.now(), //co by monzna zrobić z tą datą, a moze niepotrzebna
     time: "function sum time", //to jeszcze do wymyślenia
   };
+
+  
+  
   todoItemsArray.push(todoItems);
   updateTaskList();
-  toggleTodoButton("PLAY");
+  // toggleTodoButton("PLAY");
+
 }
 
 /////////////////////
@@ -195,8 +200,12 @@ displayCurrentToDo();
 //     return item.id !== elementToRemove
 //   });
 // }
+// todoContainer.querySelectorAll('.fa-play-circle').forEach((button)=>{
+
+// })
 
 todoContainer.addEventListener("click", (e) => {
+
   console.log(e.target);
   if (e.target.classList.contains("fa-trash-alt")) {
     console.log(e.target.closest(".userInputBox").dataset.taskId);
@@ -219,15 +228,12 @@ todoContainer.addEventListener("click", (e) => {
     console.log(removeItem);
 
     todoItemsArray = removeItem; // Czy mona to jakoś inaczej zrobić?
-
     updateTaskList();
   }
 
   if (e.target.classList.contains("fa-play-circle")) {
     startTodo();
     getElapsedTime();
-    // stopTodoTime.style.display = "block"
-    // playTodoTime.style.display = "none";
   }
 
   if (e.target.classList.contains("fa-pause-circle")) {
@@ -258,14 +264,11 @@ function addTimeToArray(elapsedTime) {
 
 // Add buttons and create function for Toggle button
 
-function toggleTodoButton(buttonKey) {
-  const playTodoTime = document.querySelector(".fa-play-circle");
-  const stopTodoTime = document.querySelector(".fa-pause-circle");
-  const buttonVisible = buttonKey === "PLAY" ? playTodoTime : stopTodoTime;
-  const buttonHidden = buttonKey === "PAUSE" ? playTodoTime : stopTodoTime;
-  buttonVisible.style.display = "block";
-  buttonHidden.style.display = "none";
-}
+// toggleTodoButton("PLAY");
+
+
+
+
 
 function startTodo() {
   startTime = Date.now() - elapsedTime;
@@ -274,14 +277,9 @@ function startTodo() {
     displayTime(timeToString(elapsedTime));
   }, 1000);
   toggleTodoButton("PAUSE");
-
-  // stopTodoTime.style.display = "block"
-  // playTodoTime.style.display = "none";
 }
 
 function pauseTodo() {
   clearInterval(timerInterval);
   toggleTodoButton("PLAY");
-  // pauseButton.style.display = "none"
-  // playButton.style.display = "block";
 }
