@@ -1,5 +1,7 @@
 import {timeToString} from "./timeToString.js";
+import {labelUpDownEvent, labelFocusEnter} from "./labelUpDownEvent.js";
 // import {firebaseConfig} from "./config-firebase.js";
+
 var firebaseConfig = {
   apiKey: "AIzaSyAuWQvzIPe1o2rf9wtfb8I0HuMfdve5qf4",
   authDomain: "time-manager-a020f.firebaseapp.com",
@@ -13,6 +15,10 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+
+
+
+
 let playButton = document.querySelector("#playButton");
 let pauseButton = document.querySelector("#pauseButton");
 let resetButton = document.querySelector("#resetButton");
@@ -22,14 +28,11 @@ function toggleButton(buttonKey) {
   const buttonHidden = buttonKey === "PAUSE" ?  playButton : pauseButton;
   buttonVisible.style.display = "block";
   buttonHidden.style.display = "none";
-  //nie wiem czemu nie działają tutaj ostatnie dwie linijki
 }
 
 // Modify watch textContent
 
-// const watchTextContent = document.querySelector('#display').textContent = timeToString(0);
-// console.log(timeToString(0));
-
+// const watchTextContent = document.querySelector('#display').textContent = txt
 function displayTime(txt) {
   document.querySelector("#display").textContent = txt;
 }
@@ -78,48 +81,13 @@ resetButton.addEventListener("click", reset);
 
 const addToDoButton = document.querySelector(".add-todo");
 const todoContainer = document.querySelector(".todoList");
-const inputField = document.querySelector("#yourtask");
 const addForm = document.querySelector(".form");
-
-//CREATE LABEL FOCUS EVENT
-
-const label = document.querySelector("label");
+const inputField = document.querySelector("#yourtask");
 const userEnteredValue = inputField.value;
 
-const labelUpDownEvent = (value) => {
-  const labelUpEvent = document.querySelector('input[type="text"]');
+labelUpDownEvent(userEnteredValue); //WYWOŁANIE FUNKCJI NA FOCUS LABEL 
 
-  labelUpEvent.addEventListener("focus", (e) => {
-    label.style.fontSize = "20px";
-    label.style.transform = "translateY(0px)";
-    label.style.lineHeight = "26px";
-  });
-  const labelDownEvent = document.querySelector('input[type="text"]');
-
-  labelDownEvent.addEventListener("blur", (e) => {
-    if (e.target.value != 0) {
-      label.style.fontSize = "20px";
-      label.style.transform = "translateY(0px)";
-      label.style.lineHeight = "26px";
-    } else {
-      label.style.fontSize = "26px";
-      label.style.transform = "translateY(33px)";
-      label.style.lineHeight = "26px";
-    }
-  });
-};
-
-//WYWOŁANIE FUNKCJI NA FOCUS LABEL DO WRZUCENIA DO MAIN.JS
-labelUpDownEvent(userEnteredValue);
-//--------
-
-// CREATE TODO EVENT LISTENER FOR INPUT
-inputField.addEventListener("keydown", (e) => {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    document.querySelector(".add-todo").click();
-  }
-});
+labelFocusEnter(); //WYWOŁANIE FUNKCJI NA FOCUS LABEL FOR ENTER KEY
 
 // const template = (todoItem) => `<div class="todoList__user-input userInputBox" data-task-id="${todoItem.id}">
 //               <div class="todoList__buttons">
@@ -289,8 +257,6 @@ function addTimeToArray(elapsedTime) {
 //-----------------
 
 // Add buttons and create function for Toggle button
-
-
 
 function toggleTodoButton(buttonKey) {
   const playTodoTime = document.querySelector(".fa-play-circle");
