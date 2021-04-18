@@ -19,7 +19,7 @@ let resetButton = document.querySelector("#resetButton");
 
 function toggleButton(buttonKey) {
   const buttonVisible = buttonKey === "PLAY" ? playButton : pauseButton;
-  const buttonHidden = buttonKey === "PAUSE" ? pauseButton : playButton;
+  const buttonHidden = buttonKey === "PAUSE" ?  playButton : pauseButton;
   buttonVisible.style.display = "block";
   buttonHidden.style.display = "none";
   //nie wiem czemu nie działają tutaj ostatnie dwie linijki
@@ -47,15 +47,13 @@ function start() {
     displayTime(timeToString(elapsedTime));
   }, 1000);
   toggleButton("PAUSE");
-  pauseButton.style.display = "block";
-  playButton.style.display = "none";
+ 
 }
 
 function pause() {
   clearInterval(timerInterval);
   toggleButton("PLAY");
-  pauseButton.style.display = "none";
-  playButton.style.display = "block";
+
 }
 
 function reset() {
@@ -197,6 +195,7 @@ function addTodoItems(userEnteredValue) {
   };
   todoItemsArray.push(todoItems);
   updateTaskList();
+  toggleTodoButton("PLAY");
 }
 
 /////////////////////
@@ -291,14 +290,15 @@ function addTimeToArray(elapsedTime) {
 
 // Add buttons and create function for Toggle button
 
-const playTodoTime = document.querySelector(".fa-play-circle");
-const stopTodoTime = document.querySelector(".fa-pause-circle");
+
 
 function toggleTodoButton(buttonKey) {
+  const playTodoTime = document.querySelector(".fa-play-circle");
+  const stopTodoTime = document.querySelector(".fa-pause-circle");
   const buttonVisible = buttonKey === "PLAY" ? playTodoTime : stopTodoTime;
-  const buttonHidden = buttonKey === "PAUSE" ? stopTodoTime : playTodoTime;
-  // buttonVisible.style.display = "block";
-  // buttonHidden.style.display = "none";
+  const buttonHidden = buttonKey === "PAUSE" ? playTodoTime : stopTodoTime;
+  buttonVisible.style.display = "block";
+  buttonHidden.style.display = "none";
 }
 
 function startTodo() {
