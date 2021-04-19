@@ -10,8 +10,9 @@ import {displayCurrentToDo} from "./displayCurrentTodo.js";
 import {firebaseConfig} from "./config-firebase.js";
 
 
-
-
+//??????????
+// DZIE DODAWAĆ EVENTLISTENER W MODUŁACH
+//??????????
 
 playButton.addEventListener("click", start);
 pauseButton.addEventListener("click", pause);
@@ -52,6 +53,12 @@ labelFocusEnter(); //WYWOŁANIE FUNKCJI NA FOCUS LABEL FOR ENTER KEY
 
 // !!!!!!!!!!
 // JAK ZROBIĆ ABY ZADANIA NIE ZNIKAŁY PO ODŚWIEZENIU STRONY
+
+
+
+
+
+
 
 const template = (
   key
@@ -130,29 +137,12 @@ function addTodoItems(userEnteredValue) {
     id: Date.now(), //co by monzna zrobić z tą datą, a moze niepotrzebna
     time: "function sum time", //to jeszcze do wymyślenia
   };
-
-  
-  
   todoItemsArray.push(todoItems);
   updateTaskList();
-  // toggleTodoButton("PLAY");
-
+  toggleTodoButton("PLAY");
 }
 
-//BUTTONS START STOP DELETE IN TODO ITEMS ARRAY
-// PRZYCISKI W TABELI TODO ITEMS
-//CZY TU MA BYĆ JAKAŚ PĘTLA ABY DZIAŁAŁO DO KAZDEGO TASK Z OSOBNA
-//CZY POTRZEBNY ZNAK $ PRZY KLASIE PRZYCISKU
 
-//!!!!!!!! dlaczego nie działa
-// function removeTaksById(arrOriginal, elementToRemove){
-//   return arrOriginal.filter((item)=>{
-//     return item.id !== elementToRemove
-//   });
-// }
-// todoContainer.querySelectorAll('.fa-play-circle').forEach((button)=>{
-
-// })
 import {getElapsedTime} from "./getElapsedTime.js"
 
 todoContainer.addEventListener("click", (e) => {
@@ -204,8 +194,6 @@ todoContainer.addEventListener("click", (e) => {
     console.log(timeArray);
   }
 });
-
-
 
 //-----------------
 
