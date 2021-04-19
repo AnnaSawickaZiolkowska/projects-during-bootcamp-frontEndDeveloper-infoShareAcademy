@@ -131,11 +131,11 @@ h1{
     color: #4EA5D9;
 
 }
-.start{
+.fa-play-circle{
     display: block;
 }
-.stop{
-    display: block;
+.fa-pause-circle{
+    display: none;
 }
 
 .btn-is-hidden{

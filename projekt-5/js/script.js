@@ -6,21 +6,9 @@ import {startTodoTimer, pauseTodoTimer} from "./startStopTodoTimer.js";
 import {displayTime} from "./displayTimeOnWatch.js";
 import {start, pause, reset} from "./startStopResetMainTimer.js";
 import {addTimeToArray, timeArray} from "./addTimeToArray.js"
+import {displayCurrentToDo} from "./displayCurrentTodo.js";
+import {firebaseConfig} from "./config-firebase.js";
 
-
-// import {firebaseConfig} from "./config-firebase.js";
-
-var firebaseConfig = {
-  apiKey: "AIzaSyAuWQvzIPe1o2rf9wtfb8I0HuMfdve5qf4",
-  authDomain: "time-manager-a020f.firebaseapp.com",
-  databaseURL:
-    "https://time-manager-a020f-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "time-manager-a020f",
-  storageBucket: "time-manager-a020f.appspot.com",
-  messagingSenderId: "1091022402112",
-  appId: "1:1091022402112:web:30322b448c92dd12fde5a5",
-};
-firebase.initializeApp(firebaseConfig);
 
 
 
@@ -41,6 +29,9 @@ const todoContainer = document.querySelector(".todoList");
 const addForm = document.querySelector(".form");
 const inputField = document.querySelector("#yourtask");
 const userEnteredValue = inputField.value;
+
+
+displayCurrentToDo(); //WYWOŁANIE FUNKCJI, KTÓRA WYŚWIETLA H1, GDY USER WPISZE COŚ W INPUT
 
 labelUpDownEvent(userEnteredValue); //WYWOŁANIE FUNKCJI NA FOCUS LABEL 
 
@@ -102,11 +93,29 @@ addToDoButton.addEventListener("click", function (e) {
     addTodoItems(userEnteredValue); //function push new items into array
     addForm.reset(); // albo  inputField.value = "";
     inputField.blur();
-    toggleTodoButton('PLAY');
+
   } else {
     alert("Wyznacz sobie cel"); //confirm
   }
+
+
+  // function playBtn(e){
+  //   const el = document.querySelectorAll('.fa-play-circle');
+  //   const id = el.dataset.id
+  // }
+  // const playBtn = document.querySelectorAll('.fa-play-circle');
+  // playBtn.addEventListener('click', e =>{
+  //   const id = e.target.closest(".userInputBox").dataset.taskId;
+
+  // })
+  
+  // playBtn.setAttribute('data-id', key)
+    toggleTodoButton('PLAY');
+
+    // playBtn.addEventListener('click', costam)
 });
+
+
 
 // LOCAL STORAGE - ARRAY DO PRZECHOWYWANIA NAZWY ZADANIA I FUNKCJI, KTÓRA BY POKAZYWAŁA ŁĄCZNY CZAS PRACY NAD ZADANIEM
 // create function addTodoItems which create todoItems object based on the userEnteredValue, and push it into array
@@ -130,24 +139,6 @@ function addTodoItems(userEnteredValue) {
 
 }
 
-/////////////////////
-// FUNKCJA KTÓRA WYŚWIETLA AKTUALNE ZADANIE, DO KTÓREGO BĘDZIE MIERZON CZAS
-///////////////////
-const input = document.querySelector("input");
-const fromInputToDo = document.querySelector(".current-to-do");
-
-function displayCurrentToDo() {
-  input.addEventListener("input", currentToDo);
-
-  function currentToDo(e) {
-    // console.log(e);
-    fromInputToDo.textContent = e.target.value;
-    e.preventDefault();
-  }
-}
-//WYWOŁANIE FUNKCJI DO DODANIA GDY USER WCIŚNIE PLAY
-displayCurrentToDo();
-
 //BUTTONS START STOP DELETE IN TODO ITEMS ARRAY
 // PRZYCISKI W TABELI TODO ITEMS
 //CZY TU MA BYĆ JAKAŚ PĘTLA ABY DZIAŁAŁO DO KAZDEGO TASK Z OSOBNA
@@ -165,7 +156,7 @@ displayCurrentToDo();
 import {getElapsedTime} from "./getElapsedTime.js"
 
 todoContainer.addEventListener("click", (e) => {
-
+  
   console.log(e.target);
   if (e.target.classList.contains("fa-trash-alt")) {
     console.log(e.target.closest(".userInputBox").dataset.taskId);
@@ -192,11 +183,22 @@ todoContainer.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("fa-play-circle")) {
+  //   let playBtn = document.querySelector(".fa-play-circle");
+  // let pauseBtn = document.querySelector(".fa-pause-circle");
+
+  //   playBtn.style.display = "none"
+  //   pauseBtn.style.display = "block"
+
     startTodoTimer();
     getElapsedTime();
   }
 
   if (e.target.classList.contains("fa-pause-circle")) {
+    // let playBtn = document.querySelector(".fa-play-circle");
+    // let pauseBtn = document.querySelector(".fa-pause-circle");
+    // pauseBtn.style.display = "none"
+    // playBtn.style.display = "block"
+
     pauseTodoTimer();
     addTimeToArray();
     console.log(timeArray);
