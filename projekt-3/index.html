@@ -26,10 +26,10 @@
             <section class="form-box">
                 <h1 class="form-box__logo"></h1>
                 <form class="form-box__form form">
-                    <input class="form__input" type="text" name="username" id="username" max="75"
+                    <input class="form__input" type="email" name="username" id="username" max="75"
                         placeholder="Numer telefonu, nazwa urzytkownika lub adrese-mail">
                     <input class="form__input" type="password" name="password" id="password" placeholder="Hasło">
-                    <button class="form-box__button">Zaloguj się</button>
+                    <button class="form-box__button" type="submit">Zaloguj się</button>
                     <div class="form-box__span-contener">
                         <span class="form-box__span">LUB</span>
                     </div>
@@ -90,6 +90,11 @@
     </section> -->
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="./js/firebaseConfig.js"></script>
+    <script src="./js/main.js" type="module"></script>
 </body>
 
 </html>

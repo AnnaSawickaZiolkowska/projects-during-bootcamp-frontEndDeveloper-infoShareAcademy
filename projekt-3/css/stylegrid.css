@@ -36,16 +36,16 @@ body{
     transform: translate3d(-70.5%, 9.5%, 0);
     width: 240px;
     height: 427px;
-    background-image: url(/projekt-3/img/slide-1.jpg);
+    background: url(/img/slide-1.jpg);
     animation: slide 30s infinite;
 }
 
 @keyframes slide {
-20% { background: url(/projekt-3/img/slide-2.jpg); }
-40% { background: url(/projekt-3/img/slide-3.jpg); }
-60% { background: url(/projekt-3/img/slide-4.jpg); }
-80% { background: url(/projekt-3/img/slide-5.jpg); }
-100% { background: url(/projekt-3/img/slide-1.jpg);}
+20% { background: url(/img/slide-2.jpg); }
+40% { background: url(/img/slide-3.jpg); }
+60% { background: url(/img/slide-4.jpg); }
+80% { background: url(/img/slide-5.jpg); }
+100% { background: url(/img/slide-1.jpg);}
 }
 
 .login{
