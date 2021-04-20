@@ -1,18 +1,22 @@
 import {timeToString} from "./timeToString.js";
 import {labelUpDownEvent, labelFocusEnter} from "./labelUpDownEvent.js";
-import {toggleTodoButton} from "./toggleTodoButton.js";
+import {getElapsedTime} from "./getElapsedTime.js"
+import {timeArray, addTimeToArray} from "./addTimeToArray.js"
 
-import {startTodoTimer, pauseTodoTimer} from "./startStopTodoTimer.js";
 import {displayTime} from "./displayTimeOnWatch.js";
-import {start, pause, reset} from "./startStopResetMainTimer.js";
-import {addTimeToArray, timeArray} from "./addTimeToArray.js"
+import {toggleTodoButton} from "./toggleTodoButton.js";
+import {startTodoTimer, pauseTodoTimer} from "./startStopTodoTimer.js";
+
 import {displayCurrentToDo} from "./displayCurrentTodo.js";
+import {start, pause, reset} from "./startStopResetMainTimer.js";
+
 import {firebaseConfig} from "./config-firebase.js";
 
 
 //??????????
 // DZIE DODAWAĆ EVENTLISTENER W MODUŁACH
 //??????????
+
 
 playButton.addEventListener("click", start);
 pauseButton.addEventListener("click", pause);
@@ -53,12 +57,6 @@ labelFocusEnter(); //WYWOŁANIE FUNKCJI NA FOCUS LABEL FOR ENTER KEY
 
 // !!!!!!!!!!
 // JAK ZROBIĆ ABY ZADANIA NIE ZNIKAŁY PO ODŚWIEZENIU STRONY
-
-
-
-
-
-
 
 const template = (
   key
@@ -117,7 +115,7 @@ addToDoButton.addEventListener("click", function (e) {
   // })
   
   // playBtn.setAttribute('data-id', key)
-    toggleTodoButton('PLAY');
+    // toggleTodoButton('PLAY');
 
     // playBtn.addEventListener('click', costam)
 });
@@ -139,11 +137,9 @@ function addTodoItems(userEnteredValue) {
   };
   todoItemsArray.push(todoItems);
   updateTaskList();
-  toggleTodoButton("PLAY");
+  // toggleTodoButton("PLAY");
 }
 
-
-import {getElapsedTime} from "./getElapsedTime.js"
 
 todoContainer.addEventListener("click", (e) => {
   
@@ -195,12 +191,9 @@ todoContainer.addEventListener("click", (e) => {
   }
 });
 
+
 //-----------------
 
 // toggleTodoButton("PLAY");
-
-
-
-
 
 

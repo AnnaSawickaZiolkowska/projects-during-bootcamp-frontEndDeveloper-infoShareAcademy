@@ -33,7 +33,7 @@ function pageCountDown(){
     
   
 };
-    setInterval(function(){
+   const id =  setInterval(function(){
     pageCountDown();
 
    
@@ -50,3 +50,5 @@ function pageCountDown(){
 // }
 
 //Jak zatrzyma się odliczanie to zmiana grafiki i jakiś eventListener , który włączył by stronę docelową
+
+
