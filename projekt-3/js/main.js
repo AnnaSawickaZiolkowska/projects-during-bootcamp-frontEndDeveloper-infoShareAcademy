@@ -49,7 +49,6 @@ const getFormSignUpData = (e) => {
 //     logInUser(credentials);
 //   } else if (form.id === "signUpForm") {
     signUpUser(credentials);
-    closeModal();  //dodać setTimeout
 //   }
 };
 
@@ -76,7 +75,7 @@ const signUpUser = (cred) => {
       console.log(token);
       formSignUp.reset();
       signOutUser();
-      closeModal();
+      setTimeout(closeModal, 2000);
     })
     .catch((err) => {
       console.log("error");
