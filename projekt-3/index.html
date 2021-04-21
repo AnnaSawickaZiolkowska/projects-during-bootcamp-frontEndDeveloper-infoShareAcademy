@@ -25,7 +25,7 @@
         <section class="login">
             <section class="form-box">
                 <h1 class="form-box__logo"></h1>
-                <form class="form-box__form form">
+                <form class="form-box__form form" id="logInForm">
                     <input class="form__input" type="email" name="username" id="username" max="75"
                         placeholder="Numer telefonu, nazwa urzytkownika lub adrese-mail">
                     <input class="form__input" type="password" name="password" id="password" placeholder="Hasło">
@@ -42,7 +42,7 @@
             </section>
 
             <div class="box">
-                <p class="box__register">Nie masz konta?<a href="">Zarejestruj się</a></p>
+                <p class="box__register" id="box__register-signup">Nie masz konta?<a href="">Zarejestruj się</a></p>
             </div>
 
             <div class="box-app">
@@ -54,14 +54,14 @@
             </div>
         </section>
 
-       <section class="modal modal--hidden">
+       <section class="modal modal__hidden">
         <section class="signUp">
             <section class="form-box">
                 <h1 class="form-box__logo"></h1>
-                <form class="form-box__form form">
-                    <input class="form__input" type="email" name="username" id="username" max="75"
+                <form class="form-box__form form" id="signUpForm">
+                    <input class="form__input" type="email" name="username" id="usernameUp" max="75"
                         placeholder="Numer telefonu, nazwa urzytkownika lub adrese-mail">
-                    <input class="form__input" type="password" name="password" id="password" placeholder="Hasło">
+                    <input class="form__input" type="password" name="password" id="passwordUp" placeholder="Hasło">
                     <button class="form-box__button" type="submit">Zarejestruj się</button>
                     <div class="form-box__span-contener">
                         <span class="form-box__span">LUB</span>
@@ -74,7 +74,7 @@
                 </form>
             </section>
             <div class="box">
-                <p class="box__register">Nie masz konta?<a href="">Zaloguj się</a></p>
+                <p class="box__register"id="box__register-logIn">Nie masz konta?<a href="">Zaloguj się</a></p>
             </div>
 
             <div class="box-app">

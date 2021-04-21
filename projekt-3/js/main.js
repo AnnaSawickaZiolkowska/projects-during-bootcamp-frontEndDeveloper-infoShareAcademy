@@ -1,28 +1,70 @@
 // Firebase
 const db = firebase.firestore();
 
+// Modal
+
+const modal = document.querySelector(".modal");
+
+const showModal = () => modal.classList.remove("modal__hidden");
+const closeModal = () => modal.classList.add("modal__hidden");
+
 // Form
 
-const form = document.querySelector("form");
+const formLogIn = document.querySelector("#logInForm");
 
-const getFormData = (e) => {
+const getFormLogInData = (e) => {
   e.preventDefault();
 
-  const username = form.username.value;
+  const username = formLogIn.username.value;
   console.log(username);
-  const password = form.password.value;
+  const password = formLogIn.password.value;
 
   const credentials = {
     username,
     password,
   };
 
-  if (form.id === "form-box__form") {
+//   if (form.id === "logInForm") {
     logInUser(credentials);
-  }
+//   } else if (form.id === "signUpForm") {
+//     signUpUser(credentials);
+//   }
 };
 
-form.addEventListener("submit", getFormData);
+const formSignUp = document.querySelector("#signUpForm");
+
+const getFormSignUpData = (e) => {
+  e.preventDefault();
+
+  const username = formSignUp.usernameUp.value;
+  console.log(username);
+  const password = formSignUp.passwordUp.value;
+
+  const credentials = {
+    username,
+    password,
+  };
+
+//   if (form.id === "logInForm") {
+//     logInUser(credentials);
+//   } else if (form.id === "signUpForm") {
+    signUpUser(credentials);
+    closeModal();  //dodać setTimeout
+//   }
+};
+
+formLogIn.addEventListener('submit', getFormLogInData)
+formSignUp.addEventListener("submit", getFormSignUpData);
+
+
+// Register Box
+
+const boxRegisterSignup = document.querySelector("#box__register-signup");
+
+boxRegisterSignup.addEventListener("click", (e) => {
+  e.preventDefault();
+  showModal();
+});
 
 // Firebase Auth
 
@@ -30,19 +72,22 @@ const signUpUser = (cred) => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(cred.username, cred.password)
-    .then((token) => {
+    .then(token => {
       console.log(token);
-      form.reset();
+      formSignUp.reset();
       signOutUser();
+      closeModal();
     })
     .catch((err) => {
       console.log("error");
+      alert(err.message)
     });
 };
 
-
 const signOutUser = (cred) => {
-    firebase.auth().signOut();
+  firebase.auth().signOut();
+//   closeModal();
+
 };
 
 const logInUser = (cred) => {
@@ -53,8 +98,8 @@ const logInUser = (cred) => {
       console.log(cred);
     })
     .catch((err) => {
-        console.log(err);
-        alert(err.message)
+      console.log(err);
+      alert(err.message);
       alert("error");
     });
 };

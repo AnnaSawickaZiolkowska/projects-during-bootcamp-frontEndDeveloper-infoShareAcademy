@@ -49,7 +49,7 @@ body{
 }
 
 
-.modal--hidden {
+.modal__hidden {
     display: none;
 }
 
