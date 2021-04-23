@@ -134,7 +134,9 @@ body{
     font-size: 14px;
     font-weight: 800;
     cursor: pointer;
-
+}
+.form-box__buttonBlue {
+    background-color: rgb(0, 149, 246);
 }
 
 .form-box__span-contener{

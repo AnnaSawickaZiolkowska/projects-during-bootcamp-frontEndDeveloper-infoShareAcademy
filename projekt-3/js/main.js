@@ -8,28 +8,41 @@ const modal = document.querySelector(".modal");
 const showModal = () => modal.classList.remove("modal__hidden");
 const closeModal = () => modal.classList.add("modal__hidden");
 
-// Form
+// Register Box Modal
+
+const boxRegisterSignup = document.querySelector("#box__register-signup");
+
+boxRegisterSignup.addEventListener("click", (e) => {
+  e.preventDefault();
+  showModal();
+});
+
+
+// FORM LOG IN
 
 const formLogIn = document.querySelector("#logInForm");
 
 const getFormLogInData = (e) => {
   e.preventDefault();
-
-  const username = formLogIn.username.value;
+  const username = formLogIn.username.value.lenght;
   console.log(username);
   const password = formLogIn.password.value;
+  console.log(password.lenght);
 
   const credentials = {
     username,
     password,
   };
-
 //   if (form.id === "logInForm") {
     logInUser(credentials);
+
 //   } else if (form.id === "signUpForm") {
 //     signUpUser(credentials);
 //   }
 };
+
+
+// FORM SIGN UP
 
 const formSignUp = document.querySelector("#signUpForm");
 
@@ -45,27 +58,36 @@ const getFormSignUpData = (e) => {
     password,
   };
 
-//   if (form.id === "logInForm") {
-//     logInUser(credentials);
-//   } else if (form.id === "signUpForm") {
+const signUpBtn = document.querySelector('.form-box__button');
+  if (passwordUp.lenght > 6){
+    signUpBtn.classList.add('form-box__buttonBlue')
+  };
     signUpUser(credentials);
-//   }
 };
 
 formLogIn.addEventListener('submit', getFormLogInData)
 formSignUp.addEventListener("submit", getFormSignUpData);
 
+// BUTTON CHANGE COLOR IF PASSWORD VALUE LENGHT >= 6
 
-// Register Box
+const changeBtnColor = () => {
+    const moreBlueBtn = document.querySelector('.form-box__button');
+  if (formLogIn.password.value.lenght >= 6){
+    moreBlueBtn.classList.add('form-box__buttonBlue')
+  }else if (formSignUp.passwordUp.value.lenght > 6) {
+    moreBlueBtn.classList.add('form-box__buttonBlue')
+  }
+};
 
-const boxRegisterSignup = document.querySelector("#box__register-signup");
+formLogIn.addEventListener('keyup', changeBtnColor);
+formSignUp.addEventListener('keyup', changeBtnColor)
 
-boxRegisterSignup.addEventListener("click", (e) => {
-  e.preventDefault();
-  showModal();
-});
+// document.querySelectorAll('form').forEach(btn => {
+//     btn.addEventListener('keyup', changeBtnColor)
+// });
 
-// Firebase Auth
+
+// FIREBASE AUTH
 
 const signUpUser = (cred) => {
   firebase
@@ -85,8 +107,6 @@ const signUpUser = (cred) => {
 
 const signOutUser = (cred) => {
   firebase.auth().signOut();
-//   closeModal();
-
 };
 
 const logInUser = (cred) => {
