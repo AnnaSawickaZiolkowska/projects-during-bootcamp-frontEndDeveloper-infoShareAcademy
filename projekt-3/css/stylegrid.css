@@ -36,16 +36,37 @@ body{
     transform: translate3d(-70.5%, 9.5%, 0);
     width: 240px;
     height: 427px;
-    background-image: url(/projekt-3/img/slide-1.jpg);
+    background: url(/img/slide-1.jpg);
     animation: slide 30s infinite;
 }
 
 @keyframes slide {
-20% { background: url(/projekt-3/img/slide-2.jpg); }
-40% { background: url(/projekt-3/img/slide-3.jpg); }
-60% { background: url(/projekt-3/img/slide-4.jpg); }
-80% { background: url(/projekt-3/img/slide-5.jpg); }
-100% { background: url(/projekt-3/img/slide-1.jpg);}
+20% { background: url(/img/slide-2.jpg); }
+40% { background: url(/img/slide-3.jpg); }
+60% { background: url(/img/slide-4.jpg); }
+80% { background: url(/img/slide-5.jpg); }
+100% { background: url(/img/slide-1.jpg);}
+}
+
+
+.modal__hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 85%;
+    background-color: #fafafa;
+}
+
+.signUp{
+   position: fixed;
+   top: 45%;
+   left: 50%;
+   transform: translate3d(-45%, -50%, 0);
 }
 
 .login{
@@ -113,7 +134,9 @@ body{
     font-size: 14px;
     font-weight: 800;
     cursor: pointer;
-
+}
+.form-box__buttonBlue {
+    background-color: rgb(0, 149, 246);
 }
 
 .form-box__span-contener{
