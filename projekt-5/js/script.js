@@ -13,6 +13,46 @@ import {start, pause, reset} from "./startStopResetMainTimer.js";
 import {firebaseConfig} from "./config-firebase.js";
 
 
+//FIRESTORE
+const todoContainer = document.querySelector(".todoList");
+
+
+const db = firebase.firestore();
+
+db.collection('todos').onSnapshot(todos =>{
+  renderTodos
+});
+
+function renderTodos(todos) {
+  let template = "";
+
+  todos.forEach(todo => {
+    const data = todo.data();
+    const id = todo.id;
+
+   template =+ `<div class="todoList__user-input userInputBox" data-task-id="${id}">
+              <div class="todoList__buttons">
+              <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
+              <a href="#" class="start"><i class="far fa-play-circle fa-2x" data-id="${data.id}"></i>
+              <a href="#" class="stop"><i class="far fa-pause-circle fa-2x" data-id="${data.id}"></i></a>
+               </div>   
+               <p class="paragraph__styling">${data.task}</p>
+               </div>`;
+  });
+
+  todoContainer.innerHTML = template;
+
+}
+
+
+// const updateTaskList = () => {
+//   todoContainer.innerHTML = todoItemsArray.map(template).join("");
+//   if (todoItemsArray.length == 0) {
+//     fromInputToDo.textContent = "Nothing to do :)";
+//   }
+// };
+
+
 //??????????
 // DZIE DODAWAĆ EVENTLISTENER W MODUŁACH
 //??????????
@@ -30,7 +70,6 @@ resetButton.addEventListener("click", reset);
 //////////////////////////////
 
 const addToDoButton = document.querySelector(".add-todo");
-const todoContainer = document.querySelector(".todoList");
 const addForm = document.querySelector(".form");
 const inputField = document.querySelector("#yourtask");
 const userEnteredValue = inputField.value;
@@ -44,37 +83,40 @@ labelFocusEnter(); //WYWOŁANIE FUNKCJI NA FOCUS LABEL FOR ENTER KEY
 
 // const template = (todoItem) => `<div class="todoList__user-input userInputBox" data-task-id="${todoItem.id}">
 //               <div class="todoList__buttons">
-//                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
-//                   <a href="#" class="start "><i class="fa fa-play fa-2x"></i>
-//                   <a href="#" class="stop"><i class="fa fa-plus fa-2x"></i></a>
-//                    </div>
-//                    <p class="paragraph__styling">${todoItem.task}</p>
-//                    </div>`;
+//               <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
+//               <a href="#" class="start"><i class="far fa-play-circle fa-2x" data-id="${todoItem.id}"></i>
+//               <a href="#" class="stop"><i class="far fa-pause-circle fa-2x" data-id="${todoItem.id}"></i></a>
+//                </div>   
+//                <p class="paragraph__styling">${todoItem.task}</p>
+//                </div>`;
 
-// const updateTaskList = () => {
-//   todoContainer.innerHTML = todoItemsArray.map(template).join('')
-// };
+              // const updateTaskList = () => {
+              //   todoContainer.innerHTML = todoItemsArray.map(template).join("");
+              //   if (todoItemsArray.length == 0) {
+              //     fromInputToDo.textContent = "Nothing to do :)";
+              //   }
+              // };
 
 // !!!!!!!!!!
 // JAK ZROBIĆ ABY ZADANIA NIE ZNIKAŁY PO ODŚWIEZENIU STRONY
 
-const template = (
-  key
-) => `<div class="todoList__user-input userInputBox" data-task-id="${key.id}">
-              <div class="todoList__buttons">
-                  <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
-                  <a href="#" class="start"><i class="far fa-play-circle fa-2x" data-id="${key.id}"></i>
-                  <a href="#" class="stop"><i class="far fa-pause-circle fa-2x" data-id="${key.id}"></i></a>
-                   </div>   
-                   <p class="paragraph__styling">${key.task}</p>
-                   </div>`;
+// const template = (
+//   key
+// ) => `<div class="todoList__user-input userInputBox" data-task-id="${key.id}">
+//               <div class="todoList__buttons">
+//                   <a href="#" class="delete" ><i class="far fa-trash-alt fa-2x"></i>
+//                   <a href="#" class="start"><i class="far fa-play-circle fa-2x" data-id="${key.id}"></i>
+//                   <a href="#" class="stop"><i class="far fa-pause-circle fa-2x" data-id="${key.id}"></i></a>
+//                    </div>   
+//                    <p class="paragraph__styling">${key.task}</p>
+//                    </div>`;
 
-const updateTaskList = () => {
-  todoContainer.innerHTML = todoItemsArray.map(template).join("");
-  if (todoItemsArray.length == 0) {
-    fromInputToDo.textContent = "Nothing to do :)";
-  }
-};
+// const updateTaskList = () => {
+//   todoContainer.innerHTML = todoItemsArray.map(template).join("");
+//   if (todoItemsArray.length == 0) {
+//     fromInputToDo.textContent = "Nothing to do :)";
+//   }
+// };
 
 // CREATE TODO EVENT LISTENER FOR ADD BUTTON
 
@@ -82,18 +124,18 @@ addToDoButton.addEventListener("click", function (e) {
   e.preventDefault();
   const userEnteredValue = inputField.value;
   if (userEnteredValue.trim() != 0) {
-    const key = firebase.database().ref().child("user_task").push().key;
-    console.log(key);
+    // const key = firebase.database().ref().child("user_task").push().key;
+    // console.log(key);
     const dataTask = {
       task: userEnteredValue,
       time: "function sum time",
       id: Date.now(),
-      key: key,
+      // key: key,
     };
 
-    const updates = {};
-    updates["/user_task/" + key] = dataTask;
-    firebase.database().ref().update(updates);
+    // const updates = {};
+    // updates["/user_task/" + key] = dataTask;
+    // firebase.database().ref().update(updates);
 
     addTodoItems(userEnteredValue); //function push new items into array
     addForm.reset(); // albo  inputField.value = "";
@@ -103,21 +145,6 @@ addToDoButton.addEventListener("click", function (e) {
     alert("Wyznacz sobie cel"); //confirm
   }
 
-
-  // function playBtn(e){
-  //   const el = document.querySelectorAll('.fa-play-circle');
-  //   const id = el.dataset.id
-  // }
-  // const playBtn = document.querySelectorAll('.fa-play-circle');
-  // playBtn.addEventListener('click', e =>{
-  //   const id = e.target.closest(".userInputBox").dataset.taskId;
-
-  // })
-  
-  // playBtn.setAttribute('data-id', key)
-    // toggleTodoButton('PLAY');
-
-    // playBtn.addEventListener('click', costam)
 });
 
 
