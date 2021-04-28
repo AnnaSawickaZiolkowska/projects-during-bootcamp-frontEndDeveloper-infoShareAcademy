@@ -38,16 +38,19 @@ const cardFront = document.querySelector('card__front');
 const displayCardName = document.querySelector('.displayCardName');
 const pickCardButton = document.querySelector('.card__pick');
 
-const selectedCard = cards[Math.floor(Math.random() * cards.length)];
 
-cardBack.addEventListener('click', e =>{
-  e.preventDefault();
-  // cardBack.style.display = "none";
+// Get random Photo from Array
+let selectedCard;
+
+const pickCard = () => {
+  selectedCard = cards[Math.floor(Math.random() * cards.length)];
   cardBack.src = selectedCard.pic;
   displayCardName.textContent = selectedCard.name;
   pickCardButton.style.display = "none";
-  // pickCard();
+  cardBack.removeEventListener('click', pickCard);
 
+};
+
+document.querySelectorAll('.card__back').forEach(cardBack => {
+  cardBack.addEventListener('click', pickCard);
 });
-
- 
