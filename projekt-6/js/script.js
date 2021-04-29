@@ -20,7 +20,7 @@ const cards = [
   { name: "Sukces", pic: "./img/sukces.jpeg" },
   { name: "Uczenie się", pic: "./img/uczenieSię.jpeg" },
   { name: "Lęk", pic: "./img/lęk.jpeg" },
-  { name: "Wszystko Jest Możliwe", pic: "./img/wszystkoJestMożliwe.jpeg" },
+  { name: "Wszystko jest możliwe", pic: "./img/wszystkoJestMożliwe.jpeg" },
   { name: "Trudności", pic: "./img/trudności.jpeg" },
   { name: "Powinno Być", pic: "./img/powinnoByć.jpeg" },
   { name: "Przywództwo", pic: "./img/przywództwo.jpeg" },
@@ -51,16 +51,27 @@ const pickCard = () => {
 
 };
 
-// document.querySelectorAll('.card__back').forEach(cardBack => {
+// document.querySelectorAll('.card__pick').forEach(cardBack => {
 //   cardBack.addEventListener('click', pickCard);
 // });
 
-document.querySelectorAll('.card__back').forEach(cardBack => {
-  cardBack.addEventListener('click', () =>{
+document.querySelectorAll('.card__pick').forEach(cardBack => {
+  cardBack.addEventListener('click', (e) =>{
+    e.preventDefault();
     const nextCard = cardBack.dataset.reverse;
-    console.log(nextCard);
     const card = document.getElementById(nextCard);
     pickCard(card);
 
   });  
 });
+
+// document.querySelectorAll('.card__back').forEach(cardBack => {
+//   cardBack.addEventListener('click', () =>{
+//     const nextCard = cardBack.dataset.reverse;
+//     console.log(nextCard);
+//     const card = document.getElementById(nextCard);
+//     pickCard(card);
+
+//   });  
+// });
+
