@@ -51,6 +51,16 @@ const pickCard = () => {
 
 };
 
+// document.querySelectorAll('.card__back').forEach(cardBack => {
+//   cardBack.addEventListener('click', pickCard);
+// });
+
 document.querySelectorAll('.card__back').forEach(cardBack => {
-  cardBack.addEventListener('click', pickCard);
+  cardBack.addEventListener('click', () =>{
+    const nextCard = cardBack.dataset.reverse;
+    console.log(nextCard);
+    const card = document.getElementById(nextCard);
+    pickCard(card);
+
+  });  
 });
