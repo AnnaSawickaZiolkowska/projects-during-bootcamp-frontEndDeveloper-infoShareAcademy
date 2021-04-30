@@ -21,6 +21,20 @@ body {
     margin: 0 5%;
 }
 
+.grid__container-selected {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+grid-template-columns: 100%;
+grid-template-rows: 20% 80%;
+grid-template-areas: 
+"header"
+"card";
+}
+
+.header {
+    grid-area: header;
+}
 h1 {
     font-size: 37px;
     text-align: center;
@@ -32,13 +46,14 @@ h1 {
     line-height: 20px;
     text-align: center;
     margin-top: 6px;
-    margin-bottom: 200px;
 
 }
 
 
 .expanding-map {
     /* width: 100%; */
+    margin-top: 200px;
+
 }
 .map-layout{
     margin: 0 auto;
@@ -63,7 +78,10 @@ h1 {
 position: relative;
 width: 100%;
 }
+.card__layout-selected {
+    grid-area: card;
 
+}
 .card__pick {
     position: absolute;
     bottom: 17%;
@@ -75,13 +93,17 @@ width: 100%;
     padding: 12px 16px 8px 16px;
     border-radius: 20px;
     text-decoration: none;
-    border: 2px solid #fff;
     text-transform: uppercase;
+    transition: 0.8s;
+    font-size: 16px;
+    line-height: 16px;
+
 }
 .card__pick:hover {
     background-color: #fff;
     color: #000;
-    border: 2px solid #000;
+    transition: 0.8s;
+
 
 }
     
@@ -97,6 +119,8 @@ width: 100%;
     font-family: optima-bold, sans-serif;
     line-height: 26px;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.4);
+    transition: 0.8s;
+
 
 
     
@@ -107,8 +131,19 @@ width: 100%;
     border-radius: 4.5%;
     border: 2px dashed rgb(17, 17, 17);
     width: 100%;
-	height: auto;    
-    
+	height: auto;      
+}
+.card__layout-selected {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    max-width: 816px;
+
+}
+.card__back-selected {
+    width: 100%;
+    height: auto;
 }
 
 .card__caption {
