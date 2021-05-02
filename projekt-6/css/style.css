@@ -181,3 +181,7 @@ width: 100%;
     text-align: center;
     font-weight: 800;
 }
+
+.hidden {
+display: none;
+}

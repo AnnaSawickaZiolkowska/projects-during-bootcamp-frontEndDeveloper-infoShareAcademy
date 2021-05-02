@@ -33,8 +33,8 @@ const cards = [
 
 
 const cardContainer = document.querySelector('.cardContainer');
-const cardBack = document.querySelector('.card__back');
-const cardBackSelected = document.querySelector('.card__back-selected')
+const cardBack = document.querySelector('#card__back');
+const cardBackSelected = document.querySelector('#modal-selectedCard')
 const cardFront = document.querySelector('.card__front');
 const displayCardName = document.querySelector('.displayCardName');
 const displaySelectedCardName = document.querySelector('.displayCardName-selected')
@@ -43,8 +43,10 @@ const pickCardButton = document.querySelector('.card__pick');
 
 // MODAL
 const modal = document.querySelector('#modal');
+
 const showModal = modal => {
   modal.classList.remove("modal--hidden");
+
   const modalCloseButton = modal.querySelector('[data-button-close]');
   modalCloseButton.addEventListener('click', () => {
   closeModal(modal)
@@ -63,11 +65,11 @@ const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
   cardBackSelected.src = selectedCard.pic;
   displaySelectedCardName.textContent = selectedCard.name;
-  pickCardButton.style.display = "none";
   cardBack.removeEventListener('click', pickCard);
   showModal(modal);
   cardBack.src = selectedCard.pic;
   displayCardName.textContent = selectedCard.name;
+  pickCardButton.classList.add('hidden');
 };
 
 
@@ -81,6 +83,7 @@ document.querySelectorAll('.card__pick').forEach(cardBack => {
     const nextCard = cardBack.dataset.reverse;
     const card = document.getElementById(nextCard);
     pickCard(card);
+
   });  
 });
 
@@ -96,4 +99,3 @@ document.querySelectorAll('.card__pick').forEach(cardBack => {
 
 
 // test.addEventListener("mouseover", function( event ) {
-
