@@ -5,13 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Play - Points of You®</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1>Insightful Feedback - Process Layout
-    </h1>
-    <p class="proces-description">Play this 3-card process layout chart to create clarity about your next step
+    <div class="modal modal--hidden" id="modal">
+      <header class="header-modal">
+        <h1 class="proces-question" id="question">What is working for me?</h1>
+        <p class="proces-description">
+          Take a moment and observe the photo and its title in light of your
+          issue
+        </p>
+        <button
+          class="modal__button-close"
+          data-button-close
+          type="button"
+          aria-label="Close form"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </header>
+      <section class="card__layout card__layout-selected">
+        <img
+          class="card__back card__back-selected"
+          data-reverse
+          data-selected-card
+          src="./img/card-back.jpg"
+          alt=""
+        />
+        <!-- <img class="card__front" src="" alt="" /> -->
+        <!-- <button class="card__pick">Wybierz kartę</button> -->
+        <span class="displayCardName displayCardName-selected"></span>
+        <a href="" class="card__pick">zagrajmy ♥</a>
+      </section>
+    </div>
 
+    <h1>Insightful Feedback - Process Layout</h1>
+    <p class="proces-description">
+      Play this 3-card process layout chart to create clarity about your next
+      step
     </p>
 
     <main class="expanding-map">
@@ -20,35 +51,54 @@
           <li class="cardContent__wrapper">
             <div class="cardContainer">
               <div class="card__layout">
-                <img class="card__back" data-reverse src="./img/card-back.jpg" alt="" />
+                <img
+                  class="card__back"
+                  data-reverse
+                  src="./img/card-back.jpg"
+                  alt=""
+                />
                 <!-- <img class="card__front" src="" alt="" /> -->
                 <!-- <button class="card__pick">Wybierz kartę</button> -->
                 <span class="displayCardName"></span>
                 <a href="" class="card__pick">zagrajmy ♥</a>
               </div>
               <div class="card__caption">
-                <span class="cardContent__outside" data-question1 >What is working for me?</span>
+                <span class="cardContent__outside" data-question1
+                  >What is working for me?</span
+                >
               </div>
             </div>
           </li>
           <li class="cardContent__wrapper">
             <div class="cardContainer">
               <div class="card__layout">
-                <img class="card__back" data-reverse src="./img/card-back.jpg" alt="" />
+                <img
+                  class="card__back"
+                  data-reverse
+                  src="./img/card-back.jpg"
+                  alt=""
+                />
                 <!-- <img class="card__front" src="" alt="" /> -->
                 <!-- <button class="card__pick">Wybierz kartę</button> -->
                 <span class="displayCardName"></span>
                 <a href="" class="card__pick">Wybierz kartę</a>
               </div>
               <div class="card__caption">
-                <span class="cardContent__outside">What is not working for me?</span>
+                <span class="cardContent__outside"
+                  >What is not working for me?</span
+                >
               </div>
             </div>
           </li>
           <li class="cardContent__wrapper">
             <div class="cardContainer">
               <div class="card__layout">
-                <img class="card__back" data-reverse src="./img/card-back.jpg" alt="" />
+                <img
+                  class="card__back"
+                  data-reverse
+                  src="./img/card-back.jpg"
+                  alt=""
+                />
                 <!-- <img class="card__front" src="" alt="" /> -->
                 <!-- <button class="card__pick">Wybierz kartę</button> -->
                 <span class="displayCardName"></span>

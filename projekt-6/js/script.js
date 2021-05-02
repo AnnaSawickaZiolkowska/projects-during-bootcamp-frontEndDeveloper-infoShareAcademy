@@ -32,11 +32,28 @@ const cards = [
 ];
 
 
-const cardContainer = document.querySelector('cardContainer');
+const cardContainer = document.querySelector('.cardContainer');
 const cardBack = document.querySelector('.card__back');
-const cardFront = document.querySelector('card__front');
+const cardBackSelected = document.querySelector('.card__back-selected')
+const cardFront = document.querySelector('.card__front');
 const displayCardName = document.querySelector('.displayCardName');
+const displaySelectedCardName = document.querySelector('.displayCardName-selected')
 const pickCardButton = document.querySelector('.card__pick');
+
+
+// MODAL
+const modal = document.querySelector('#modal');
+const showModal = modal => {
+  modal.classList.remove("modal--hidden");
+  const modalCloseButton = modal.querySelector('[data-button-close]');
+  modalCloseButton.addEventListener('click', () => {
+  closeModal(modal)
+  });
+}
+
+const closeModal = modal => {
+  modal.classList.add("modal--hidden");
+};
 
 
 // Get random Photo from Array
@@ -44,12 +61,15 @@ let selectedCard;
 
 const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
-  cardBack.src = selectedCard.pic;
-  displayCardName.textContent = selectedCard.name;
+  cardBackSelected.src = selectedCard.pic;
+  displaySelectedCardName.textContent = selectedCard.name;
   pickCardButton.style.display = "none";
   cardBack.removeEventListener('click', pickCard);
-
+  showModal(modal);
+  cardBack.src = selectedCard.pic;
+  displayCardName.textContent = selectedCard.name;
 };
+
 
 // document.querySelectorAll('.card__pick').forEach(cardBack => {
 //   cardBack.addEventListener('click', pickCard);
@@ -61,7 +81,6 @@ document.querySelectorAll('.card__pick').forEach(cardBack => {
     const nextCard = cardBack.dataset.reverse;
     const card = document.getElementById(nextCard);
     pickCard(card);
-
   });  
 });
 
@@ -74,4 +93,7 @@ document.querySelectorAll('.card__pick').forEach(cardBack => {
 
 //   });  
 // });
+
+
+// test.addEventListener("mouseover", function( event ) {
 
