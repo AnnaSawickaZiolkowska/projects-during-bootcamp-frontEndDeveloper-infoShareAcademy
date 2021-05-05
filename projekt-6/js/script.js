@@ -103,12 +103,17 @@ document.querySelectorAll(".card__pick").forEach((button) => {
         document.querySelector(".card__pick-one").classList.add('hidden');
         document.querySelector('.card-one').src = card.pic;
         document.querySelector('.name-one').textContent = card.name;
+        document.querySelector('.card__lock').classList.add('hidden')
+        document.querySelector('.card__pick-two').classList.remove('hidden')
       }
 
       else if (button.classList.contains("card__pick-two")){
         document.querySelector(".card__pick-two").classList.add('hidden');
         document.querySelector('.card-two').src = card.pic;
         document.querySelector('.name-two').textContent = card.name;
+        document.querySelector('.card__lock-three').classList.add('hidden');
+        document.querySelector('.card__pick-three').classList.remove('hidden');
+        document.querySelector(".card__pick-two").classList.add('active');
       }
       else if (button.classList.contains("card__pick-three")){
         document.querySelector(".card__pick-three").classList.add('hidden');
@@ -159,3 +164,10 @@ document.querySelectorAll(".card__pick").forEach((button) => {
 
 // test.addEventListener("mouseover", function( event ) {
 
+document.querySelectorAll('.card__back').forEach(card =>{
+card.addEventListener('mouseover', () =>{
+  if (card.hasAttribute('.active')){
+    console.log('działa');
+  }
+})
+})
