@@ -108,12 +108,13 @@ h1 {
     }
 
 .cardContainer {
-  
+  position: relative;
 }
 .card__layout {
 position: relative;
 width: 100%;
 }
+
 
 .card__pick {
     position: absolute;
@@ -143,9 +144,9 @@ width: 100%;
     width: 100%;
     text-align: center;
     position: absolute;
-    bottom: 13%;
+    bottom: 5%;
     left: 50%;
-    transform: translate3d(-50%, -13%, 0);
+    transform: translate3d(-50%, -5%, 0);
     font-size: 22px;
     color: #fff;
     font-family: optima-bold, sans-serif;
@@ -155,6 +156,12 @@ width: 100%;
 }
 
 .displayCardName-selected {
+    width: 100%;
+    font-family: optima-bold, sans-serif;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.4);
+    position: absolute;
     bottom: 13%;
     left: 50%;
     transform: translate3d(-50%, -13%, 0);
@@ -166,6 +173,22 @@ width: 100%;
     border: 2px dashed rgb(17, 17, 17);
     width: 100%;
 	height: auto;      
+}
+.card__lock {
+    width: 100%;
+    height: 100%;
+    background-color: #ece2d4;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: 4.5%;
+    border: 2px dashed rgb(17, 17, 17);
+}
+.fa-lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0)
 }
 
 .card__caption {

@@ -1,5 +1,5 @@
 const cards = [
-  { name: "Intuicja", pic: "./img/intuicja.jpeg"},
+  { name: "Intuicja", pic: "./img/intuicja.jpeg" },
   { name: "Zaufanie", pic: "./img/zaufanie.jpeg" },
   { name: "Możliwości", pic: "./img/możliwości.jpeg" },
   { name: "Ból", pic: "./img/ból.jpeg" },
@@ -31,32 +31,33 @@ const cards = [
   { name: "Porażka", pic: "./img/porażka.jpeg" },
 ];
 
-
-const cardContainer = document.querySelector('.cardContainer');
-const cardBack = document.querySelector('#card__back');
-const cardBackSelected = document.querySelector('#modal-selectedCard')
-const cardFront = document.querySelector('.card__front');
-const displayCardName = document.querySelector('.displayCardName');
-const displaySelectedCardName = document.querySelector('.displayCardName-selected')
-const pickCardButton = document.querySelector('.card__pick');
-
+const cardContainer = document.querySelector(".cardContainer");
+const cardBack = document.querySelector("#card__back");
+const cardBackSelected = document.querySelector("#modal-selectedCard");
+const cardFront = document.querySelector(".card__front");
+const displayCardName = document.querySelector(".displayCardName");
+const displaySelectedCardName = document.querySelector(
+  ".displayCardName-selected"
+);
+const pickCardButton = document.querySelector(".card__pick");
+const cardLock = document.querySelector(".card__lock");
+const cardLayout = document.querySelector('.card__layout');
 
 // MODAL
-const modal = document.querySelector('#modal');
+const modal = document.querySelector("#modal");
 
-const showModal = modal => {
+const showModal = (modal) => {
   modal.classList.remove("modal--hidden");
 
-  const modalCloseButton = modal.querySelector('[data-button-close]');
-  modalCloseButton.addEventListener('click', () => {
-  closeModal(modal)
+  const modalCloseButton = modal.querySelector("[data-button-close]");
+  modalCloseButton.addEventListener("click", () => {
+    closeModal(modal);
   });
-}
-
-const closeModal = modal => {
-  modal.classList.add("modal--hidden");
 };
 
+const closeModal = (modal) => {
+  modal.classList.add("modal--hidden");
+};
 
 // Get random Photo from Array
 let selectedCard;
@@ -65,27 +66,86 @@ const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
   cardBackSelected.src = selectedCard.pic;
   displaySelectedCardName.textContent = selectedCard.name;
-  cardBack.removeEventListener('click', pickCard);
+  cardBack.removeEventListener("click", pickCard);
+  pickCardButton.classList.add("hidden");
   showModal(modal);
-  cardBack.src = selectedCard.pic;
-  displayCardName.textContent = selectedCard.name;
-  pickCardButton.classList.add('hidden');
+  // cardBack.src = selectedCard.pic;
+  // displayCardName.textContent = selectedCard.name;
+  return selectedCard;
 };
 
+// const pickCard = () => {
+//   selectedCard = cards[Math.floor(Math.random() * cards.length)];
+
+//   document.querySelectorAll('.card__back').forEach(card =>{
+//     card.src = selectedCard.pic;
+//   });
+
+//   displaySelectedCardName.textContent = selectedCard.name;
+//   // cardBack.removeEventListener('click', pickCard);
+//   showModal(modal);
+//   displayCardName.textContent = selectedCard.name;
+//   pickCardButton.classList.add('hidden');
+// };
 
 // document.querySelectorAll('.card__pick').forEach(cardBack => {
 //   cardBack.addEventListener('click', pickCard);
 // });
 
-document.querySelectorAll('.card__pick').forEach(cardBack => {
-  cardBack.addEventListener('click', (e) =>{
+document.querySelectorAll(".card__pick").forEach((button) => {
+  button.addEventListener("click", (e) => {
     e.preventDefault();
-    const nextCard = cardBack.dataset.reverse;
-    const card = document.getElementById(nextCard);
-    pickCard(card);
+    pickCard();
+    console.log(button);
+    console.log(e.target);
+    const card = pickCard();
+      if (e.target.classList.contains("card__pick-one")){
+        document.querySelector(".card__pick-one").classList.add('hidden');
+        document.querySelector('.card-one').src = card.pic;
+        document.querySelector('.name-one').textContent = card.name;
+      }
 
-  });  
+      else if (button.classList.contains("card__pick-two")){
+        document.querySelector(".card__pick-two").classList.add('hidden');
+        document.querySelector('.card-two').src = card.pic;
+        document.querySelector('.name-two').textContent = card.name;
+      }
+      else if (button.classList.contains("card__pick-three")){
+        document.querySelector(".card__pick-three").classList.add('hidden');
+        document.querySelector('.card-three').src = card.pic;
+        document.querySelector('.name-three').textContent = card.name;
+      }
+  });
 });
+
+// document.querySelector(".card__pick-one").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   console.log(e.target);
+//   // if (e.target.classList == "card__pick-one"){
+//   // const card = e.target.closest('.card__back') ;
+//   // const cardName = e.target.closest('.displayCardName');
+//   // pickCard(card, cardName);
+//   let card1 = pickCard();
+//   cardBack.src = card1.pic;
+
+//   // }
+// });
+// document.querySelector(".card__pick-two").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   let card2 = pickCard();
+//   cardBack.src = card2.pic;
+// });
+// document.querySelector(".card__pick-three").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   pickCard();
+// });
+
+// document.querySelector('.card__pick-one').forEach(cardBack => {
+//   cardBack.addEventListener('click', (e) =>{
+//     e.preventDefault();
+//     pickCard();
+//     })
+// });
 
 // document.querySelectorAll('.card__back').forEach(cardBack => {
 //   cardBack.addEventListener('click', () =>{
@@ -94,8 +154,8 @@ document.querySelectorAll('.card__pick').forEach(cardBack => {
 //     const card = document.getElementById(nextCard);
 //     pickCard(card);
 
-//   });  
+//   });
 // });
 
-
 // test.addEventListener("mouseover", function( event ) {
+

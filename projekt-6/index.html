@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Play - Points of You®</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -26,7 +32,8 @@
       </header>
       <section class="card__layout card__layout-selected">
         <img
-          class="card__back" id="modal-selectedCard"
+          class="card__back"
+          id="modal-selectedCard"
           data-reverse
           data-selected-card
           src="./img/card-back.jpg"
@@ -34,7 +41,7 @@
         />
         <!-- <img class="card__front" src="" alt="" /> -->
         <!-- <button class="card__pick">Wybierz kartę</button> -->
-        <span class="displayCardName displayCardName-selected"></span>
+        <span class="displayCardName-selected"></span>
         <a href="" class="card__pick">zagrajmy ♥</a>
       </section>
     </div>
@@ -52,15 +59,16 @@
             <div class="cardContainer">
               <div class="card__layout">
                 <img
-                  class="card__back" id="card__back"
+                  class="card__back card-one"
+                  id="card__back"
                   data-reverse
                   src="./img/card-back.jpg"
                   alt=""
                 />
                 <!-- <img class="card__front" src="" alt="" /> -->
                 <!-- <button class="card__pick">Wybierz kartę</button> -->
-                <span class="displayCardName"></span>
-                <a href="" class="card__pick">zagrajmy ♥</a>
+                <span class="displayCardName name-one"></span>
+                <a href="" class="card__pick card__pick-one">zagrajmy ♥</a>
               </div>
               <div class="card__caption">
                 <span class="cardContent__outside" data-question1
@@ -72,37 +80,49 @@
           <li class="cardContent__wrapper">
             <div class="cardContainer">
               <div class="card__layout">
+                <div class="card__lock" id="lock">
+                  <i class="fas fa-lock fa-2x"></i>
+                </div>
                 <img
-                  class="card__back" id="card__back"
+                  class="card__back card-two"
+                  id="card__back"
                   data-reverse
                   src="./img/card-back.jpg"
                   alt=""
                 />
-                <!-- <img class="card__front" src="" alt="" /> -->
-                <!-- <button class="card__pick">Wybierz kartę</button> -->
-                <span class="displayCardName"></span>
-                <a href="" class="card__pick">Wybierz kartę</a>
+                <span class="displayCardName name-two"></span>
+                <a href="" class="card__pick card__pick-two hidden"
+                  >Wybierz kartę</a>
               </div>
               <div class="card__caption">
-                <span class="cardContent__outside"
-                  >What is not working for me?</span
-                >
+                    <span class="cardContent__outside"
+                  >What is not working for me?</span>
               </div>
             </div>
           </li>
           <li class="cardContent__wrapper">
             <div class="cardContainer">
               <div class="card__layout">
+                <div class="card__lock" id="lock">
+                  <i class="fas fa-lock fa-2x"></i>
+                </div>
                 <img
-                  class="card__back" id="card__back"
+                  class="card__back card-three"
+                  id="card__back"
                   data-reverse
                   src="./img/card-back.jpg"
                   alt=""
                 />
                 <!-- <img class="card__front" src="" alt="" /> -->
                 <!-- <button class="card__pick">Wybierz kartę</button> -->
-                <span class="displayCardName"></span>
-                <a href="" class="card__pick">Wybierz kartę</a>
+                <span class="displayCardNamename-three" data-name-three></span>
+                <a
+                  href=""
+                  class="card__pick card__pick-three hidden"
+                  data
+                  card-three
+                  >Wybierz kartę</a
+                >
               </div>
               <div class="card__caption">
                 <span class="cardContent__outside">What is my next step?</span>
