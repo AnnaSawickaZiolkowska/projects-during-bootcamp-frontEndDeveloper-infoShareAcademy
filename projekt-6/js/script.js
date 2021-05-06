@@ -74,6 +74,16 @@ const pickCard = () => {
   return selectedCard;
 };
 
+// const displayModalQuestions = (e) => {
+//   const modalQuestion = document.querySelector('#question');
+//   if (e.target.classList.contains("card__pick-one")){
+//     const question = document.querySelector('[data-question1]').textContent;
+//     modalQuestion.textContent = question
+//   }
+//   if (e.target.classList.contains("card__pick-two")){
+//     modalQuestion.innerHTML = document.querySelector('[data-question2]')
+//       }
+// };
 // const pickCard = () => {
 //   selectedCard = cards[Math.floor(Math.random() * cards.length)];
 
@@ -96,15 +106,17 @@ document.querySelectorAll(".card__pick").forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     pickCard();
-    console.log(button);
-    console.log(e.target);
     const card = pickCard();
-      if (e.target.classList.contains("card__pick-one")){
+    const modalQuestion = document.querySelector('#question');
+
+      if (button.classList.contains("card__pick-one")){
         document.querySelector(".card__pick-one").classList.add('hidden');
         document.querySelector('.card-one').src = card.pic;
         document.querySelector('.name-one').textContent = card.name;
-        document.querySelector('.card__lock').classList.add('hidden')
-        document.querySelector('.card__pick-two').classList.remove('hidden')
+        document.querySelector('.card__lock').classList.add('hidden');
+        document.querySelector('.card__pick-two').classList.remove('hidden');
+        const question = document.querySelector('[data-question1]').textContent;
+        modalQuestion.textContent = question;
       }
 
       else if (button.classList.contains("card__pick-two")){
@@ -114,72 +126,32 @@ document.querySelectorAll(".card__pick").forEach((button) => {
         document.querySelector('.card__lock-three').classList.add('hidden');
         document.querySelector('.card__pick-three').classList.remove('hidden');
         document.querySelector(".card__pick-two").classList.add('active');
+        const question = document.querySelector('[data-question2]').textContent;
+        modalQuestion.textContent = question;
       }
       else if (button.classList.contains("card__pick-three")){
         document.querySelector(".card__pick-three").classList.add('hidden');
         document.querySelector('.card-three').src = card.pic;
         document.querySelector('.name-three').textContent = card.name;
+        const question = document.querySelector('[data-question3]').textContent;
+        modalQuestion.textContent = question;
       }
   });
 });
 
-// document.querySelector(".card__pick-one").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   console.log(e.target);
-//   // if (e.target.classList == "card__pick-one"){
-//   // const card = e.target.closest('.card__back') ;
-//   // const cardName = e.target.closest('.displayCardName');
-//   // pickCard(card, cardName);
-//   let card1 = pickCard();
-//   cardBack.src = card1.pic;
-
-//   // }
-// });
-// document.querySelector(".card__pick-two").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   let card2 = pickCard();
-//   cardBack.src = card2.pic;
-// });
-// document.querySelector(".card__pick-three").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   pickCard();
-// });
-
-// document.querySelector('.card__pick-one').forEach(cardBack => {
-//   cardBack.addEventListener('click', (e) =>{
-//     e.preventDefault();
-//     pickCard();
-//     })
-// });
-
-// document.querySelectorAll('.card__back').forEach(cardBack => {
-//   cardBack.addEventListener('click', () =>{
-//     const nextCard = cardBack.dataset.reverse;
-//     console.log(nextCard);
-//     const card = document.getElementById(nextCard);
-//     pickCard(card);
-
-//   });
-// });
-
-// test.addEventListener("mouseover", function( event ) {
-
-document.querySelectorAll('.card__back').forEach(card =>{
-card.addEventListener('mouseover', () =>{
-  if (card.hasAttribute('.active')){
-    console.log('działa');
-  }
-})
-})
+// document.querySelectorAll('.card__back').forEach(card =>{
+// card.addEventListener('mouseover', () =>{
+//   if (card.hasAttribute('.active')){
+//     console.log('działa');
+//   }
+// })
+// })
 
 
-// Modal - showing buttons - mouseover event
-document.querySelector('.card__layout-selected').addEventListener('mouseover', e =>{
-  e.preventDefault();
-  console.log(e.target);
+// Modal - showing buttons - mouseover/mouseout event
+document.querySelector('.card__layout-selected').addEventListener('mouseover', () =>{
   document.querySelector('.button__hover').classList.remove('hidden')
 });
-
-document.querySelector('.card__layout-selected').addEventListener('mouseout', e =>{
+document.querySelector('.card__layout-selected').addEventListener('mouseout', () =>{
   document.querySelector('.button__hover').classList.add('hidden')
 })

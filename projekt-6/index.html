@@ -16,7 +16,7 @@
   <body>
     <div class="modal modal--hidden" id="modal">
       <header class="header-modal">
-        <h1 class="proces-question" id="question">What is working for me?</h1>
+        <h1 class="proces-question" id="question"></h1>
         <p class="proces-description">
           Take a moment and observe the photo and its title in light of your
           issue
@@ -37,20 +37,17 @@
           data-reverse
           data-selected-card
           src="./img/card-back.jpg"
-          alt=""
-        />
+          alt=""/>
         <span class="displayCardName-selected"></span>
         <button class="card__pick">zagrajmy ♥</button>
     </div>
     <div class="button__hover hidden">
         <div class="modal__buttons">
-        <button class="btn__changeCard">zmień kartę</button>
+        <button class="btn__changeCard">zmień kartę<button>
         <button class="btn__backMap">Plansza</button>
         </div>
-
       </div>
-      </section>
-      
+      </section> 
     </div>
 
     <h1>Insightful Feedback - Process Layout</h1>
@@ -58,7 +55,6 @@
       Play this 3-card process layout chart to create clarity about your next
       step
     </p>
-
     <main class="expanding-map">
       <div class="map-layout">
         <ul class="cardsList">
@@ -70,17 +66,13 @@
                   id="card__back"
                   data-reverse
                   src="./img/card-back.jpg"
-                  alt=""
-                />
-                <!-- <img class="card__front" src="" alt="" /> -->
-                <!-- <button class="card__pick">Wybierz kartę</button> -->
+                  alt=""/>
                 <span class="displayCardName name-one"></span>
                 <button class="card__pick card__pick-one">zagrajmy ♥</button>
               </div>
               <div class="card__caption">
                 <span class="cardContent__outside" data-question1
-                  >What is working for me?</span
-                >
+                  >What is working for me?</span>
               </div>
             </div>
           </li>
@@ -105,7 +97,7 @@
                 </button>
               </div>
               <div class="card__caption">
-                <span class="cardContent__outside"
+                <span class="cardContent__outside" data-question2
                   >What is not working for me?</span
                 >
               </div>
@@ -132,7 +124,7 @@
                 </button>
               </div>
               <div class="card__caption">
-                <span class="cardContent__outside">What is my next step?</span>
+                <span class="cardContent__outside" data-question3>What is my next step?</span>
               </div>
             </div>
           </li>
