@@ -171,3 +171,15 @@ card.addEventListener('mouseover', () =>{
   }
 })
 })
+
+
+// Modal - showing buttons - mouseover event
+document.querySelector('.card__layout-selected').addEventListener('mouseover', e =>{
+  e.preventDefault();
+  console.log(e.target);
+  document.querySelector('.button__hover').classList.remove('hidden')
+});
+
+document.querySelector('.card__layout-selected').addEventListener('mouseout', e =>{
+  document.querySelector('.button__hover').classList.add('hidden')
+})
