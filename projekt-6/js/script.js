@@ -61,7 +61,7 @@ const closeModal = (modal) => {
 
 // Get random Photo from Array
 let selectedCard;
-
+const test = document.querySelector('.card__pick-one')
 const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
   cardBackSelected.src = selectedCard.pic;
@@ -69,6 +69,11 @@ const pickCard = () => {
   cardBack.removeEventListener("click", pickCard);
   pickCardButton.classList.add("hidden");
   showModal(modal);
+  console.log(test.parentElement.classList);
+  // if (test.parentElement.classList.contains("card1")) {
+  //   console.log("lubię frytki");
+  // }
+  
   // cardBack.src = selectedCard.pic;
   // displayCardName.textContent = selectedCard.name;
   return selectedCard;
@@ -105,7 +110,9 @@ const pickCard = () => {
 document.querySelectorAll(".card__pick").forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    pickCard();
+
+    // pickCard();
+
     const card = pickCard();
     const modalQuestion = document.querySelector('#question');
 
@@ -148,10 +155,18 @@ document.querySelectorAll(".card__pick").forEach((button) => {
 // })
 
 
-// Modal - showing buttons - mouseover/mouseout event
+// Modal - hover buttons - mouseover/mouseout event
 document.querySelector('.card__layout-selected').addEventListener('mouseover', () =>{
   document.querySelector('.button__hover').classList.remove('hidden')
 });
 document.querySelector('.card__layout-selected').addEventListener('mouseout', () =>{
   document.querySelector('.button__hover').classList.add('hidden')
 })
+
+document.querySelector('.btn__backMap').addEventListener('click', () => {
+  closeModal(modal);
+})
+
+// CHANGE CARD
+// dodanie klasy .card__pick do przycisku zmień kartę, 
+// zmienia kartę w modalu, ale nie podmienia zdjęcia na planszy
