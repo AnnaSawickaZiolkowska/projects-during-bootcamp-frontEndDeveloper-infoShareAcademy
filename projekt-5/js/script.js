@@ -20,8 +20,6 @@ const todoContainer = document.querySelector(".todoList");
 const db = firebase.firestore();
 
 db.collection('todos').onSnapshot(todos =>{
-  // updateTaskList();
-// getTodoData(todos);  
 getData(todos);
 template(todos);
 });
