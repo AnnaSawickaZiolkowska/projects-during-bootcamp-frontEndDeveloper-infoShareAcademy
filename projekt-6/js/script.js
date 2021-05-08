@@ -41,7 +41,7 @@ const displaySelectedCardName = document.querySelector(
 );
 const pickCardButton = document.querySelector(".card__pick");
 const cardLock = document.querySelector(".card__lock");
-const cardLayout = document.querySelector('.card__layout');
+const cardLayout = document.querySelector(".card__layout");
 
 // MODAL
 const modal = document.querySelector("#modal");
@@ -59,9 +59,11 @@ const closeModal = (modal) => {
   modal.classList.add("modal--hidden");
 };
 
+let layoutArray = [];
+
 // Get random Photo from Array
 let selectedCard;
-const test = document.querySelector('.card__pick-one')
+const test = document.querySelector(".card__pick-one");
 const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
   cardBackSelected.src = selectedCard.pic;
@@ -70,10 +72,11 @@ const pickCard = () => {
   pickCardButton.classList.add("hidden");
   showModal(modal);
   console.log(test.parentElement.classList);
+  layoutArray.push(selectedCard);
   // if (test.parentElement.classList.contains("card1")) {
   //   console.log("lubię frytki");
   // }
-  
+
   // cardBack.src = selectedCard.pic;
   // displayCardName.textContent = selectedCard.name;
   return selectedCard;
@@ -114,35 +117,35 @@ document.querySelectorAll(".card__pick").forEach((button) => {
     // pickCard();
 
     const card = pickCard();
-    const modalQuestion = document.querySelector('#question');
+    const modalQuestion = document.querySelector("#question");
 
-      if (button.classList.contains("card__pick-one")){
-        document.querySelector(".card__pick-one").classList.add('hidden');
-        document.querySelector('.card-one').src = card.pic;
-        document.querySelector('.name-one').textContent = card.name;
-        document.querySelector('.card__lock').classList.add('hidden');
-        document.querySelector('.card__pick-two').classList.remove('hidden');
-        const question = document.querySelector('[data-question1]').textContent;
-        modalQuestion.textContent = question;
-      }
-
-      else if (button.classList.contains("card__pick-two")){
-        document.querySelector(".card__pick-two").classList.add('hidden');
-        document.querySelector('.card-two').src = card.pic;
-        document.querySelector('.name-two').textContent = card.name;
-        document.querySelector('.card__lock-three').classList.add('hidden');
-        document.querySelector('.card__pick-three').classList.remove('hidden');
-        document.querySelector(".card__pick-two").classList.add('active');
-        const question = document.querySelector('[data-question2]').textContent;
-        modalQuestion.textContent = question;
-      }
-      else if (button.classList.contains("card__pick-three")){
-        document.querySelector(".card__pick-three").classList.add('hidden');
-        document.querySelector('.card-three').src = card.pic;
-        document.querySelector('.name-three').textContent = card.name;
-        const question = document.querySelector('[data-question3]').textContent;
-        modalQuestion.textContent = question;
-      }
+    if (button.classList.contains("card__pick-one")) {
+      document.querySelector(".card__pick-one").classList.add("hidden");
+      document.querySelector(".card-one").src = card.pic;
+      document.querySelector(".name-one").textContent = card.name;
+      document.querySelector(".card__lock").classList.add("hidden");
+      document.querySelector(".card__pick-two").classList.remove("hidden");
+      const question = document.querySelector("[data-question1]").textContent;
+      modalQuestion.textContent = question;
+      console.log(layoutArray);
+    } else if (button.classList.contains("card__pick-two")) {
+      document.querySelector(".card__pick-two").classList.add("hidden");
+      document.querySelector(".card-two").src = card.pic;
+      document.querySelector(".name-two").textContent = card.name;
+      document.querySelector(".card__lock-three").classList.add("hidden");
+      document.querySelector(".card__pick-three").classList.remove("hidden");
+      document.querySelector(".card__pick-two").classList.add("active");
+      const question = document.querySelector("[data-question2]").textContent;
+      modalQuestion.textContent = question;
+      console.log(layoutArray);
+    } else if (button.classList.contains("card__pick-three")) {
+      document.querySelector(".card__pick-three").classList.add("hidden");
+      document.querySelector(".card-three").src = card.pic;
+      document.querySelector(".name-three").textContent = card.name;
+      const question = document.querySelector("[data-question3]").textContent;
+      modalQuestion.textContent = question;
+      console.log(layoutArray);
+    }
   });
 });
 
@@ -154,19 +157,34 @@ document.querySelectorAll(".card__pick").forEach((button) => {
 // })
 // })
 
-
 // Modal - hover buttons - mouseover/mouseout event
-document.querySelector('.card__layout-selected').addEventListener('mouseover', () =>{
-  document.querySelector('.button__hover').classList.remove('hidden')
-});
-document.querySelector('.card__layout-selected').addEventListener('mouseout', () =>{
-  document.querySelector('.button__hover').classList.add('hidden')
-})
+document
+  .querySelector(".card__layout-selected")
+  .addEventListener("mouseover", () => {
+    document.querySelector(".button__hover").classList.remove("hidden");
+  });
+document
+  .querySelector(".card__layout-selected")
+  .addEventListener("mouseout", () => {
+    document.querySelector(".button__hover").classList.add("hidden");
+  });
 
-document.querySelector('.btn__backMap').addEventListener('click', () => {
+document.querySelector(".btn__backMap").addEventListener("click", () => {
   closeModal(modal);
-})
+});
 
 // CHANGE CARD
-// dodanie klasy .card__pick do przycisku zmień kartę, 
+// dodanie klasy .card__pick do przycisku zmień kartę,
 // zmienia kartę w modalu, ale nie podmienia zdjęcia na planszy
+
+const changeCardButton = document.querySelector(".btn__changeCard");
+
+const changeCard = () => {};
+changeCardButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  closeModal(modal);
+  // document.querySelector(".card__pick-one").classList.add('hidden');
+  document.querySelector(".card-one").src = "./img/card-back.jpg";
+  document.querySelector(".name-one").textContent = "";
+  pickCardButton.classList.remove("hidden");
+});
