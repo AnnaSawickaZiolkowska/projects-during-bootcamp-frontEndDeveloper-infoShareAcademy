@@ -47,7 +47,7 @@ const insightfulFeedback = {title: 'Insightful Feedback - Process Layout',
 const threeCardsLayouts = [insightfulFeedback];
 
 const cardsList = document.querySelector('.cardsList');
-const basicThreeCardTemplate = `<li class="cardContent__wrapper">
+const basicThreeCardTemplate = `<li class="cardContent__wrapper id="card1">
 <div class="cardContainer">
   <div class="card__layout card1">
     <img class="card__back card-one" id="card__back" data-reverse
@@ -60,7 +60,7 @@ const basicThreeCardTemplate = `<li class="cardContent__wrapper">
   </div>
 </div>
 </li>
-<li class="cardContent__wrapper">
+<li class="cardContent__wrapper" id="card2">
   <div class="cardContainer">
     <div class="card__layout">
       <div class="card__lock" id="lock">
@@ -75,7 +75,7 @@ const basicThreeCardTemplate = `<li class="cardContent__wrapper">
    </div>
    </div>
   </li>
-  <li class="cardContent__wrapper">
+  <li class="cardContent__wrapper" id="card3">
    <div class="cardContainer">
     <div class="card__layout">
       <div class="card__lock card__lock-three" id="lock">
