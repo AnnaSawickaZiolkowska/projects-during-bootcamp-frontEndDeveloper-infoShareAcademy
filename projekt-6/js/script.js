@@ -130,12 +130,14 @@ const basicThreeCardTemplate = `<li class="cardContent__wrapper id="cardOne">
     </div>
   </li>`;
 
-let modifiedInsightfulFeedback = [];
+// let modifiedInsightfulFeedback = [];
 const onCardClicked = (e) => {
   console.log(e);
   console.log(e.currentTarget);
-  console.log(e.currentTarget.id);
+  // console.log(e.currentTarget.id);
   console.log(e.target);
+  console.log("klikniety zostal element z id", e.currentTarget.id)
+  
   let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
     const randomCard = pickCard();
     const modalQuestion = document.querySelector("#question");
@@ -153,7 +155,7 @@ console.log(id);
       document.querySelector(".card-one").src = randomCard.pic;
       item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
       document.querySelector(".name-one").textContent = randomCard.name;
-     
+     item.cardName = randomCard.name;
 
   
       cardBackSelected.src = randomCard.pic;
@@ -170,8 +172,9 @@ console.log(id);
 
     return item;
   });
-  return modifiedInsightfulFeedback;
-
+  // return modifiedInsightfulFeedback;
+console.log(insightfulFeedback);
+console.log(modifiedInsightfulFeedback);
 };
 
 
@@ -203,7 +206,7 @@ const pickCard = () => {
   // cardBackSelected.src = selectedCard.pic;
   // displaySelectedCardName.textContent = selectedCard.name;
   // modifiedInsightfulFeedback.push(selectedCard.pic)
-  modifiedInsightfulFeedback.card = selectedCard.pic
+  // modifiedInsightfulFeedback.card = selectedCard.pic
   // cardBack.removeEventListener("click", pickCard);
   // pickCardButton.classList.add("hidden");
   showModal(modal);
@@ -297,6 +300,7 @@ document.querySelector('#card2').addEventListener('click', (e) => {
   onCardClicked(e);
   console.log(onCardClicked(e));
 }, {once: true});
+
 document.querySelector('#card3').addEventListener('click', (e) => {
   e.preventDefault();
   onCardClicked(e);
