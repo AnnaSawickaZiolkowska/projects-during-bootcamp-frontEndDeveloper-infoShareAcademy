@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+
+    background-color: red;
+    padding: 20px;
+    margin: 20px;
+}
+
+.box-inner {
+    display: flex;
+
+    padding: 20px;
+    margin: 20px;
+    background-color: yellow;
+}
+  </style>
+</head>
+<body>
+  
+
+
+
+  <script>
+    const data = [
+    {id: 1, name: 'cos tam'},
+    {id: 2, name: 'cos tam'},
+    {id: 3, name: 'cos tam'},
+    {id: 3, name: 'cos tam'},
+
+  ]
+  
+  
+  const onBoxClicked = (e) => {
+    console.log(e);
+    console.log(242, e.currentTarget);
+  
+    console.log("klikniety zostal element z id", e.currentTarget.id)
+  
+    const modifiedData = data.map(item => {
+      if(item.id.toString() === e.currentTarget.id.toString()) {
+        item.name = 'Jakis inny zupielnie name cos tam robi pierogi'
+      }
+  
+      return item;
+    })
+    console.log(data);
+}
+  
+  const createBox = (content, id) => {
+    const div = document.createElement('div');
+    const divInner = document.createElement('div');
+    divInner.classList.add('box-inner');
+  
+    div.append(divInner)
+  
+  
+    div.classList.add('box');
+    div.setAttribute('id', id)
+    div.innerText = content;
+  
+    document.querySelector('body').append(div);
+    div.addEventListener('click', onBoxClicked)
+  
+  }
+  
+  createBox(1, 1)
+  createBox(2, 2)
+  createBox(3, 3)
+  createBox(4, 4)
+  
+
+  </script>
+</body>
+</html>

@@ -130,6 +130,8 @@ const basicThreeCardTemplate = `<li class="cardContent__wrapper id="cardOne">
     </div>
   </li>`;
 
+ 
+
 // let modifiedInsightfulFeedback = [];
 const onCardClicked = (e) => {
   console.log(e);
@@ -142,7 +144,6 @@ const onCardClicked = (e) => {
     const randomCard = pickCard();
     const modalQuestion = document.querySelector("#question");
 
-
     if (item.id.toString() === e.currentTarget.id.toString()) {
       console.log(item);
       console.log(item.id);
@@ -150,14 +151,24 @@ const onCardClicked = (e) => {
       console.log(e.currentTarget.classList);
       console.log(randomCard.pic);
       console.log(item.card);
-      const id = item.id
-console.log(id);      
+      const elementId = item.id
+console.log(elementId);  
+// item.card = randomCard.pic;
+const newCard = item.card;
+console.log(newCard);
+
       document.querySelector(".card-one").src = randomCard.pic;
       item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
+     newCard.src = randomCard.pic;
+     console.log(newCard);
       document.querySelector(".name-one").textContent = randomCard.name;
      item.cardName = randomCard.name;
-
+const newName = item.cardName;
+// newName.textContent = randomCard.name 
   
+// updateCardAfterClick(id, newCard, newName);
+
+
       cardBackSelected.src = randomCard.pic;
       displaySelectedCardName.textContent = randomCard.name;
       // displayCardName.classList.remove('hidden');
@@ -167,12 +178,14 @@ console.log(id);
       document.querySelector(".card__pick-two").classList.remove("hidden");
       const question = document.querySelector("[data-question1]").textContent;
       modalQuestion.textContent = question
+      updateCardAfterClick(elementId, newCard, newName);
 
     }
 
     return item;
+
+  
   });
-  // return modifiedInsightfulFeedback;
 console.log(insightfulFeedback);
 console.log(modifiedInsightfulFeedback);
 };
@@ -181,7 +194,19 @@ console.log(modifiedInsightfulFeedback);
 cardsList.append(basicThreeCardTemplate);
 cardsList.innerHTML = basicThreeCardTemplate;
 
+const updateCardAfterClick = (elementId, newCard, newName) => {
+  //  cardBack.classList.add('hidden')
+  const cardFront = document.createElement('img');
+  cardFront.classList.add('card__front');
+  cardFront.setAttribute('id', elementId)
+  cardFront.src = newCard;
+  cardFront.textContent = newName;
+  cardLayout.prepend(cardFront);
 
+  console.log(elementId);
+  const li = document.querySelectorAll('cardContent__wrapper');
+  
+}
 
 // MODAL
 const modal = document.querySelector("#modal");
@@ -285,29 +310,41 @@ const pickCard = () => {
 //   });
 // });
 
-
-
-// document.querySelector('.card__pick').addEventListener('click', onCardClicked);
+/////////////
+//  EVENT LISTENER FOR ALL BUTTONS
+//
+// document.querySelectorAll('.cardContainer').forEach(container => {
+//   container.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     if (e.target.classList.contains('card__pick')) {
+//       onCardClicked(e);
+//     }
+//   })
+// })
 
 document.querySelector('#card1').addEventListener('click', (e) => {
   e.preventDefault();
-  onCardClicked(e);
-  console.log(onCardClicked(e));
-}, {once: true});
+  console.log(e.target);
+  if (e.target.classList.contains('card__pick')) {
+    onCardClicked(e);
+  }
+});
 
 document.querySelector('#card2').addEventListener('click', (e) => {
   e.preventDefault();
-  onCardClicked(e);
-  console.log(onCardClicked(e));
-}, {once: true});
+  if (e.target.classList.contains('card__pick')) {
+    onCardClicked(e);
+  }
+});
 
 document.querySelector('#card3').addEventListener('click', (e) => {
   e.preventDefault();
-  onCardClicked(e);
-  console.log(onCardClicked(e));
-}, {once: true});
+  if (e.target.classList.contains('card__pick')) {
+    onCardClicked(e);
+  }
+});
 
-// document.querySelectorAll('.card__back').forEach(card =>{
+// document.querySelectorAll('.card__front').forEach(card =>{
 // card.addEventListener('mouseover', () =>{
 //   if (card.hasAttribute('.active')){
 //     console.log('działa');
