@@ -86,8 +86,8 @@ const cardLock = document.querySelector(".card__lock");
 const cardLayout = document.querySelector(".card__layout");
 
 const cardsList = document.querySelector(".cardsList");
-const basicThreeCardTemplate = `<li class="cardContent__wrapper id="cardOne">
-<div class="cardContainer" id="card1">
+const basicThreeCardTemplate = `<li class="cardContent__wrapper" id="card1">
+<div class="cardContainer" >
   <div class="card__layout">
     <img class="card__back card-one" id="card__back" data-reverse
       src="${insightfulFeedback[0].card}" alt=""/>
@@ -130,8 +130,6 @@ const basicThreeCardTemplate = `<li class="cardContent__wrapper id="cardOne">
     </div>
   </li>`;
 
- 
-
 // let modifiedInsightfulFeedback = [];
 const onCardClicked = (e) => {
   console.log(e);
@@ -144,6 +142,7 @@ const onCardClicked = (e) => {
     const randomCard = pickCard();
     const modalQuestion = document.querySelector("#question");
 
+
     if (item.id.toString() === e.currentTarget.id.toString()) {
       console.log(item);
       console.log(item.id);
@@ -151,24 +150,15 @@ const onCardClicked = (e) => {
       console.log(e.currentTarget.classList);
       console.log(randomCard.pic);
       console.log(item.card);
-      const elementId = item.id
-console.log(elementId);  
-// item.card = randomCard.pic;
-const newCard = item.card;
-console.log(newCard);
+      const id = item.id
+console.log(id);      
+      //DZIAŁA do modyfikacji tablicy, nie wiem jak wyświetlić zmiany
+      item.card = randomCard.pic; 
+      item.cardName = randomCard.name;
+      // document.querySelector(".card-one").src = randomCard.pic;
+      // document.querySelector(".name-one").textContent = randomCard.name;
 
-      document.querySelector(".card-one").src = randomCard.pic;
-      item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
-     newCard.src = randomCard.pic;
-     console.log(newCard);
-      document.querySelector(".name-one").textContent = randomCard.name;
-     item.cardName = randomCard.name;
-const newName = item.cardName;
-// newName.textContent = randomCard.name 
-  
-// updateCardAfterClick(id, newCard, newName);
-
-
+      //tymczasowo wyświetla w modalu
       cardBackSelected.src = randomCard.pic;
       displaySelectedCardName.textContent = randomCard.name;
       // displayCardName.classList.remove('hidden');
@@ -177,14 +167,9 @@ const newName = item.cardName;
       document.querySelector(".card__lock").classList.add("hidden");
       document.querySelector(".card__pick-two").classList.remove("hidden");
       const question = document.querySelector("[data-question1]").textContent;
-      modalQuestion.textContent = question
-      updateCardAfterClick(elementId, newCard, newName);
-
+      modalQuestion.textContent = item.question
     }
-
     return item;
-
-  
   });
 console.log(insightfulFeedback);
 console.log(modifiedInsightfulFeedback);
@@ -194,19 +179,8 @@ console.log(modifiedInsightfulFeedback);
 cardsList.append(basicThreeCardTemplate);
 cardsList.innerHTML = basicThreeCardTemplate;
 
-const updateCardAfterClick = (elementId, newCard, newName) => {
-  //  cardBack.classList.add('hidden')
-  const cardFront = document.createElement('img');
-  cardFront.classList.add('card__front');
-  cardFront.setAttribute('id', elementId)
-  cardFront.src = newCard;
-  cardFront.textContent = newName;
-  cardLayout.prepend(cardFront);
 
-  console.log(elementId);
-  const li = document.querySelectorAll('cardContent__wrapper');
-  
-}
+
 
 // MODAL
 const modal = document.querySelector("#modal");
@@ -310,6 +284,8 @@ const pickCard = () => {
 //   });
 // });
 
+
+
 /////////////
 //  EVENT LISTENER FOR ALL BUTTONS
 //
@@ -344,7 +320,7 @@ document.querySelector('#card3').addEventListener('click', (e) => {
   }
 });
 
-// document.querySelectorAll('.card__front').forEach(card =>{
+// document.querySelectorAll('.card__back').forEach(card =>{
 // card.addEventListener('mouseover', () =>{
 //   if (card.hasAttribute('.active')){
 //     console.log('działa');
