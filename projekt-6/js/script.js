@@ -165,18 +165,16 @@ document.querySelector('.card__lock').classList.add('hidden');
   // cardsList.innerHTML = basicThreeCardTemplate;
 
 
-  // const addRemoveClass = (e) =>{
-  //   if (e.currentTarget.id.toString() === "card1") {
-  //     document.querySelector('.card__lock').classList.add('hidden');
+  const removeLockElement = (e) =>{
 
-  //   }else if (e.currentTarget.id.toString() === "card2"){
-      
-
-  //     }else if (e.currentTarget.id.toString() === "card3"){
-       
-
-  //     }
-  // }
+    if (e.target.classList.contains('card__pick')) {
+      // onCardClicked(e);
+      console.log(e.target.closest("div div"));
+      e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
+      document.querySelector('.card__lock').classList.add('hidden');
+  
+    }
+  }
 
 
 
@@ -211,8 +209,10 @@ console.log(id);
       //DZIAŁA do modyfikacji tablicy, nie wiem jak wyświetlić zmiany
       item.card = randomCard.pic; 
       item.cardName = randomCard.name;
-      closestCard.src = item.card
-      closestCardName.textContent = item.cardName
+      closestCard.src = item.card;
+      closestCardName.textContent = item.cardName;
+
+  
 
       // if (e.currentTarget.id.toString() === "card1"){
       //   document.querySelector(".card-one").src = randomCard.pic;
@@ -244,17 +244,13 @@ console.log(id);
       document.querySelector('.card__pick-one').classList.add('hidden');
       const question = document.querySelector("[data-question1]").textContent;
       modalQuestion.textContent = item.question;
-
-      if (e.currentTarget.id.toString() < item.id){
-        closestCard.previousElementSibling.classList.add('hidden'); // hide card__lock
-
-      }
+     
 
 
-      // updateTemplate();
     }
+
     return item;
-    
+
   });
   // cardsList.innerHTML = modifiedInsightfulFeedback.map(cardTemplate).join('');
 
@@ -402,11 +398,7 @@ document.querySelector('#card1').addEventListener('click', (e) => {
 
   if (e.target.classList.contains('card__pick')) {
     onCardClicked(e);
-    console.log(e.target.closest("div div"));
-    e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
-    document.querySelector('.card__lock').classList.add('hidden');
-
-  //  document.querySelector('card__pick')
+    removeLockElement(e);
   }
 });
 
