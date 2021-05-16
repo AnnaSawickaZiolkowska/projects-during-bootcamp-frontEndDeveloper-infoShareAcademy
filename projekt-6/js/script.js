@@ -167,7 +167,9 @@ console.log(id);
       document.querySelector(".card__lock").classList.add("hidden");
       document.querySelector(".card__pick-two").classList.remove("hidden");
       const question = document.querySelector("[data-question1]").textContent;
-      modalQuestion.textContent = item.question
+      modalQuestion.textContent = item.question;
+
+      // updateTemplate();
     }
     return item;
   });
@@ -180,6 +182,17 @@ cardsList.append(basicThreeCardTemplate);
 cardsList.innerHTML = basicThreeCardTemplate;
 
 
+// const updateTemplate = () => {
+//   cardsList.innerHTML = insightfulFeedback.map(basicThreeCardTemplate).join('');
+// }
+//   const updateTaskList = () => {
+//     todoContainer.innerHTML = todoItemsArray.map(template).join("");
+//     if (todoItemsArray.length == 0) {
+//       fromInputToDo.textContent = "Nothing to do :)";
+//     }
+//   };
+//   return updateTaskList();
+// }
 
 
 // MODAL
