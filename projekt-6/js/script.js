@@ -86,6 +86,7 @@ const cardLock = document.querySelector(".card__lock");
 const cardLayout = document.querySelector(".card__layout");
 
 const cardsList = document.querySelector(".cardsList");
+
 const basicThreeCardTemplate = `<li class="cardContent__wrapper" id="card1">
 <div class="cardContainer" >
   <div class="card__layout">
@@ -130,6 +131,7 @@ const basicThreeCardTemplate = `<li class="cardContent__wrapper" id="card1">
     </div>
   </li>`;
 
+
 // let modifiedInsightfulFeedback = [];
 const onCardClicked = (e) => {
   console.log(e);
@@ -155,23 +157,45 @@ console.log(id);
       //DZIAŁA do modyfikacji tablicy, nie wiem jak wyświetlić zmiany
       item.card = randomCard.pic; 
       item.cardName = randomCard.name;
-      // document.querySelector(".card-one").src = randomCard.pic;
-      // document.querySelector(".name-one").textContent = randomCard.name;
 
+      if (e.currentTarget.id.toString() === "card1"){
+        document.querySelector(".card-one").src = randomCard.pic;
+        document.querySelector(".name-one").textContent = randomCard.name;
+        document.querySelector(".card__pick-two").classList.remove("hidden");
+        document.querySelector(".card__lock").classList.add("hidden");
+
+
+      }else if (e.currentTarget.id.toString() === "card2"){
+        document.querySelector(".card-two").src = randomCard.pic;
+        document.querySelector(".name-two").textContent = randomCard.name;
+        document.querySelector(".card__pick-two").classList.add("hidden");
+        document.querySelector(".card__lock-three").classList.add("hidden");
+        document.querySelector(".card__pick-three").classList.remove("hidden");
+
+      }else if (e.currentTarget.id.toString() === "card3"){
+        document.querySelector(".card-three").src = randomCard.pic;
+        document.querySelector(".name-three").textContent = randomCard.name;
+        document.querySelector(".card__pick-three").classList.add("hidden");
+
+      }
+      // document.querySelector('.card__back').src = item.card
       //tymczasowo wyświetla w modalu
       cardBackSelected.src = randomCard.pic;
       displaySelectedCardName.textContent = randomCard.name;
       // displayCardName.classList.remove('hidden');
+
+
       document.querySelector('.name-one').classList.remove('hidden');
       document.querySelector('.card__pick-one').classList.add('hidden');
-      document.querySelector(".card__lock").classList.add("hidden");
-      document.querySelector(".card__pick-two").classList.remove("hidden");
       const question = document.querySelector("[data-question1]").textContent;
       modalQuestion.textContent = item.question;
+      // cardsList.innerHTML = basicThreeCardTemplate;
 
       // updateTemplate();
     }
+
     return item;
+    
   });
 console.log(insightfulFeedback);
 console.log(modifiedInsightfulFeedback);
