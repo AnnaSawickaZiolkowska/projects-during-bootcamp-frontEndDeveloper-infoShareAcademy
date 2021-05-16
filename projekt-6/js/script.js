@@ -402,6 +402,10 @@ document.querySelector('#card1').addEventListener('click', (e) => {
 
   if (e.target.classList.contains('card__pick')) {
     onCardClicked(e);
+    console.log(e.target.closest("div div"));
+    e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
+    document.querySelector('.card__lock').classList.add('hidden');
+
   //  document.querySelector('card__pick')
   }
 });
@@ -410,6 +414,8 @@ document.querySelector('#card2').addEventListener('click', (e) => {
   e.preventDefault();
   if (e.target.classList.contains('card__pick')) {
     onCardClicked(e);
+    e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
+    document.querySelector('.card__lock').classList.add('hidden');
   }
 });
 
