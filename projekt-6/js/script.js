@@ -57,25 +57,6 @@ const insightfulFeedback = [
     description: 'Play this 3-card process layout chart to create clarity about your next step',
   },
 ];
-// const threeCardsLayouts = [insightfulFeedback];
-// const defaultCard = {};
-// function createCard(card = defaultCard) {
-// return `<li class="cardContent__wrapper" id="${card.id}">
-// <div class="cardContainer" >
-//   <div class="card__layout">
-//     <img class="card__back card-one" id="card__back" data-reverse
-//       src="${card.card}" alt=""/>
-//     <span class="displayCardName name-one hidden">${card.cardName}</span>
-//     <button class="card__pick card__pick-one" >zagrajmy ♥</button>
-//   </div>
-//   <div class="card__caption">
-//     <span class="cardContent__outside" data-question1>${card.question}</span>
-//   </div>
-// </div>
-// </li>`
-// }
-
-
 
 const cardContainer = document.querySelector(".cardContainer");
 const cardBack = document.querySelector("#card__back");
@@ -185,7 +166,7 @@ const onCardClicked = (e) => {
   // console.log(e.currentTarget.id);
   console.log(e.target);
   console.log("klikniety zostal element z id", e.currentTarget.id)
-  
+
   let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
     const randomCard = pickCard();
     const modalQuestion = document.querySelector("#question");
@@ -206,13 +187,13 @@ console.log(e.target)
       console.log(item.card);
       const id = item.id
 console.log(id);      
-      //DZIAŁA do modyfikacji tablicy, nie wiem jak wyświetlić zmiany
       item.card = randomCard.pic; 
       item.cardName = randomCard.name;
       closestCard.src = item.card;
       closestCardName.textContent = item.cardName;
+      // document.querySelectorAll('.card__pick').textContent = "wybierz kartę";
 
-  
+
 
       // if (e.currentTarget.id.toString() === "card1"){
       //   document.querySelector(".card-one").src = randomCard.pic;
@@ -382,41 +363,44 @@ const pickCard = () => {
 /////////////
 //  EVENT LISTENER FOR ALL BUTTONS
 //
-// document.querySelectorAll('.cardContainer').forEach(container => {
-//   container.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     if (e.target.classList.contains('card__pick')) {
-//       onCardClicked(e);
-//     }
-//   })
-// })
+document.querySelectorAll('.cardContent__wrapper').forEach(container => {
+  container.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.classList.contains('card__pick')) {
+      onCardClicked(e);
+      removeLockElement(e);
 
-document.querySelector('#card1').addEventListener('click', (e) => {
-  e.preventDefault();
-  console.log(e.target);
-  console.log(e.currentTarget);
+    }
+  })
+})
 
-  if (e.target.classList.contains('card__pick')) {
-    onCardClicked(e);
-    removeLockElement(e);
-  }
-});
 
-document.querySelector('#card2').addEventListener('click', (e) => {
-  e.preventDefault();
-  if (e.target.classList.contains('card__pick')) {
-    onCardClicked(e);
-    e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
-    document.querySelector('.card__lock').classList.add('hidden');
-  }
-});
+// document.querySelector('#card1').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   console.log(e.target);
+//   console.log(e.currentTarget);
 
-document.querySelector('#card3').addEventListener('click', (e) => {
-  e.preventDefault();
-  if (e.target.classList.contains('card__pick')) {
-    onCardClicked(e);
-  }
-});
+//   if (e.target.classList.contains('card__pick')) {
+//     onCardClicked(e);
+//     removeLockElement(e);
+//   }
+// });
+
+// document.querySelector('#card2').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   if (e.target.classList.contains('card__pick')) {
+//     onCardClicked(e);
+//     e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
+//     document.querySelector('.card__lock').classList.add('hidden');
+//   }
+// });
+
+// document.querySelector('#card3').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   if (e.target.classList.contains('card__pick')) {
+//     onCardClicked(e);
+//   }
+// });
 
 // document.querySelectorAll('.card__back').forEach(card =>{
 // card.addEventListener('mouseover', () =>{
