@@ -90,61 +90,8 @@ const cardTemplate = insightfulFeedback.map((content) => {
 }).join("");
 cardsList.insertAdjacentHTML("afterbegin", cardTemplate)
 
+// Hide lock element from first card
 document.querySelector('.card__lock').classList.add('hidden');
-
-// cardsList.append(cardTemplate);
-// cardsList.innerHTML = insightfulFeedback.map(cardTemplate).join('');
-
-
-// const basicThreeCardTemplate = `<li class="cardContent__wrapper" id="card1">
-// <div class="cardContainer" >
-//   <div class="card__layout">
-//   <div class="card__lock1" id="lock">
-//   <i class="fas fa-lock fa-2x"></i>
-// </div>
-//     <img class="card__back card-one" id="card__back" data-reverse
-//       src="${insightfulFeedback[0].card}" alt=""/>
-//     <span class="displayCardName name-one hidden">${insightfulFeedback[0].cardName}</span>
-//     <button class="card__pick card__pick-one" >zagrajmy ♥</button>
-//   </div>
-//   <div class="card__caption">
-//     <span class="cardContent__outside" data-question1>${insightfulFeedback[0].question}</span>
-//   </div>
-// </div>
-// </li>
-// <li class="cardContent__wrapper" id="card2">
-//   <div class="cardContainer">
-//     <div class="card__layout">
-//       <div class="card__lock" id="lock">
-//         <i class="fas fa-lock fa-2x"></i>
-//       </div>
-//       <img class="card__back card-two" id="card__back" data-cardId = "${insightfulFeedback[1].id}" src="${insightfulFeedback[1].card}" alt=""/>
-//       <span class="displayCardName name-two">${insightfulFeedback[1].cardName}</span>
-//       <button class="card__pick card__pick-two card__pick-two hidden" id="card2"> Wybierz kartę</button>
-//     </div>
-//    <div class="card__caption">
-//     <span class="cardContent__outside" data-question2>${insightfulFeedback[1].question}</span>
-//    </div>
-//    </div>
-//   </li>
-//   <li class="cardContent__wrapper" id="card3">
-//    <div class="cardContainer">
-//     <div class="card__layout">
-//       <div class="card__lock card__lock-three" id="lock">
-//         <i class="fas fa-lock fa-2x"></i>
-//       </div>
-//       <img class="card__back card-three" id="card__back" data-reverse src="${insightfulFeedback[2].card}" alt=""/>
-//       <span class="displayCardName name-three" data-name-three></span>
-//       <button class="card__pick card__pick-three hidden" id="card3">Wybierz kartę</button>
-//     </div>
-//   <div class="card__caption">
-//   <span class="cardContent__outside" data-question3>${insightfulFeedback[2].question}</span>
-//     </div>
-//     </div>
-//   </li>`;
-  // cardsList.append(basicThreeCardTemplate);
-  // cardsList.innerHTML = basicThreeCardTemplate;
-
 
   const removeLockElement = (e) =>{
 
@@ -169,16 +116,30 @@ let modifiedInsightfulFeedback = [];
         closestCard.src = item.card;
         closestCardName.textContent = item.cardName;
         cardBackSelected.src = randomCard.pic;
-      displaySelectedCardName.textContent = randomCard.name;
+        displaySelectedCardName.textContent = randomCard.name;
+        displayModalQuestions(item);
       }
+
+      return item
     })
-    return modifiedInsightfulFeedback
-  }
-
-
+    return modifiedInsightfulFeedback;
+  };
+// const displayModalQuestions = (e) => {
+//   const modalQuestion = document.querySelector('#question');
+//   if (e.target.classList.contains("card__pick-one")){
+//     const question = document.querySelector('[data-question1]').textContent;
+//     modalQuestion.textContent = question
+//   }
+//   if (e.target.classList.contains("card__pick-two")){
+//     modalQuestion.innerHTML = document.querySelector('[data-question2]')
+//       }
+// };
+const displayModalQuestions = (item) => {
+  const modalQuestion = document.querySelector("#question");
+  modalQuestion.textContent = item.question;
+}
 
 const onCardClicked = (e) => {
-  const modalQuestion = document.querySelector("#question");
 
   // const randomCard = pickCard();
   let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
@@ -202,11 +163,9 @@ const onCardClicked = (e) => {
       // displaySelectedCardName.textContent = randomCard.name;
 
       document.querySelector('.card__pick-one').classList.add('hidden');
-      const question = document.querySelector("[data-question1]").textContent;
-      modalQuestion.textContent = item.question;
-
+      // const question = document.querySelector("[data-question1]").textContent;
+      // modalQuestion.textContent = item.question;
     }
-
     showModal(modal);
     //
     updateTemplate(e);
@@ -243,16 +202,7 @@ const pickCard = () => {
   return selectedCard;
 };
 
-// const displayModalQuestions = (e) => {
-//   const modalQuestion = document.querySelector('#question');
-//   if (e.target.classList.contains("card__pick-one")){
-//     const question = document.querySelector('[data-question1]').textContent;
-//     modalQuestion.textContent = question
-//   }
-//   if (e.target.classList.contains("card__pick-two")){
-//     modalQuestion.innerHTML = document.querySelector('[data-question2]')
-//       }
-// };
+
 // const pickCard = () => {
 //   selectedCard = cards[Math.floor(Math.random() * cards.length)];
 
@@ -322,37 +272,13 @@ document.querySelectorAll('.cardContent__wrapper').forEach(container => {
       onCardClicked(e);
       removeLockElement(e);
       console.log(insightfulFeedback);
+      document.querySelectorAll('.card__pick').forEach(button => {
+        button.textContent = "wybierz kartę";
+      })
     }
   })
 });
 
-
-// document.querySelector('#card1').addEventListener('click', (e) => {
-//   e.preventDefault();
-//   console.log(e.target);
-//   console.log(e.currentTarget);
-
-//   if (e.target.classList.contains('card__pick')) {
-//     onCardClicked(e);
-//     removeLockElement(e);
-//   }
-// });
-
-// document.querySelector('#card2').addEventListener('click', (e) => {
-//   e.preventDefault();
-//   if (e.target.classList.contains('card__pick')) {
-//     onCardClicked(e);
-//     e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
-//     document.querySelector('.card__lock').classList.add('hidden');
-//   }
-// });
-
-// document.querySelector('#card3').addEventListener('click', (e) => {
-//   e.preventDefault();
-//   if (e.target.classList.contains('card__pick')) {
-//     onCardClicked(e);
-//   }
-// });
 
 // document.querySelectorAll('.card__back').forEach(card =>{
 // card.addEventListener('mouseover', () =>{
@@ -377,27 +303,3 @@ document
 document.querySelector(".btn__backMap").addEventListener("click", () => {
   closeModal(modal);
 });
-
-// CHANGE CARD
-// dodanie klasy .card__pick do przycisku zmień kartę,
-// zmienia kartę w modalu, ale nie podmienia zdjęcia na planszy
-
-// const changeCardButton = document.querySelector(".btn__changeCard");
-
-// const changeCard = () => {};
-// changeCardButton.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   closeModal(modal);
-//   // document.querySelector(".card__pick-one").classList.add('hidden');
-//   document.querySelector(".card-one").src = "./img/card-back.jpg";
-//   document.querySelector(".name-one").textContent = "";
-//   pickCardButton.classList.remove("hidden");
-// });
-
-// const showCard = (cardName) => {
-//   let i;
-
-//   for (i = 0; i < cardContainer.length; i++){
-//     cardContainer[i].innerHtml =
-//   }
-// };
