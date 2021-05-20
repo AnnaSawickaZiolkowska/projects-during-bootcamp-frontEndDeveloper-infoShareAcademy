@@ -93,25 +93,33 @@ cardsList.insertAdjacentHTML("afterbegin", cardTemplate)
 // Hide lock element from first card
 document.querySelector('.card__lock').classList.add('hidden');
 
-  const removeLockElement = (e) =>{
+  const removeLockElement = (target, currentTarget) =>{
 
-    if (e.target.classList.contains('card__pick')) {
+    if (target.classList.contains('card__pick')) {
       // onCardClicked(e);
-      console.log(e.target.closest("div div"));
-      e.target.closest("div div").removeChild(document.querySelector(".card__lock"));
+      console.log(target.closest("div div"));
+      currentTarget.querySelector('.card__layout').removeChild(document.querySelector(".card__lock"));
+      // target.closest("div div").removeChild(document.querySelector(".card__lock"));
+      // if (document.querySelector('.card__lock')) {
       document.querySelector('.card__lock').classList.add('hidden');
+      // }
     }
   };
 
 const onCardClicked = (e) => {
+  const target = e.target;
+  const currentTarget = e.currentTarget;
   let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
     if (item.id.toString() === e.currentTarget.id.toString()) {
-    updateTemplate(e, item);
-    displayModalQuestions(item);
-    }
-    e.target.classList.add('hidden'); // hide pick card button
+      createSmallCircles(target);
+      updateTemplate(e, item);
+      removeLockElement(target, currentTarget);
+      displayModalQuestions(item);
 
-    showModal(modal);
+    }
+    target.classList.add('hidden'); // hide pick card button
+
+    // showModal(modal);
       return item;
   });
   console.log(insightfulFeedback);
@@ -123,8 +131,8 @@ const onCardClicked = (e) => {
 let modifiedInsightfulFeedback = [];
   const updateTemplate = (e, item) => {
     const randomCard = pickCard();
-        const closestCard = e.target.previousElementSibling; 
-        const closestCardName = e.target.nextElementSibling;
+        const closestCard = e.currentTarget.querySelector('.card__back'); 
+        const closestCardName = e.currentTarget.querySelector('.displayCardName');
         const id = item.id
         item.card = randomCard.pic; 
         item.cardName = randomCard.name;
@@ -176,10 +184,8 @@ document.querySelectorAll('.cardContent__wrapper').forEach(container => {
     e.preventDefault();
     if (e.target.classList.contains('card__pick')) {
       onCardClicked(e);
-      removeLockElement(e);
-      console.log(insightfulFeedback);
       document.querySelectorAll('.card__pick').forEach(button => {
-        button.textContent = "wybierz kartę";
+      button.textContent = "wybierz kartę";
       })
     }
   })
@@ -209,3 +215,51 @@ document
 document.querySelector(".btn__backMap").addEventListener("click", () => {
   closeModal(modal);
 });
+
+
+// ANIMACJA DO PRZYCISKU WYBIERZ KARTĘ
+
+function createSmallCircles(target) {
+  let circlesCount = 20;
+  
+  do {
+    smallCircle(target);
+    circlesCount--;
+  } while (Boolean(circlesCount));
+}
+
+function smallCircle(target) {
+  const buttonX = target.style.left;
+  const buttonY = target.style.top;
+  const particle = document.createElement('particle');
+  document.body.appendChild(particle);
+  
+  particle.classList.add('small');
+  
+  const size = Math.floor(Math.random() * 15 + 5);
+  const destinationX = Number(buttonX) + (Math.random() - 0.5) * 2 * 250;
+  const destinationY = Number(buttonY) + (Math.random() - 0.5) * 2 * 250;
+  
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.background = `hsl(${Math.random() * 280 + 340}, 70%, 60%)`;
+  
+  const animation = particle.animate([
+    {
+      transform: `translate(${buttonX - (size / 2)}px, ${buttonY - (size / 2)}px)`,
+      opacity: 1,
+    },
+    {
+      transform: `translate(${destinationX}px, ${destinationY}px)`,
+      opacity: 0,
+    },
+  ], {
+    duration: 500 + Math.random() * 1000,
+    easing: 'cubic-bezier(0, 0.9, 0.57, 1)',
+    delay: 200 + Math.random() * 300,
+  });
+  
+  animation.onfinish = function() {
+    particle.remove();
+  }
+}
