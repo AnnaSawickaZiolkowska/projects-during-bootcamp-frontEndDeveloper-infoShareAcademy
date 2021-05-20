@@ -103,11 +103,26 @@ document.querySelector('.card__lock').classList.add('hidden');
     }
   };
 
+const onCardClicked = (e) => {
+  let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
+    if (item.id.toString() === e.currentTarget.id.toString()) {
+    updateTemplate(e, item);
+    displayModalQuestions(item);
+    }
+    e.target.classList.add('hidden'); // hide pick card button
+
+    showModal(modal);
+      return item;
+  });
+  console.log(insightfulFeedback);
+  console.log(modifiedInsightfulFeedback);
+  return modifiedInsightfulFeedback;
+};
+
+
 let modifiedInsightfulFeedback = [];
-  const updateTemplate = (e) => {
+  const updateTemplate = (e, item) => {
     const randomCard = pickCard();
-    let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-      if (item.id.toString() === e.currentTarget.id.toString()) {
         const closestCard = e.target.previousElementSibling; 
         const closestCardName = e.target.nextElementSibling;
         const id = item.id
@@ -117,65 +132,8 @@ let modifiedInsightfulFeedback = [];
         closestCardName.textContent = item.cardName;
         cardBackSelected.src = randomCard.pic;
         displaySelectedCardName.textContent = randomCard.name;
-        displayModalQuestions(item);
-      }
-
-      return item
-    })
     return modifiedInsightfulFeedback;
   };
-// const displayModalQuestions = (e) => {
-//   const modalQuestion = document.querySelector('#question');
-//   if (e.target.classList.contains("card__pick-one")){
-//     const question = document.querySelector('[data-question1]').textContent;
-//     modalQuestion.textContent = question
-//   }
-//   if (e.target.classList.contains("card__pick-two")){
-//     modalQuestion.innerHTML = document.querySelector('[data-question2]')
-//       }
-// };
-const displayModalQuestions = (item) => {
-  const modalQuestion = document.querySelector("#question");
-  modalQuestion.textContent = item.question;
-}
-
-const onCardClicked = (e) => {
-
-  // const randomCard = pickCard();
-  let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-    if (item.id.toString() === e.currentTarget.id.toString()) {
-      // const closestCard = e.target.previousElementSibling; 
-      // const closestCardName = e.target.nextElementSibling;
-      // const id = item.id
-      // item.card = randomCard.pic; 
-      // item.cardName = randomCard.name;
-      // closestCard.src = item.card;
-      // closestCardName.textContent = item.cardName;
-
-
-      e.target.classList.add('hidden'); // hide pick card button
-
-      // document.querySelectorAll('.card__pick').textContent = "wybierz kartę";
-
-      // document.querySelector('.card__back').src = item.card
-      //tymczasowo wyświetla w modalu
-      // cardBackSelected.src = randomCard.pic;
-      // displaySelectedCardName.textContent = randomCard.name;
-
-      document.querySelector('.card__pick-one').classList.add('hidden');
-      // const question = document.querySelector("[data-question1]").textContent;
-      // modalQuestion.textContent = item.question;
-    }
-    showModal(modal);
-    //
-    updateTemplate(e);
-    return item;
-  });
-  // cardsList.innerHTML = modifiedInsightfulFeedback.map(cardTemplate).join('');
-  console.log(insightfulFeedback);
-  console.log(modifiedInsightfulFeedback);
-  return modifiedInsightfulFeedback;
-};
 
 
 // MODAL
@@ -186,7 +144,7 @@ const showModal = (modal) => {
 
   const modalCloseButton = modal.querySelector("[data-button-close]");
   modalCloseButton.addEventListener("click", () => {
-///// UPDATE TEMPLATE
+///// UPDATE TEMPLATE do przycisku zmień kartę
     closeModal(modal);
   });
 };
@@ -195,70 +153,18 @@ const closeModal = (modal) => {
   modal.classList.add("modal--hidden");
 };
 
+const displayModalQuestions = (item) => {
+  const modalQuestion = document.querySelector("#question");
+  modalQuestion.textContent = item.question;
+}
+
+
 // Get random Photo from Array
 let selectedCard;
 const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
   return selectedCard;
 };
-
-
-// const pickCard = () => {
-//   selectedCard = cards[Math.floor(Math.random() * cards.length)];
-
-//   document.querySelectorAll('.card__back').forEach(card =>{
-//     card.src = selectedCard.pic;
-//   });
-
-//   displaySelectedCardName.textContent = selectedCard.name;
-//   // cardBack.removeEventListener('click', pickCard);
-//   showModal(modal);
-//   displayCardName.textContent = selectedCard.name;
-//   pickCardButton.classList.add('hidden');
-// };
-
-// document.querySelectorAll('.card__pick').forEach(cardBack => {
-//   cardBack.addEventListener('click', pickCard);
-// });
-
-// document.querySelectorAll(".card__pick").forEach((button) => {
-//   button.addEventListener("click", (e) => {
-//     e.preventDefault();
-
-//     // const card = pickCard();
-//     const modalQuestion = document.querySelector("#question");
-
-//     if (button.classList.contains("card__pick-one")) {
-//       document.querySelector(".card__pick-one").classList.add("hidden");
-//       // document.querySelector(".card-one").src = card.pic;
-//       // document.querySelector(".name-one").textContent = card.name;
-//       document.querySelector(".card__lock").classList.add("hidden");
-//       document.querySelector(".card__pick-two").classList.remove("hidden");
-//       const question = document.querySelector("[data-question1]").textContent;
-//       modalQuestion.textContent = question;
-//       // cardOneArray.push(selectedCard)
-//       // console.log(cardOneArray);
-//       // document.querySelector(".card-one").src = card.pic;
-//       console.log(modifiedInsightfulFeedback);
-//       onCardClicked(e);
-//     } else if (button.classList.contains("card__pick-two")) {
-//       document.querySelector(".card__pick-two").classList.add("hidden");
-//       document.querySelector(".card-two").src = card.pic;
-//       document.querySelector(".name-two").textContent = card.name;
-//       document.querySelector(".card__lock-three").classList.add("hidden");
-//       document.querySelector(".card__pick-three").classList.remove("hidden");
-//       document.querySelector(".card__pick-two").classList.add("active");
-//       const question = document.querySelector("[data-question2]").textContent;
-//       modalQuestion.textContent = question;
-//     } else if (button.classList.contains("card__pick-three")) {
-//       document.querySelector(".card__pick-three").classList.add("hidden");
-//       document.querySelector(".card-three").src = card.pic;
-//       document.querySelector(".name-three").textContent = card.name;
-//       const question = document.querySelector("[data-question3]").textContent;
-//       modalQuestion.textContent = question;
-//     }
-//   });
-// });
 
 
 
