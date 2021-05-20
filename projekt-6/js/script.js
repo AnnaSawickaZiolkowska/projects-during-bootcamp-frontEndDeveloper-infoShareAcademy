@@ -100,9 +100,9 @@ document.querySelector('.card__lock').classList.add('hidden');
       console.log(target.closest("div div"));
       currentTarget.querySelector('.card__layout').removeChild(document.querySelector(".card__lock"));
       // target.closest("div div").removeChild(document.querySelector(".card__lock"));
-      // if (document.querySelector('.card__lock')) {
+      if (document.querySelector('.card__lock')) {
       document.querySelector('.card__lock').classList.add('hidden');
-      // }
+      }
     }
   };
 
@@ -131,6 +131,8 @@ const onCardClicked = (e) => {
 let modifiedInsightfulFeedback = [];
   const updateTemplate = (e, item) => {
     const randomCard = pickCard();
+    console.log(item.card);
+    // if(randomCard.pic === item.pic)
         const closestCard = e.currentTarget.querySelector('.card__back'); 
         const closestCardName = e.currentTarget.querySelector('.displayCardName');
         const id = item.id
@@ -169,8 +171,16 @@ const displayModalQuestions = (item) => {
 
 // Get random Photo from Array
 let selectedCard;
+let selectedCardArray = [];
+
 const pickCard = () => {
+
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
+  selectedCardArray.forEach(card => {
+    if (selectedCard === card){
+      return pickCard();
+    }
+  })
   return selectedCard;
 };
 
