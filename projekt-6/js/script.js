@@ -37,24 +37,27 @@ const insightfulFeedback = [
     question: "What is working for me?",
     card: `./img/card-back.jpg`,
     cardName: "",
-    title: 'Insightful Feedback - Process Layout',
-    description: 'Play this 3-card process layout chart to create clarity about your next step',
+    title: "Insightful Feedback - Process Layout",
+    description:
+      "Play this 3-card process layout chart to create clarity about your next step",
   },
   {
     id: "card2",
     question: "What is not working for me?",
     card: `./img/card-back.jpg`,
     cardName: "",
-    title: 'Insightful Feedback - Process Layout',
-    description: 'Play this 3-card process layout chart to create clarity about your next step',
+    title: "Insightful Feedback - Process Layout",
+    description:
+      "Play this 3-card process layout chart to create clarity about your next step",
   },
   {
     id: "card3",
     question: "What is my next step?",
     card: `./img/card-back.jpg`,
     cardName: "",
-    title: 'Insightful Feedback - Process Layout',
-    description: 'Play this 3-card process layout chart to create clarity about your next step',
+    title: "Insightful Feedback - Process Layout",
+    description:
+      "Play this 3-card process layout chart to create clarity about your next step",
   },
 ];
 
@@ -72,9 +75,9 @@ const cardLayout = document.querySelector(".card__layout");
 
 const cardsList = document.querySelector(".cardsList");
 
-
-const cardTemplate = insightfulFeedback.map((content) => {
-  return `<li class="cardContent__wrapper" id="${content.id}">
+const cardTemplate = insightfulFeedback
+  .map((content) => {
+    return `<li class="cardContent__wrapper" id="${content.id}">
   <div class="cardContainer" >
     <div class="card__layout">
     <div class="card__lock" id="lock"><i class="fas fa-lock fa-2x"></i></div>
@@ -86,64 +89,101 @@ const cardTemplate = insightfulFeedback.map((content) => {
       <span class="cardContent__outside" data-question1>${content.question}</span>
     </div>
   </div>
-  </li>`
-}).join("");
-cardsList.insertAdjacentHTML("afterbegin", cardTemplate)
+  </li>`;
+  })
+  .join("");
+cardsList.insertAdjacentHTML("afterbegin", cardTemplate);
 
 // Hide lock element from first card
-document.querySelector('.card__lock').classList.add('hidden');
+document.querySelector(".card__lock").classList.add("hidden");
 
-  const removeLockElement = (target, currentTarget) =>{
-
-    if (target.classList.contains('card__pick')) {
-      // onCardClicked(e);
-      console.log(target.closest("div div"));
-      currentTarget.querySelector('.card__layout').removeChild(document.querySelector(".card__lock"));
-      // target.closest("div div").removeChild(document.querySelector(".card__lock"));
-      if (document.querySelector('.card__lock')) {
-      document.querySelector('.card__lock').classList.add('hidden');
-      }
+const removeLockElement = (target, currentTarget) => {
+  if (target.classList.contains("card__pick")) {
+    currentTarget
+      .querySelector(".card__layout")
+      .removeChild(document.querySelector(".card__lock"));
+    // target.closest("div div").removeChild(document.querySelector(".card__lock"));
+    if (document.querySelector(".card__lock")) {
+      document.querySelector(".card__lock").classList.add("hidden");
     }
-  };
+  }
+};
+let modifiedInsightfulFeedback = [];
 
 const onCardClicked = (e) => {
   const target = e.target;
   const currentTarget = e.currentTarget;
   let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
     if (item.id.toString() === e.currentTarget.id.toString()) {
-      createSmallCircles(target);
-      updateTemplate(e, item);
+      // createSmallCircles(target);
+
+      showModal(modal);
+      document.querySelector(".btn__changeCard").addEventListener("click", (e) => {
+        updateModalCard(e, item);
+        console.log(insightfulFeedback);
+        updateTemplate(e, item, currentTarget);
+
+        })
+        // updateModalCard(item);
+
+      // updateTemplate(e, item);
+
       removeLockElement(target, currentTarget);
       displayModalQuestions(item);
-
+      const id = item.id;
+      console.log(id);
+     
+      console.log(updateModalCard(item));
+      console.log("hello");
     }
-    target.classList.add('hidden'); // hide pick card button
 
-    // showModal(modal);
-      return item;
+    currentTarget.querySelector(".card__pick").classList.add("hidden"); // hide pick card button
+  
+    return item;
   });
   console.log(insightfulFeedback);
-  console.log(modifiedInsightfulFeedback);
+
+  return modifiedInsightfulFeedback;
+};
+const getRandomCardFromModalChange = () => {
+  const randomCardFromModalChange = pickCard();
+return randomCardFromModalChange
+}
+const updateTemplate = (e, item, currentTarget) => {
+   
+  const randomCard =updateModalCard(item);
+  console.log(`-------- UPDATE TEMPLATE ------`);
+  console.log(randomCard);
+  console.log(item.card);
+  const closestCard = currentTarget.querySelector("#card__back");
+  const closestCardName = currentTarget.querySelector(".displayCardName");
+  item.card = randomCard.pic;
+  console.log(randomCard);
+  item.cardName = randomCard.name;
+  closestCard.src = item.card;
+  closestCardName.textContent = item.cardName;
+  // modalDisplayCard(item);
+  // showModal(modal, item);
+  console.log(insightfulFeedback);
+
   return modifiedInsightfulFeedback;
 };
 
 
-let modifiedInsightfulFeedback = [];
-  const updateTemplate = (e, item) => {
-    const randomCard = pickCard();
-    console.log(item.card);
-    // if(randomCard.pic === item.pic)
-        const closestCard = e.currentTarget.querySelector('.card__back'); 
-        const closestCardName = e.currentTarget.querySelector('.displayCardName');
-        const id = item.id
-        item.card = randomCard.pic; 
-        item.cardName = randomCard.name;
-        closestCard.src = item.card;
-        closestCardName.textContent = item.cardName;
-        cardBackSelected.src = randomCard.pic;
-        displaySelectedCardName.textContent = randomCard.name;
-    return modifiedInsightfulFeedback;
-  };
+
+const updateModalCard = (item) => {
+  // document.querySelector(".btn__changeCard").addEventListener("click", (e) => {
+    const randomCard = getRandomCardFromModalChange();
+    console.log(`-------- UPDATE MODAL CARD ------`);
+    console.log(randomCard);
+    item.card = randomCard.pic;
+    item.cardName = randomCard.name;
+    modalDisplayCard(item);
+    console.log(item.cardName);
+    return randomCard;
+  // })
+}
+  
 
 
 // MODAL
@@ -151,10 +191,9 @@ const modal = document.querySelector("#modal");
 
 const showModal = (modal) => {
   modal.classList.remove("modal--hidden");
-
   const modalCloseButton = modal.querySelector("[data-button-close]");
   modalCloseButton.addEventListener("click", () => {
-///// UPDATE TEMPLATE do przycisku zmień kartę
+    ///// UPDATE TEMPLATE do przycisku zmień kartę
     closeModal(modal);
   });
 };
@@ -166,41 +205,68 @@ const closeModal = (modal) => {
 const displayModalQuestions = (item) => {
   const modalQuestion = document.querySelector("#question");
   modalQuestion.textContent = item.question;
-}
+};
 
+const modalDisplayCard = (item) => {
+  cardBackSelected.src = item.card;
+  displaySelectedCardName.textContent = item.cardName;
+};
 
 // Get random Photo from Array
 let selectedCard;
 let selectedCardArray = [];
 
 const pickCard = () => {
-
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
-  selectedCardArray.forEach(card => {
-    if (selectedCard === card){
-      return pickCard();
-    }
-  })
+  // selectedCardArray.forEach(card => {
+  // if (selectedCard === card){
+  //   return pickCard();
+  // }else {
+  //   selectedCardArray.push(selectedCard)
+  // }
+  // })
+  // insightfulFeedback.forEach(card => {
+  //   if (selectedCard.pic === card.card){
+  //     return pickCard();
+  //   }else {
+  //       selectedCardArray.push(selectedCard)
+  //     }
+  // })
+  // console.log(selectedCardArray);
   return selectedCard;
 };
 
 
+// document.querySelector(".btn__changeCard").addEventListener("click", getRandomCardFromModalChange());
 
 /////////////
 //  EVENT LISTENER FOR ALL BUTTONS
 //
-document.querySelectorAll('.cardContent__wrapper').forEach(container => {
-  container.addEventListener('click', (e) => {
+document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
+  container.addEventListener("click", (e) => {
     e.preventDefault();
-    if (e.target.classList.contains('card__pick')) {
+    if (e.target.classList.contains("card__pick")) {
       onCardClicked(e);
-      document.querySelectorAll('.card__pick').forEach(button => {
-      button.textContent = "wybierz kartę";
-      })
+      document.querySelectorAll(".card__pick").forEach((button) => {
+        button.textContent = "wybierz kartę";
+      });
     }
-  })
+  });
 });
 
+// CHANGE CARD
+
+//   document.querySelector('.btn__changeCard').addEventListener('click', (e) => {
+// //     const randomCard = pickCard();
+// // console.log(randomCard);
+//     // console.log(selectedCardArray);
+//     modalChangedCard(e);
+//     console.log('hello');
+//     console.log(insightfulFeedback);
+//     console.log(e.target);
+//     console.log(e.currentTarget);
+
+//   });
 
 // document.querySelectorAll('.card__back').forEach(card =>{
 // card.addEventListener('mouseover', () =>{
@@ -226,12 +292,11 @@ document.querySelector(".btn__backMap").addEventListener("click", () => {
   closeModal(modal);
 });
 
-
 // ANIMACJA DO PRZYCISKU WYBIERZ KARTĘ
 
 function createSmallCircles(target) {
   let circlesCount = 20;
-  
+
   do {
     smallCircle(target);
     circlesCount--;
@@ -241,35 +306,40 @@ function createSmallCircles(target) {
 function smallCircle(target) {
   const buttonX = target.style.left;
   const buttonY = target.style.top;
-  const particle = document.createElement('particle');
+  const particle = document.createElement("particle");
   document.body.appendChild(particle);
-  
-  particle.classList.add('small');
-  
+
+  particle.classList.add("small");
+
   const size = Math.floor(Math.random() * 15 + 5);
   const destinationX = Number(buttonX) + (Math.random() - 0.5) * 2 * 250;
   const destinationY = Number(buttonY) + (Math.random() - 0.5) * 2 * 250;
-  
+
   particle.style.width = `${size}px`;
   particle.style.height = `${size}px`;
   particle.style.background = `hsl(${Math.random() * 280 + 340}, 70%, 60%)`;
-  
-  const animation = particle.animate([
+
+  const animation = particle.animate(
+    [
+      {
+        transform: `translate(${buttonX - size / 2}px, ${
+          buttonY - size / 2
+        }px)`,
+        opacity: 1,
+      },
+      {
+        transform: `translate(${destinationX}px, ${destinationY}px)`,
+        opacity: 0,
+      },
+    ],
     {
-      transform: `translate(${buttonX - (size / 2)}px, ${buttonY - (size / 2)}px)`,
-      opacity: 1,
-    },
-    {
-      transform: `translate(${destinationX}px, ${destinationY}px)`,
-      opacity: 0,
-    },
-  ], {
-    duration: 500 + Math.random() * 1000,
-    easing: 'cubic-bezier(0, 0.9, 0.57, 1)',
-    delay: 200 + Math.random() * 300,
-  });
-  
-  animation.onfinish = function() {
+      duration: 500 + Math.random() * 1000,
+      easing: "cubic-bezier(0, 0.9, 0.57, 1)",
+      delay: 200 + Math.random() * 300,
+    }
+  );
+
+  animation.onfinish = function () {
     particle.remove();
-  }
+  };
 }
