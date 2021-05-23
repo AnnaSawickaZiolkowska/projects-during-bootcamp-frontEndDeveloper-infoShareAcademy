@@ -108,47 +108,10 @@ const removeLockElement = (target, currentTarget) => {
     }
   }
 };
-// const onModalClick = () => {
-//   document.querySelector(".btn__changeCard").addEventListener("click", (e) => {
-//     updateModalCard(e, item);
-//     console.log(insightfulFeedback);
-//     console.log(modifiedInsightfulFeedback);
-//     // updateTemplate(e, item, currentTarget);
 
-//     })
-// }
-
-//MODAL CHANGE CARD
-// document.querySelector(".btn__changeCard").addEventListener("click", (e) => {
-//   updateModalCard(item);
-//   console.log(insightfulFeedback);
-//   console.log(modifiedInsightfulFeedback);
-//   // updateTemplate(e, item, currentTarget);
-
-//   })
-
-// document.querySelector(".btn__changeCard").addEventListener("click", (e) => {
-//   updateModalCard(e, item);
-//   console.log(insightfulFeedback);
-//   console.log(modifiedInsightfulFeedback);
-//   // updateTemplate(e, item, currentTarget);
-
-//   })
-
-// const updateModalCard = (item) => {
-//   // document.querySelector(".btn__changeCard").addEventListener("click", (e) => {
-//     const randomCard = getRandomCardFromModalChange();
-//     console.log(`-------- UPDATE MODAL CARD ------`);
-//     console.log(randomCard);
-//     item.card = randomCard.pic;
-//     item.cardName = randomCard.name;
-//     modalDisplayCard(item);
-//     console.log(item.cardName);
-//     return randomCard;
-//   // })
-// }
 let currentTarget;
 let modifiedInsightfulFeedback;
+
 const onCardClicked = (e) => {
   const target = e.target;
   currentTarget = e.currentTarget;
@@ -160,8 +123,6 @@ const onCardClicked = (e) => {
       removeLockElement(target, currentTarget);
       displayModalQuestions(item);
       modalDisplayCard(item);
-      const id = item.id;
-      console.log(id);
     }
     currentTarget.querySelector(".card__pick").classList.add("hidden"); // hide pick card button
     return item;
@@ -170,106 +131,31 @@ const onCardClicked = (e) => {
   return modifiedInsightfulFeedback;
 };
 
-let changedCard;
 const updateTemplate = (e, item) => {
   const randomCard = pickCard();
-  // const randomCard =updateModalCard(item);
-  console.log(`-------- UPDATE TEMPLATE ------`);
-  console.log(randomCard);
-  console.log(item.card);
   const closestCard = e.currentTarget.querySelector("#card__back");
   const closestCardName = e.currentTarget.querySelector(".displayCardName");
   item.card = randomCard.pic;
   item.cardName = randomCard.name;
   closestCard.src = item.card;
   closestCardName.textContent = item.cardName;
-  console.log(insightfulFeedback);
-  console.log(item);
-  changedCard = item;
-  console.log(changedCard);
-  console.log(changedCard.id);
- 
   return item;
 };
 
-let changedCardArray;
-
 const onModalCardChange = () => {
-  console.log(currentTarget);
   modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
     const randomCard = pickCard();
-
-        // if (item.card.toString() === "./img/card-back.jpg") {
-        //   console.log(item);
-          const closestCard = currentTarget.querySelector("#card__back");
-          const closestCardName = currentTarget.querySelector(".displayCardName");
           item.card = randomCard.pic;
           item.cardName = randomCard.name;
-        //   console.log(item);
-        //   console.log(item.card);
-          closestCard.src = item.card;
-          closestCardName.textContent = item.cardName;
+          currentTarget.querySelector("#card__back").src = item.card;
+          currentTarget.querySelector(".displayCardName").textContent = item.cardName;
         modalDisplayCard(item);
-  item.card = randomCard.pic;
-  item.cardName = randomCard.name;
-  // console.log('lubię frytki');
-  // console.log(modifiedInsightfulFeedback);
-  // cardsList.insertAdjacentHTML("afterbegin", cardTemplate);
-  //       }
-
-    // cardsList.insertAdjacentHTML("afterbegin", cardTemplate);
-    // Hide lock element from first card
-// document.querySelector(".card__lock").classList.add("hidden");
-// modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-//   if (item.id = changedCard.id)
-//   document.querySelectorAll("#card__back").forEach(card => {
-//     item.card = randomCard.pic;
-//         item.cardName = randomCard.name;
-//     card.setAttribute('src', item.card);
-//     console.log(insightfulFeedback);
-//   })
-// })
-// document.querySelectorAll("#card__back").forEach(card => {
-//   modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-//     // const randomCard = pickCard();
-//     item.card = randomCard.pic;
-//     item.cardName = randomCard.name;
-// card.setAttribute('src', item.card);
-// console.log(insightfulFeedback);
-  
-// })
-// })
-  // if (!insightfulFeedback.card === "./img/card-back.jpg") {
-  //   document.querySelectorAll(".card__pick").classList.add("hidden")
-  // }
         })
 }
 
-// const onModalCardChange = (e) => {
  
-//   modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-//     const randomCard = getRandomCardFromModalChange();
-// console.log(changedCard);
-// changedCardArray = Object.entries(changedCard)
-//     if (item.id.toString() === changedCardArray.id.toString()) {
-//       console.log(item);
-//       const closestCard = e.currentTarget.querySelector("#card__back");
-//       const closestCardName = e.currentTarget.querySelector(".displayCardName");
-//       item.card = randomCard.pic;
-//       item.cardName = randomCard.name;
-//       console.log(item);
-//       console.log(item.card);
-//       closestCard.src = item.card;
-//       closestCardName.textContent = item.cardName;
-//     modalDisplayCard(item);
-    
-//     }
-//   })
-// return modifiedInsightfulFeedback
-// }  
 document.querySelector(".btn__changeCard").addEventListener("click", () => {
   onModalCardChange();
-  console.log('działa');
 });
 
 // MODAL
@@ -279,7 +165,6 @@ const showModal = (modal) => {
   modal.classList.remove("modal--hidden");
   const modalCloseButton = modal.querySelector("[data-button-close]");
   modalCloseButton.addEventListener("click", () => {
-    ///// UPDATE TEMPLATE do przycisku zmień kartę
     closeModal(modal);
   });
 };
