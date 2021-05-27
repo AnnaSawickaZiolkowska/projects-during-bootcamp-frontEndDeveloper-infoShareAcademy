@@ -189,21 +189,10 @@ let selectedCardArray = [];
 
 const pickCard = () => {
   selectedCard = cards[Math.floor(Math.random() * cards.length)];
-  // selectedCardArray.forEach(card => {
-  // if (selectedCard === card){
-  //   return pickCard();
-  // }else {
-  //   selectedCardArray.push(selectedCard)
-  // }
-  // })
-  // insightfulFeedback.forEach(card => {
-  //   if (selectedCard.pic === card.card){
-  //     return pickCard();
-  //   }else {
-  //       selectedCardArray.push(selectedCard)
-  //     }
-  // })
-  // console.log(selectedCardArray);
+
+  if (insightfulFeedback.includes(selectedCard.pic)){
+    pickCard();
+  }
   return selectedCard;
 };
 
@@ -227,7 +216,9 @@ document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
       document.querySelector("#question").textContent = e.currentTarget.querySelector('.cardContent__outside').textContent
       showModal(modal);
         }
-
+console.log(modifiedInsightfulFeedback.includes(selectedCard.pic));
+console.log(selectedCard.pic);
+console.log(modifiedInsightfulFeedback);
   });
 });
 
