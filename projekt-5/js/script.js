@@ -102,7 +102,7 @@ labelFocusEnter(); //WYWOŁANIE FUNKCJI NA FOCUS LABEL FOR ENTER KEY
               //   if (todoItemsArray.length == 0) {
               //     fromInputToDo.textContent = "Nothing to do :)";
               //   }
-              // };
+              // }; 
 
 // !!!!!!!!!!
 // JAK ZROBIĆ ABY ZADANIA NIE ZNIKAŁY PO ODŚWIEZENIU STRONY

@@ -81,7 +81,7 @@ const cardTemplate = insightfulFeedback
   <div class="cardContainer" >
     <div class="card__layout">
     <div class="card__lock" id="lock"><i class="fas fa-lock fa-2x"></i></div>
-      <img class="card__back card-one" id="card__back" data-reverse src="${content.card}" alt=""/>
+      <img class="card__back card-one" id="card__back" data-reverse src="${content.card}" alt="${content.cardName}"/>
       <button class="card__pick card__pick-one" >zagrajmy ♥</button>
       <span class="displayCardName">${content.cardName}</span>
     </div>
@@ -221,17 +221,17 @@ document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
         button.textContent = "wybierz kartę";
       });
     }
+    if (e.target.getAttribute('src') != './img/card-back.jpg') {
+      document.querySelector("#modal-selectedCard").src = e.currentTarget.querySelector("#card__back").src;
+      document.querySelector(".displayCardName-selected").textContent = e.currentTarget.querySelector(".displayCardName").textContent;
+      document.querySelector("#question").textContent = e.currentTarget.querySelector('.cardContent__outside').textContent
+      showModal(modal);
+        }
+
   });
 });
 
-// CHANGE CARD
-// document.querySelectorAll('.card__back').forEach(card =>{
-// card.addEventListener('mouseover', () =>{
-//   if (card.hasAttribute('.active')){
-//     console.log('działa');
-//   }
-// })
-// })
+
 
 // Modal - hover buttons - mouseover/mouseout event
 document
