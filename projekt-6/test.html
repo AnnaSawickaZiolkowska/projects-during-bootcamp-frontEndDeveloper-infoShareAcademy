@@ -23,458 +23,554 @@
         margin: 20px;
         background-color: yellow;
       }
+
+
+      particle {
+    border-radius: 50%;
+    pointer-events: none;
+    position: fixed;
+    opacity: 0;
+  }
+  
+  particle.big {
+    border: 2px solid #e05271;
+  }
+  
+  @keyframes Bounce {
+    0% {
+      width: 100px;
+      height: 100px;
+    }
+    
+    25% {
+      width: 0px;
+      height: 0px;
+    }
+    
+    50% {
+      width: 150px;
+      height: 150px;
+    }
+    
+    75% {
+      width: 80px;
+      height: 80px;
+    }
+    
+    100% {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+@media (min-width: 1200px) { 
+
+
+    
+} 
     </style>
   </head>
   <body>
     <script>
-      const data = [
-        { id: 1, name: "cos tam" },
-        { id: 2, name: "cos tam" },
-        { id: 3, name: "cos tam" },
-        { id: 3, name: "cos tam" },
-      ];
 
-      const onBoxClicked = (e) => {
-        console.log(e);
-        console.log(242, e.currentTarget);
+function createSmallCircles(target) {
+  let circlesCount = 20;
 
-        console.log("klikniety zostal element z id", e.currentTarget.id);
-
-        const modifiedData = data.map((item) => {
-          if (item.id.toString() === e.currentTarget.id.toString()) {
-            item.name = "Jakis inny zupielnie name cos tam robi pierogi";
-          }
-          div.innerText = modifiedData;
-
-          return item;
-        });
-        console.log(data);
-      };
-
-
-
-      const htmlTemplate = insightfulFeedback.map(card => {
-  return `
-  <li class="cardContent__wrapper id="idOne">
-<div class="cardContainer" id="card1">
-  <div class="card__layout">
-    <img class="card__back card-one" id="card__back" data-reverse
-      src="${card.card[1]}" alt=""/>
-    <span class="displayCardName name-one hidden">${card.cardName}</span>
-    <button class="card__pick card__pick-one" >zagrajmy ♥</button>
-  </div>
-  <div class="card__caption">
-    <span class="cardContent__outside" data-question1>${card.question}</span>
-  </div>
-</div>
-</li>
-`;
-
-}).join("");
-  
-  document.querySelector('.cardsList').insertAdjacentHTML('afterbegin', htmlTemplate);
-
-      const createBox = (content, id) => {
-        const div = document.createElement("div");
-        const divInner = document.createElement("div");
-        divInner.classList.add("box-inner");
-
-        div.append(divInner);
-
-        div.classList.add("box");
-        div.setAttribute("id", id);
-        // div.innerText = content;
-        div.innerText = content;
-
-        document.querySelector("body").append(div);
-        div.addEventListener("click", onBoxClicked);
-      };
-
-      createBox("content", 1);
-      createBox(2, 2);
-      createBox(3, 3);
-      createBox(4, 4);
-
-      const onCardClicked = (e) => {
-        console.log(htmlTemplate);
-        console.log(e);
-        console.log(e.currentTarget);
-        // console.log(e.currentTarget.id);
-        console.log(e.target);
-        console.log("klikniety zostal element z id", e.currentTarget.id);
-
-        // let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-          const randomCard = pickCard();
-          const modalQuestion = document.querySelector("#question");
-
-          if (item.id.toString() === e.currentTarget.id.toString()) {
-            console.log(item);
-            console.log(item.id);
-            console.log(e.currentTarget.id);
-            console.log(e.currentTarget.classList);
-            console.log(randomCard.pic);
-            console.log(item.card);
-            const elementId = item.id;
-            console.log(elementId);
-            // item.card = randomCard.pic;
-            const newCard = item.card;
-            console.log(newCard);
-
-            document.querySelector(".card-one").src = randomCard.pic;
-            item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
-            newCard.src = randomCard.pic;
-            console.log(newCard);
-            document.querySelector(".name-one").textContent = randomCard.name;
-            item.cardName = randomCard.name;
-            const newName = item.cardName;
-            // newName.textContent = randomCard.name
-
-            // updateCardAfterClick(id, newCard, newName);
-
-            cardBackSelected.src = randomCard.pic;
-            displaySelectedCardName.textContent = randomCard.name;
-            // displayCardName.classList.remove('hidden');
-            document.querySelector(".name-one").classList.remove("hidden");
-            document.querySelector(".card__pick-one").classList.add("hidden");
-            document.querySelector(".card__lock").classList.add("hidden");
-            document
-              .querySelector(".card__pick-two")
-              .classList.remove("hidden");
-            const question = document.querySelector("[data-question1]")
-              .textContent;
-            modalQuestion.textContent = question;
-            updateCardAfterClick(elementId, newCard, newName);
-          }
-
-          return item;
-        // });
-        console.log(insightfulFeedback);
-        console.log(modifiedInsightfulFeedback);
-      };
-
-
-
-
-      const basicThreeCardTemplate = `<li class="cardContent__wrapper id="card1">
-<div class="cardContainer">
-  <div class="card__layout">
-    <img class="card__back card-one" id="card__back" data-reverse
-      src="${insightfulFeedback[0].card}" alt=""/>
-    <span class="displayCardName name-one hidden">${insightfulFeedback[0].cardName}</span>
-    <button class="card__pick card__pick-one" >zagrajmy ♥</button>
-  </div>
-  <div class="card__caption">
-    <span class="cardContent__outside" data-question1>${insightfulFeedback[0].question}</span>
-  </div>
-</div>
-</li>
-<li class="cardContent__wrapper" id="card2">
-  <div class="cardContainer">
-    <div class="card__layout">
-      <div class="card__lock" id="lock">
-        <i class="fas fa-lock fa-2x"></i>
-      </div>
-      <img class="card__back card-two" id="card__back" data-reverse src="${insightfulFeedback[1].card}" alt=""/>
-      <span class="displayCardName name-two">${insightfulFeedback[1].cardName}</span>
-      <button class="card__pick card__pick-two card__pick-two hidden" id="card2"> Wybierz kartę</button>
-    </div>
-   <div class="card__caption">
-    <span class="cardContent__outside" data-question2>${insightfulFeedback[1].question}</span>
-   </div>
-   </div>
-  </li>
-  <li class="cardContent__wrapper" id="card3">
-   <div class="cardContainer">
-    <div class="card__layout">
-      <div class="card__lock card__lock-three" id="lock">
-        <i class="fas fa-lock fa-2x"></i>
-      </div>
-      <img class="card__back card-three" id="card__back" data-reverse src="${insightfulFeedback[2].card}" alt=""/>
-      <span class="displayCardName name-three" data-name-three></span>
-      <button class="card__pick card__pick-three hidden" id="card3">Wybierz kartę</button>
-    </div>
-  <div class="card__caption">
-  <span class="cardContent__outside" data-question3>${insightfulFeedback[2].question}</span>
-    </div>
-    </div>
-  </li>`;
-
-
-
-
-
-
-  const threeCardsLayouts = [insightfulFeedback];
-
-
-const cardContainer = document.querySelector(".cardContainer");
-const cardBack = document.querySelector("#card__back");
-const cardBackSelected = document.querySelector("#modal-selectedCard");
-const cardFront = document.querySelector(".card__front");
-const displayCardName = document.querySelector(".displayCardName");
-const displaySelectedCardName = document.querySelector(
-  ".displayCardName-selected"
-);
-const pickCardButton = document.querySelector(".card__pick");
-const cardLock = document.querySelector(".card__lock");
-const cardLayout = document.querySelector(".card__layout");
-
-const cardsList = document.querySelector(".cardsList");
-const basicThreeCardTemplate = `<li class="cardContent__wrapper id="card1">
-<div class="cardContainer">
-  <div class="card__layout">
-    <img class="card__back card-one" id="card__back" data-reverse
-      src="${insightfulFeedback[0].card}" alt=""/>
-    <span class="displayCardName name-one hidden">${insightfulFeedback[0].cardName}</span>
-    <button class="card__pick card__pick-one" >zagrajmy ♥</button>
-  </div>
-  <div class="card__caption">
-    <span class="cardContent__outside" data-question1>${insightfulFeedback[0].question}</span>
-  </div>
-</div>
-</li>
-<li class="cardContent__wrapper" id="card2">
-  <div class="cardContainer">
-    <div class="card__layout">
-      <div class="card__lock" id="lock">
-        <i class="fas fa-lock fa-2x"></i>
-      </div>
-      <img class="card__back card-two" id="card__back" data-reverse src="${insightfulFeedback[1].card}" alt=""/>
-      <span class="displayCardName name-two">${insightfulFeedback[1].cardName}</span>
-      <button class="card__pick card__pick-two card__pick-two hidden" id="card2"> Wybierz kartę</button>
-    </div>
-   <div class="card__caption">
-    <span class="cardContent__outside" data-question2>${insightfulFeedback[1].question}</span>
-   </div>
-   </div>
-  </li>
-  <li class="cardContent__wrapper" id="card3">
-   <div class="cardContainer">
-    <div class="card__layout">
-      <div class="card__lock card__lock-three" id="lock">
-        <i class="fas fa-lock fa-2x"></i>
-      </div>
-      <img class="card__back card-three" id="card__back" data-reverse src="${insightfulFeedback[2].card}" alt=""/>
-      <span class="displayCardName name-three" data-name-three></span>
-      <button class="card__pick card__pick-three hidden" id="card3">Wybierz kartę</button>
-    </div>
-  <div class="card__caption">
-  <span class="cardContent__outside" data-question3>${insightfulFeedback[2].question}</span>
-    </div>
-    </div>
-  </li>`;
-
-
-// let modifiedInsightfulFeedback = [];
-const onCardClicked = (e) => {
-  console.log(e);
-  console.log(e.currentTarget);
-  // console.log(e.currentTarget.id);
-  console.log(e.target);
-  console.log("klikniety zostal element z id", e.currentTarget.id)
-  
-  let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
-    const randomCard = pickCard();
-    const modalQuestion = document.querySelector("#question");
-
-    if (item.id.toString() === e.currentTarget.id.toString()) {
-     
-
-      console.log(item);
-      console.log(item.id);
-      console.log(e.currentTarget.id);
-      console.log(e.currentTarget.classList);
-      console.log(randomCard.pic);
-      console.log(item.card);
-      const elementId = item.id
-console.log(elementId);  
-// item.card = randomCard.pic;
-const newCard = item.card;
-console.log(newCard);
-
-      document.querySelector(".card-one").src = randomCard.pic;
-      item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
-     newCard.src = randomCard.pic;
-     console.log(newCard);
-      document.querySelector(".name-one").textContent = randomCard.name;
-     item.cardName = randomCard.name;
-const newName = item.cardName;
-// newName.textContent = randomCard.name 
-  
-// updateCardAfterClick(id, newCard, newName);
-
-
-      cardBackSelected.src = randomCard.pic;
-      displaySelectedCardName.textContent = randomCard.name;
-      // displayCardName.classList.remove('hidden');
-      document.querySelector('.name-one').classList.remove('hidden');
-      document.querySelector('.card__pick-one').classList.add('hidden');
-      document.querySelector(".card__lock").classList.add("hidden");
-      document.querySelector(".card__pick-two").classList.remove("hidden");
-      const question = document.querySelector("[data-question1]").textContent;
-      modalQuestion.textContent = question
-      updateCardAfterClick();
-
-    }
-
-    return item;
-
-  
-  });
-console.log(insightfulFeedback);
-console.log(modifiedInsightfulFeedback);
-};
-
-
-cardsList.append(basicThreeCardTemplate);
-cardsList.innerHTML = basicThreeCardTemplate;
-
-const updateCardAfterClick = () => {
-  cardsList.innerHTML = insightfulFeedback.map(basicThreeCardTemplate).join('');
-
-//     todoContainer.innerHTML = todoItemsArray.map(template).join("");
-//     if (todoItemsArray.length == 0) {
-//       fromInputToDo.textContent = "Nothing to do :)";
-//     }
-//   };
-//   return updateTaskList();
-// }
-  
-
-  // //  cardBack.classList.add('hidden')
-  // const cardFront = document.createElement('img');
-  // cardFront.classList.add('card__front');
-  // cardFront.setAttribute('id', elementId)
-  // cardFront.src = newCard;
-  // cardFront.textContent = newName;
-  // // cardLayout.prepend(cardFront);
-
-  // console.log(elementId);
-  // const li = document.querySelectorAll('cardContent__wrapper');
-  // cardBack.src = newCard
+  do {
+    smallCircle(target);
+    circlesCount--;
+  } while (Boolean(circlesCount));
 }
 
+function smallCircle(target) {
+  const buttonX = target.style.left;
+  const buttonY = target.style.top;
+  const particle = document.createElement("particle");
+  document.body.appendChild(particle);
+
+  particle.classList.add("small");
+
+  const size = Math.floor(Math.random() * 15 + 5);
+  const destinationX = Number(buttonX) + (Math.random() - 0.5) * 2 * 250;
+  const destinationY = Number(buttonY) + (Math.random() - 0.5) * 2 * 250;
+
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.background = `hsl(${Math.random() * 280 + 340}, 70%, 60%)`;
+
+  const animation = particle.animate(
+    [
+      {
+        transform: `translate(${buttonX - size / 2}px, ${
+          buttonY - size / 2
+        }px)`,
+        opacity: 1,
+      },
+      {
+        transform: `translate(${destinationX}px, ${destinationY}px)`,
+        opacity: 0,
+      },
+    ],
+    {
+      duration: 500 + Math.random() * 1000,
+      easing: "cubic-bezier(0, 0.9, 0.57, 1)",
+      delay: 200 + Math.random() * 300,
+    }
+  );
+
+  animation.onfinish = function () {
+    particle.remove();
+  };
+}
+
+//       const data = [
+//         { id: 1, name: "cos tam" },
+//         { id: 2, name: "cos tam" },
+//         { id: 3, name: "cos tam" },
+//         { id: 3, name: "cos tam" },
+//       ];
+
+//       const onBoxClicked = (e) => {
+//         console.log(e);
+//         console.log(242, e.currentTarget);
+
+//         console.log("klikniety zostal element z id", e.currentTarget.id);
+
+//         const modifiedData = data.map((item) => {
+//           if (item.id.toString() === e.currentTarget.id.toString()) {
+//             item.name = "Jakis inny zupielnie name cos tam robi pierogi";
+//           }
+//           div.innerText = modifiedData;
+
+//           return item;
+//         });
+//         console.log(data);
+//       };
 
 
-// MODAL
-const modal = document.querySelector("#modal");
 
-const showModal = (modal) => {
-  modal.classList.remove("modal--hidden");
+//       const htmlTemplate = insightfulFeedback.map(card => {
+//   return `
+//   <li class="cardContent__wrapper id="idOne">
+// <div class="cardContainer" id="card1">
+//   <div class="card__layout">
+//     <img class="card__back card-one" id="card__back" data-reverse
+//       src="${card.card[1]}" alt=""/>
+//     <span class="displayCardName name-one hidden">${card.cardName}</span>
+//     <button class="card__pick card__pick-one" >zagrajmy ♥</button>
+//   </div>
+//   <div class="card__caption">
+//     <span class="cardContent__outside" data-question1>${card.question}</span>
+//   </div>
+// </div>
+// </li>
+// `;
 
-  const modalCloseButton = modal.querySelector("[data-button-close]");
-  modalCloseButton.addEventListener("click", () => {
-    closeModal(modal);
-  });
-};
+// }).join("");
+  
+//   document.querySelector('.cardsList').insertAdjacentHTML('afterbegin', htmlTemplate);
 
-const closeModal = (modal) => {
-  modal.classList.add("modal--hidden");
-};
+//       const createBox = (content, id) => {
+//         const div = document.createElement("div");
+//         const divInner = document.createElement("div");
+//         divInner.classList.add("box-inner");
 
-// Get random Photo from Array
-let selectedCard;
-const pickCard = () => {
-  selectedCard = cards[Math.floor(Math.random() * cards.length)];
-  // cardBackSelected.src = selectedCard.pic;
-  // displaySelectedCardName.textContent = selectedCard.name;
-  // modifiedInsightfulFeedback.push(selectedCard.pic)
-  // modifiedInsightfulFeedback.card = selectedCard.pic
-  // cardBack.removeEventListener("click", pickCard);
-  // pickCardButton.classList.add("hidden");
-  showModal(modal);
+//         div.append(divInner);
 
-  // }
+//         div.classList.add("box");
+//         div.setAttribute("id", id);
+//         // div.innerText = content;
+//         div.innerText = content;
 
-  // cardBack.src = selectedCard.pic;
-  // displayCardName.textContent = selectedCard.name;
-  return selectedCard;
-};
+//         document.querySelector("body").append(div);
+//         div.addEventListener("click", onBoxClicked);
+//       };
 
-// const displayModalQuestions = (e) => {
-//   const modalQuestion = document.querySelector('#question');
-//   if (e.target.classList.contains("card__pick-one")){
-//     const question = document.querySelector('[data-question1]').textContent;
-//     modalQuestion.textContent = question
-//   }
-//   if (e.target.classList.contains("card__pick-two")){
-//     modalQuestion.innerHTML = document.querySelector('[data-question2]')
-//       }
-// };
-// const pickCard = () => {
-//   selectedCard = cards[Math.floor(Math.random() * cards.length)];
+//       createBox("content", 1);
+//       createBox(2, 2);
+//       createBox(3, 3);
+//       createBox(4, 4);
 
-//   document.querySelectorAll('.card__back').forEach(card =>{
-//     card.src = selectedCard.pic;
-//   });
+//       const onCardClicked = (e) => {
+//         console.log(htmlTemplate);
+//         console.log(e);
+//         console.log(e.currentTarget);
+//         // console.log(e.currentTarget.id);
+//         console.log(e.target);
+//         console.log("klikniety zostal element z id", e.currentTarget.id);
 
-//   displaySelectedCardName.textContent = selectedCard.name;
-//   // cardBack.removeEventListener('click', pickCard);
-//   showModal(modal);
-//   displayCardName.textContent = selectedCard.name;
-//   pickCardButton.classList.add('hidden');
-// };
+//         // let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
+//           const randomCard = pickCard();
+//           const modalQuestion = document.querySelector("#question");
 
-// document.querySelectorAll('.card__pick').forEach(cardBack => {
-//   cardBack.addEventListener('click', pickCard);
-// });
+//           if (item.id.toString() === e.currentTarget.id.toString()) {
+//             console.log(item);
+//             console.log(item.id);
+//             console.log(e.currentTarget.id);
+//             console.log(e.currentTarget.classList);
+//             console.log(randomCard.pic);
+//             console.log(item.card);
+//             const elementId = item.id;
+//             console.log(elementId);
+//             // item.card = randomCard.pic;
+//             const newCard = item.card;
+//             console.log(newCard);
 
-// document.querySelectorAll(".card__pick").forEach((button) => {
-//   button.addEventListener("click", (e) => {
-//     e.preventDefault();
+//             document.querySelector(".card-one").src = randomCard.pic;
+//             item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
+//             newCard.src = randomCard.pic;
+//             console.log(newCard);
+//             document.querySelector(".name-one").textContent = randomCard.name;
+//             item.cardName = randomCard.name;
+//             const newName = item.cardName;
+//             // newName.textContent = randomCard.name
 
-//     // const card = pickCard();
+//             // updateCardAfterClick(id, newCard, newName);
+
+//             cardBackSelected.src = randomCard.pic;
+//             displaySelectedCardName.textContent = randomCard.name;
+//             // displayCardName.classList.remove('hidden');
+//             document.querySelector(".name-one").classList.remove("hidden");
+//             document.querySelector(".card__pick-one").classList.add("hidden");
+//             document.querySelector(".card__lock").classList.add("hidden");
+//             document
+//               .querySelector(".card__pick-two")
+//               .classList.remove("hidden");
+//             const question = document.querySelector("[data-question1]")
+//               .textContent;
+//             modalQuestion.textContent = question;
+//             updateCardAfterClick(elementId, newCard, newName);
+//           }
+
+//           return item;
+//         // });
+//         console.log(insightfulFeedback);
+//         console.log(modifiedInsightfulFeedback);
+//       };
+
+
+
+
+//       const basicThreeCardTemplate = `<li class="cardContent__wrapper id="card1">
+// <div class="cardContainer">
+//   <div class="card__layout">
+//     <img class="card__back card-one" id="card__back" data-reverse
+//       src="${insightfulFeedback[0].card}" alt=""/>
+//     <span class="displayCardName name-one hidden">${insightfulFeedback[0].cardName}</span>
+//     <button class="card__pick card__pick-one" >zagrajmy ♥</button>
+//   </div>
+//   <div class="card__caption">
+//     <span class="cardContent__outside" data-question1>${insightfulFeedback[0].question}</span>
+//   </div>
+// </div>
+// </li>
+// <li class="cardContent__wrapper" id="card2">
+//   <div class="cardContainer">
+//     <div class="card__layout">
+//       <div class="card__lock" id="lock">
+//         <i class="fas fa-lock fa-2x"></i>
+//       </div>
+//       <img class="card__back card-two" id="card__back" data-reverse src="${insightfulFeedback[1].card}" alt=""/>
+//       <span class="displayCardName name-two">${insightfulFeedback[1].cardName}</span>
+//       <button class="card__pick card__pick-two card__pick-two hidden" id="card2"> Wybierz kartę</button>
+//     </div>
+//    <div class="card__caption">
+//     <span class="cardContent__outside" data-question2>${insightfulFeedback[1].question}</span>
+//    </div>
+//    </div>
+//   </li>
+//   <li class="cardContent__wrapper" id="card3">
+//    <div class="cardContainer">
+//     <div class="card__layout">
+//       <div class="card__lock card__lock-three" id="lock">
+//         <i class="fas fa-lock fa-2x"></i>
+//       </div>
+//       <img class="card__back card-three" id="card__back" data-reverse src="${insightfulFeedback[2].card}" alt=""/>
+//       <span class="displayCardName name-three" data-name-three></span>
+//       <button class="card__pick card__pick-three hidden" id="card3">Wybierz kartę</button>
+//     </div>
+//   <div class="card__caption">
+//   <span class="cardContent__outside" data-question3>${insightfulFeedback[2].question}</span>
+//     </div>
+//     </div>
+//   </li>`;
+
+
+
+
+
+
+//   const threeCardsLayouts = [insightfulFeedback];
+
+
+// const cardContainer = document.querySelector(".cardContainer");
+// const cardBack = document.querySelector("#card__back");
+// const cardBackSelected = document.querySelector("#modal-selectedCard");
+// const cardFront = document.querySelector(".card__front");
+// const displayCardName = document.querySelector(".displayCardName");
+// const displaySelectedCardName = document.querySelector(
+//   ".displayCardName-selected"
+// );
+// const pickCardButton = document.querySelector(".card__pick");
+// const cardLock = document.querySelector(".card__lock");
+// const cardLayout = document.querySelector(".card__layout");
+
+// const cardsList = document.querySelector(".cardsList");
+// const basicThreeCardTemplate = `<li class="cardContent__wrapper id="card1">
+// <div class="cardContainer">
+//   <div class="card__layout">
+//     <img class="card__back card-one" id="card__back" data-reverse
+//       src="${insightfulFeedback[0].card}" alt=""/>
+//     <span class="displayCardName name-one hidden">${insightfulFeedback[0].cardName}</span>
+//     <button class="card__pick card__pick-one" >zagrajmy ♥</button>
+//   </div>
+//   <div class="card__caption">
+//     <span class="cardContent__outside" data-question1>${insightfulFeedback[0].question}</span>
+//   </div>
+// </div>
+// </li>
+// <li class="cardContent__wrapper" id="card2">
+//   <div class="cardContainer">
+//     <div class="card__layout">
+//       <div class="card__lock" id="lock">
+//         <i class="fas fa-lock fa-2x"></i>
+//       </div>
+//       <img class="card__back card-two" id="card__back" data-reverse src="${insightfulFeedback[1].card}" alt=""/>
+//       <span class="displayCardName name-two">${insightfulFeedback[1].cardName}</span>
+//       <button class="card__pick card__pick-two card__pick-two hidden" id="card2"> Wybierz kartę</button>
+//     </div>
+//    <div class="card__caption">
+//     <span class="cardContent__outside" data-question2>${insightfulFeedback[1].question}</span>
+//    </div>
+//    </div>
+//   </li>
+//   <li class="cardContent__wrapper" id="card3">
+//    <div class="cardContainer">
+//     <div class="card__layout">
+//       <div class="card__lock card__lock-three" id="lock">
+//         <i class="fas fa-lock fa-2x"></i>
+//       </div>
+//       <img class="card__back card-three" id="card__back" data-reverse src="${insightfulFeedback[2].card}" alt=""/>
+//       <span class="displayCardName name-three" data-name-three></span>
+//       <button class="card__pick card__pick-three hidden" id="card3">Wybierz kartę</button>
+//     </div>
+//   <div class="card__caption">
+//   <span class="cardContent__outside" data-question3>${insightfulFeedback[2].question}</span>
+//     </div>
+//     </div>
+//   </li>`;
+
+
+// // let modifiedInsightfulFeedback = [];
+// const onCardClicked = (e) => {
+//   console.log(e);
+//   console.log(e.currentTarget);
+//   // console.log(e.currentTarget.id);
+//   console.log(e.target);
+//   console.log("klikniety zostal element z id", e.currentTarget.id)
+  
+//   let modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
+//     const randomCard = pickCard();
 //     const modalQuestion = document.querySelector("#question");
 
-//     if (button.classList.contains("card__pick-one")) {
-//       document.querySelector(".card__pick-one").classList.add("hidden");
-//       // document.querySelector(".card-one").src = card.pic;
-//       // document.querySelector(".name-one").textContent = card.name;
+//     if (item.id.toString() === e.currentTarget.id.toString()) {
+     
+
+//       console.log(item);
+//       console.log(item.id);
+//       console.log(e.currentTarget.id);
+//       console.log(e.currentTarget.classList);
+//       console.log(randomCard.pic);
+//       console.log(item.card);
+//       const elementId = item.id
+// console.log(elementId);  
+// // item.card = randomCard.pic;
+// const newCard = item.card;
+// console.log(newCard);
+
+//       document.querySelector(".card-one").src = randomCard.pic;
+//       item.card = randomCard.pic; //???? DLACZEGO TO NIE DZIAŁA?????
+//      newCard.src = randomCard.pic;
+//      console.log(newCard);
+//       document.querySelector(".name-one").textContent = randomCard.name;
+//      item.cardName = randomCard.name;
+// const newName = item.cardName;
+// // newName.textContent = randomCard.name 
+  
+// // updateCardAfterClick(id, newCard, newName);
+
+
+//       cardBackSelected.src = randomCard.pic;
+//       displaySelectedCardName.textContent = randomCard.name;
+//       // displayCardName.classList.remove('hidden');
+//       document.querySelector('.name-one').classList.remove('hidden');
+//       document.querySelector('.card__pick-one').classList.add('hidden');
 //       document.querySelector(".card__lock").classList.add("hidden");
 //       document.querySelector(".card__pick-two").classList.remove("hidden");
 //       const question = document.querySelector("[data-question1]").textContent;
-//       modalQuestion.textContent = question;
-//       // cardOneArray.push(selectedCard)
-//       // console.log(cardOneArray);
-//       // document.querySelector(".card-one").src = card.pic;
-//       console.log(modifiedInsightfulFeedback);
-//       onCardClicked(e);
-//     } else if (button.classList.contains("card__pick-two")) {
-//       document.querySelector(".card__pick-two").classList.add("hidden");
-//       document.querySelector(".card-two").src = card.pic;
-//       document.querySelector(".name-two").textContent = card.name;
-//       document.querySelector(".card__lock-three").classList.add("hidden");
-//       document.querySelector(".card__pick-three").classList.remove("hidden");
-//       document.querySelector(".card__pick-two").classList.add("active");
-//       const question = document.querySelector("[data-question2]").textContent;
-//       modalQuestion.textContent = question;
-//     } else if (button.classList.contains("card__pick-three")) {
-//       document.querySelector(".card__pick-three").classList.add("hidden");
-//       document.querySelector(".card-three").src = card.pic;
-//       document.querySelector(".name-three").textContent = card.name;
-//       const question = document.querySelector("[data-question3]").textContent;
-//       modalQuestion.textContent = question;
+//       modalQuestion.textContent = question
+//       updateCardAfterClick();
+
 //     }
+
+//     return item;
+
+  
 //   });
+// console.log(insightfulFeedback);
+// console.log(modifiedInsightfulFeedback);
+// };
+
+
+// cardsList.append(basicThreeCardTemplate);
+// cardsList.innerHTML = basicThreeCardTemplate;
+
+// const updateCardAfterClick = () => {
+//   cardsList.innerHTML = insightfulFeedback.map(basicThreeCardTemplate).join('');
+
+// //     todoContainer.innerHTML = todoItemsArray.map(template).join("");
+// //     if (todoItemsArray.length == 0) {
+// //       fromInputToDo.textContent = "Nothing to do :)";
+// //     }
+// //   };
+// //   return updateTaskList();
+// // }
+  
+
+//   // //  cardBack.classList.add('hidden')
+//   // const cardFront = document.createElement('img');
+//   // cardFront.classList.add('card__front');
+//   // cardFront.setAttribute('id', elementId)
+//   // cardFront.src = newCard;
+//   // cardFront.textContent = newName;
+//   // // cardLayout.prepend(cardFront);
+
+//   // console.log(elementId);
+//   // const li = document.querySelectorAll('cardContent__wrapper');
+//   // cardBack.src = newCard
+// }
+
+
+
+// // MODAL
+// const modal = document.querySelector("#modal");
+
+// const showModal = (modal) => {
+//   modal.classList.remove("modal--hidden");
+
+//   const modalCloseButton = modal.querySelector("[data-button-close]");
+//   modalCloseButton.addEventListener("click", () => {
+//     closeModal(modal);
+//   });
+// };
+
+// const closeModal = (modal) => {
+//   modal.classList.add("modal--hidden");
+// };
+
+// // Get random Photo from Array
+// let selectedCard;
+// const pickCard = () => {
+//   selectedCard = cards[Math.floor(Math.random() * cards.length)];
+//   // cardBackSelected.src = selectedCard.pic;
+//   // displaySelectedCardName.textContent = selectedCard.name;
+//   // modifiedInsightfulFeedback.push(selectedCard.pic)
+//   // modifiedInsightfulFeedback.card = selectedCard.pic
+//   // cardBack.removeEventListener("click", pickCard);
+//   // pickCardButton.classList.add("hidden");
+//   showModal(modal);
+
+//   // }
+
+//   // cardBack.src = selectedCard.pic;
+//   // displayCardName.textContent = selectedCard.name;
+//   return selectedCard;
+// };
+
+// // const displayModalQuestions = (e) => {
+// //   const modalQuestion = document.querySelector('#question');
+// //   if (e.target.classList.contains("card__pick-one")){
+// //     const question = document.querySelector('[data-question1]').textContent;
+// //     modalQuestion.textContent = question
+// //   }
+// //   if (e.target.classList.contains("card__pick-two")){
+// //     modalQuestion.innerHTML = document.querySelector('[data-question2]')
+// //       }
+// // };
+// // const pickCard = () => {
+// //   selectedCard = cards[Math.floor(Math.random() * cards.length)];
+
+// //   document.querySelectorAll('.card__back').forEach(card =>{
+// //     card.src = selectedCard.pic;
+// //   });
+
+// //   displaySelectedCardName.textContent = selectedCard.name;
+// //   // cardBack.removeEventListener('click', pickCard);
+// //   showModal(modal);
+// //   displayCardName.textContent = selectedCard.name;
+// //   pickCardButton.classList.add('hidden');
+// // };
+
+// // document.querySelectorAll('.card__pick').forEach(cardBack => {
+// //   cardBack.addEventListener('click', pickCard);
+// // });
+
+// // document.querySelectorAll(".card__pick").forEach((button) => {
+// //   button.addEventListener("click", (e) => {
+// //     e.preventDefault();
+
+// //     // const card = pickCard();
+// //     const modalQuestion = document.querySelector("#question");
+
+// //     if (button.classList.contains("card__pick-one")) {
+// //       document.querySelector(".card__pick-one").classList.add("hidden");
+// //       // document.querySelector(".card-one").src = card.pic;
+// //       // document.querySelector(".name-one").textContent = card.name;
+// //       document.querySelector(".card__lock").classList.add("hidden");
+// //       document.querySelector(".card__pick-two").classList.remove("hidden");
+// //       const question = document.querySelector("[data-question1]").textContent;
+// //       modalQuestion.textContent = question;
+// //       // cardOneArray.push(selectedCard)
+// //       // console.log(cardOneArray);
+// //       // document.querySelector(".card-one").src = card.pic;
+// //       console.log(modifiedInsightfulFeedback);
+// //       onCardClicked(e);
+// //     } else if (button.classList.contains("card__pick-two")) {
+// //       document.querySelector(".card__pick-two").classList.add("hidden");
+// //       document.querySelector(".card-two").src = card.pic;
+// //       document.querySelector(".name-two").textContent = card.name;
+// //       document.querySelector(".card__lock-three").classList.add("hidden");
+// //       document.querySelector(".card__pick-three").classList.remove("hidden");
+// //       document.querySelector(".card__pick-two").classList.add("active");
+// //       const question = document.querySelector("[data-question2]").textContent;
+// //       modalQuestion.textContent = question;
+// //     } else if (button.classList.contains("card__pick-three")) {
+// //       document.querySelector(".card__pick-three").classList.add("hidden");
+// //       document.querySelector(".card-three").src = card.pic;
+// //       document.querySelector(".name-three").textContent = card.name;
+// //       const question = document.querySelector("[data-question3]").textContent;
+// //       modalQuestion.textContent = question;
+// //     }
+// //   });
+// // });
+
+
+
+// // Modal - hover buttons - mouseover/mouseout event
+// document
+//   .querySelector(".card__layout-selected")
+//   .addEventListener("mouseover", () => {
+//     document.querySelector(".button__hover").classList.remove("hidden");
+//   });
+// document
+//   .querySelector(".card__layout-selected")
+//   .addEventListener("mouseout", () => {
+//     document.querySelector(".button__hover").classList.add("hidden");
+//   });
+
+// document.querySelector(".btn__backMap").addEventListener("click", () => {
+//   closeModal(modal);
 // });
-
-
-
-// Modal - hover buttons - mouseover/mouseout event
-document
-  .querySelector(".card__layout-selected")
-  .addEventListener("mouseover", () => {
-    document.querySelector(".button__hover").classList.remove("hidden");
-  });
-document
-  .querySelector(".card__layout-selected")
-  .addEventListener("mouseout", () => {
-    document.querySelector(".button__hover").classList.add("hidden");
-  });
-
-document.querySelector(".btn__backMap").addEventListener("click", () => {
-  closeModal(modal);
-});
 
 
 

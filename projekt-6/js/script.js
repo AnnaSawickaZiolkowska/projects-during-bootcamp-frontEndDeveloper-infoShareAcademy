@@ -1,3 +1,16 @@
+const poyDots = [
+  "#e07f48",
+  "#998D72",
+  "#56956A",
+  "#3F7297",
+  "#bb1b1a",
+  "#ea929d",
+  "#94BB88",
+  "#91B2C4",
+  "#ffffff",
+  "#000000",
+];
+
 const cards = [
   { name: "Intuicja", pic: "./img/intuicja.jpeg" },
   { name: "Zaufanie", pic: "./img/zaufanie.jpeg" },
@@ -111,15 +124,17 @@ const removeLockElement = (target, currentTarget) => {
 
 let currentTarget;
 let modifiedInsightfulFeedback;
-
+let target;
 const onCardClicked = (e) => {
-  const target = e.target;
+  target = e.target;
   // currentTarget = e.currentTarget;
   modifiedInsightfulFeedback = insightfulFeedback.map((item) => {
     if (item.id.toString() === e.currentTarget.id.toString()) {
       createSmallCircles(target);
+      setTimeout(() => {
+        showModal(modal);
+      }, 1500);
       updateTemplate(e, item);
-      showModal(modal);
       removeLockElement(target, currentTarget);
       displayModalQuestions(item);
       modalDisplayCard(item);
@@ -152,6 +167,7 @@ const onModalCardChange = (currentTarget) => {
       currentTarget.querySelector(".displayCardName").textContent =
         item.cardName;
       modalDisplayCard(item);
+      
     }
   });
   return insightfulFeedback;
@@ -212,7 +228,8 @@ const pickCard = () => {
 document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
   container.addEventListener("click", (e) => {
     e.preventDefault();
-    // const target = e.target;
+    console.log(e);
+    console.log(e.target);
     currentTarget = e.currentTarget;
     if (e.target.classList.contains("card__pick")) {
       onCardClicked(e);
@@ -220,18 +237,21 @@ document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
         button.textContent = "wybierz kartę";
       });
     }
-    if (e.target.getAttribute("src") != "./img/card-back.jpg") {
+    if (
+      e.target.getAttribute("src") != "./img/card-back.jpg" &&
+      !e.target.classList.contains("card__pick")
+    ) {
       document.querySelector("#modal-selectedCard").src =
         e.currentTarget.querySelector("#card__back").src;
       document.querySelector(".displayCardName-selected").textContent =
         e.currentTarget.querySelector(".displayCardName").textContent;
       document.querySelector("#question").textContent =
         e.currentTarget.querySelector(".cardContent__outside").textContent;
-      showModal(modal);
+        createSmallCircles(target);
+
+          showModal(modal);
+        
     }
-    // console.log(modifiedInsightfulFeedback.includes(selectedCard.pic));
-    // console.log(selectedCard.pic);
-    // console.log(modifiedInsightfulFeedback);
   });
 });
 
@@ -254,7 +274,7 @@ document.querySelector(".btn__backMap").addEventListener("click", () => {
 // ANIMACJA DO PRZYCISKU WYBIERZ KARTĘ
 
 function createSmallCircles(target) {
-  let circlesCount = 20;
+  let circlesCount = 80;
 
   do {
     smallCircle(target);
@@ -270,13 +290,14 @@ function smallCircle(target) {
 
   particle.classList.add("small");
 
-  const size = Math.floor(Math.random() * 15 + 5);
-  const destinationX = Number(buttonX) + (Math.random() - 0.5) * 2 * 250;
-  const destinationY = Number(buttonY) + (Math.random() - 0.5) * 2 * 250;
+  const size = Math.floor(Math.random() * 20 + 5);
+  const destinationX = Number(buttonX) + (Math.random() - 0.5) * 2 * 650;
+  const destinationY = Number(buttonY) + (Math.random() - 0.5) * 2 * 550;
 
   particle.style.width = `${size}px`;
   particle.style.height = `${size}px`;
-  particle.style.background = `hsl(${Math.random() * 280 + 340}, 70%, 60%)`;
+  // particle.style.background = `hsl(${Math.random() * 280 + 340}, 70%, 60%)`;
+  particle.style.background = poyDots[Math.floor(Math.random() * cards.length)];
 
   const animation = particle.animate(
     [
@@ -288,13 +309,13 @@ function smallCircle(target) {
       },
       {
         transform: `translate(${destinationX}px, ${destinationY}px)`,
-        opacity: 0,
+        opacity: 0.8,
       },
     ],
     {
-      duration: 500 + Math.random() * 1000,
+      duration: 500 + Math.random() * 1300,
       easing: "cubic-bezier(0, 0.9, 0.57, 1)",
-      delay: 200 + Math.random() * 300,
+      delay: 200 + Math.random() * 200,
     }
   );
 

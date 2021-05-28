@@ -38,8 +38,62 @@ grid-template-rows: 20% 80%;
 grid-template-areas: 
 "headerModal"
 "cardModal";
-
+/* animation: bondJamesBond 1.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards; */
+animation: animatebottom 0.4s;
 }
+
+
+
+
+@keyframes animatebottom {
+from {
+  bottom: -300px;
+  opacity: 0;
+}
+
+to {
+  bottom: 0;
+  opacity: 1;
+}
+}
+
+/* from bottom to top */
+/* @keyframes bondJamesBond {
+    0% {
+      transform:translateY(1000px);
+    }
+    80% {
+      transform:translateY(0px);
+    }
+    90% {
+      height:100vh;
+      width:100%;
+    }
+    100% {
+      height:100vh;
+      width:100%;
+    }
+  } */
+
+/* from right to left */
+/* @keyframes bondJamesBond {
+    0% {
+      transform:translateX(1000px);
+    }
+    80% {
+      transform:translateX(0px);
+    }
+    90% {
+      height:100vh;
+      width:100%;
+    }
+    100% {
+      height:100vh;
+      width:100%;
+    }
+  } */
+  
+
 .header-modal {
     grid-area: headerModal;
     z-index: 2;
@@ -335,6 +389,46 @@ button {
 display: none;
 }
 
+particle {
+    border-radius: 50%;
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    z-index: 1000;
+  }
+  
+  particle.big {
+    border: 2px solid #e05271;
+  }
+  
+  @keyframes Bounce {
+    0% {
+      width: 100px;
+      height: 100px;
+    }
+    
+    25% {
+      width: 0px;
+      height: 0px;
+    }
+    
+    50% {
+      width: 150px;
+      height: 150px;
+    }
+    
+    75% {
+      width: 80px;
+      height: 80px;
+    }
+    
+    100% {
+      width: 100px;
+      height: 100px;
+    }
+  }
 
 @media (min-width: 1200px) { 
 
