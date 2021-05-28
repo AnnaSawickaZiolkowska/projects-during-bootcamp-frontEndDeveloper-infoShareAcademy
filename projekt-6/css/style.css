@@ -6,12 +6,13 @@
 
 @font-face {
     font-family: 'optima';
-    src: url('./fonts/OptimaLTCYR-Roman');
+    src: url("../fonts/OptimaLTCYR-Roman.otf");
+
   }
  
   @font-face {
     font-family: 'optima-bold';
-    src: url('./fonts/OptimaLTCYR-Bold');
+    src: url('../fonts/OptimaLTCYR-Bold.otf');
   }
  
 body {

@@ -167,7 +167,6 @@ const onModalCardChange = (currentTarget) => {
       currentTarget.querySelector(".displayCardName").textContent =
         item.cardName;
       modalDisplayCard(item);
-      
     }
   });
   return insightfulFeedback;
@@ -228,8 +227,6 @@ const pickCard = () => {
 document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
   container.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(e);
-    console.log(e.target);
     currentTarget = e.currentTarget;
     if (e.target.classList.contains("card__pick")) {
       onCardClicked(e);
@@ -247,10 +244,8 @@ document.querySelectorAll(".cardContent__wrapper").forEach((container) => {
         e.currentTarget.querySelector(".displayCardName").textContent;
       document.querySelector("#question").textContent =
         e.currentTarget.querySelector(".cardContent__outside").textContent;
-        createSmallCircles(target);
-
-          showModal(modal);
-        
+      createSmallCircles(target);
+      showModal(modal);
     }
   });
 });
@@ -296,7 +291,6 @@ function smallCircle(target) {
 
   particle.style.width = `${size}px`;
   particle.style.height = `${size}px`;
-  // particle.style.background = `hsl(${Math.random() * 280 + 340}, 70%, 60%)`;
   particle.style.background = poyDots[Math.floor(Math.random() * cards.length)];
 
   const animation = particle.animate(
