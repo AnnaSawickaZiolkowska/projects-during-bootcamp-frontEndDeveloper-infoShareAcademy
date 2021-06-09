@@ -107,7 +107,7 @@ const template = (
                   <a href="#" class="start"><i class="far fa-play-circle fa-2x" data-id="${todoItem.id}"></i>
                   <a href="#" class="stop"><i class="far fa-pause-circle fa-2x" data-id="${todoItem.id}"></i></a>
                    </div>   
-                   <p class="paragraph__styling">${todoItem.task}</p>
+                   <p class="paragraph__styling" data-id="${todoItem.id}">${todoItem.task}</p>
                    </div>`;
 
 const updateTaskList = () => {
@@ -201,17 +201,17 @@ todoContainer.addEventListener("click", (e) => {
   const todoLi = document.querySelectorAll(".userInputBox");
   todoLi.forEach((li) => {
     if (li.dataset.taskId === e.target.dataset.id) {
+      currentTodo = li.querySelector('.paragraph__styling').textContent;
+      fromInputToDo.textContent = currentTodo; //zmienia h1 na aktualnie kliknięte zadanie
       playTodoTime = li.querySelector(".fa-play-circle");
       pauseTodoTime = li.querySelector(".fa-pause-circle");
-
       if (e.target.classList.contains("fa-play-circle")) {
-        toggleTodoButton("PAUSE");
         getElapsedTime();
         startTodoTimer();
       } else if (e.target.classList.contains("fa-pause-circle")) {
-        toggleTodoButton("PLAY");
         pauseTodoTimer();
         addTimeToArray();
+        console.log("215 dziala");
       }
     }
   });
@@ -219,5 +219,6 @@ todoContainer.addEventListener("click", (e) => {
 
 export let playTodoTime;
 export let pauseTodoTime;
+export let currentTodo;
 
 //-----------------
