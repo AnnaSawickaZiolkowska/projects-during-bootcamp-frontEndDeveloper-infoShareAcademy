@@ -16,14 +16,11 @@ export function start() {
     displayTime(timeToString(elapsedTime));
   }, 1000);
   toggleButton("PAUSE");
-  
 }
 
 export function pause() {
   clearInterval(timerInterval);
   toggleButton("PLAY");
-
-
 }
 
 export function reset() {

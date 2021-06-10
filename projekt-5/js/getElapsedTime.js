@@ -1,12 +1,15 @@
 import {displayTime} from "./displayTimeOnWatch.js";
 import {timeToString} from "./timeToString.js";
+export let elapsedTime = 0;
 
 export const getElapsedTime = (time) => {
     let startTime;
-    let elapsedTime = 0;
     startTime = Date.now() - elapsedTime;
-    elapsedTime = Date.now() - startTime;
-    displayTime(timeToString(elapsedTime));
+    function printTime(){
+      elapsedTime = Date.now() - startTime;
+      displayTime(timeToString(elapsedTime));
+    }
+   
   
     return timeToString(elapsedTime);
   };

@@ -4,7 +4,7 @@ import {timeToString} from "./timeToString.js";
 
 let startTime;
 let elapsedTime = 0;
-let timerTodoInterval;
+export let timerTodoInterval;
  
  export function startTodoTimer() {
     startTime = Date.now() - elapsedTime;
@@ -13,9 +13,11 @@ let timerTodoInterval;
       displayTime(timeToString(elapsedTime));
     }, 1000);
     toggleTodoButton("PAUSE");
+    return elapsedTime;
   }
   
   export function pauseTodoTimer() {
     clearInterval(timerTodoInterval);
+    console.log("STOP");
     toggleTodoButton("PLAY");
   }

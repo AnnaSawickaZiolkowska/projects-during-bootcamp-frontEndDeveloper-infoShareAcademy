@@ -1,15 +1,19 @@
 import { timeToString } from "./timeToString.js";
 import { labelUpDownEvent, labelFocusEnter } from "./labelUpDownEvent.js";
-import { getElapsedTime } from "./getElapsedTime.js";
+
+import { getElapsedTime, elapsedTime } from "./getElapsedTime.js";
 import { timeArray, addTimeToArray } from "./addTimeToArray.js";
 
 import { displayTime } from "./displayTimeOnWatch.js";
 import { toggleTodoButton } from "./toggleTodoButton.js";
-import { startTodoTimer, pauseTodoTimer } from "./startStopTodoTimer.js";
 
 import { displayCurrentToDo, fromInputToDo } from "./displayCurrentTodo.js";
 import { start, pause, reset } from "./startStopResetMainTimer.js";
-
+import {
+  startTodoTimer,
+  pauseTodoTimer,
+  timerTodoInterval,
+} from "./startStopTodoTimer.js";
 import { firebaseConfig } from "./config-firebase.js";
 
 //FIRESTORE
@@ -126,11 +130,11 @@ const updateTaskList = () => {
 // console.log('todo dodane do Firestore');
 //     });
 // }; odkomentować tez w funkcji getTodoData
-
+let todo;
 const getTodoData = (e) => {
-  const todo = {
+  todo = {
     task: inputField.value,
-    time: "some function",
+    time: "00:00",
     id: Date.now(),
   };
   // addTodoToDb(todo);
@@ -166,8 +170,6 @@ function addTodoItems(userEnteredValue) {
   todoItemsArray.push(todoItems);
   // renderTodos(userEnteredValue);
   updateTaskList();
-
-  // toggleTodoButton("PLAY");
 }
 
 todoContainer.addEventListener("click", (e) => {
@@ -201,24 +203,31 @@ todoContainer.addEventListener("click", (e) => {
   const todoLi = document.querySelectorAll(".userInputBox");
   todoLi.forEach((li) => {
     if (li.dataset.taskId === e.target.dataset.id) {
-      currentTodo = li.querySelector('.paragraph__styling').textContent;
+      console.log(li);
+      const currentTodo = li.querySelector(".paragraph__styling").textContent;
       fromInputToDo.textContent = currentTodo; //zmienia h1 na aktualnie kliknięte zadanie
       playTodoTime = li.querySelector(".fa-play-circle");
       pauseTodoTime = li.querySelector(".fa-pause-circle");
       if (e.target.classList.contains("fa-play-circle")) {
-        getElapsedTime();
         startTodoTimer();
+        const time = startTodoTimer();
+
+        console.log(timeToString(time));
       } else if (e.target.classList.contains("fa-pause-circle")) {
+        console.log(startTodoTimer());
+
+        // const time = startTodoTimer()
+        // console.log(timeToString(time));
+
         pauseTodoTimer();
-        addTimeToArray();
+        // addTimeToArray();
         console.log("215 dziala");
+        clearInterval(timerTodoInterval);
       }
     }
   });
 });
-
 export let playTodoTime;
 export let pauseTodoTime;
-export let currentTodo;
 
 //-----------------

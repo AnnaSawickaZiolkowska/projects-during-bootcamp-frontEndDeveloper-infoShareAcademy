@@ -8,4 +8,5 @@ export function addTimeToArray(elapsedTime) {
     elapsedTime: getElapsedTime(elapsedTime),
   };
   timeArray.push(taskTime);
+  console.log(timeArray);
 }
