@@ -11,7 +11,7 @@
 
 function pageCountDown(){
 
-    let countDownDate = new Date('Aug 8, 2021 00:00:00').getTime();
+    let countDownDate = new Date('Dec 24, 2021 00:00:00').getTime();
 
     const now = new Date().getTime();
         timeToStart = countDownDate - now;
