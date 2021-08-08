@@ -252,7 +252,7 @@ body{
 .box-app__img{
     display: flex;
     flex-direction: row;
-    width: 136px;
+    width: 350px;
     height: 44px;
     margin-top: 10px;
     margin-left: 25px;
@@ -269,6 +269,7 @@ body{
 .box-app__img img{
     margin-right: 8px;
     cursor: pointer;
+    width: 140px;
 }
 
 .footer{
