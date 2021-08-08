@@ -6,8 +6,5 @@ Projekt 3 - Strona logowania instagram.com - responsywna i stworzona wyłącznie
 Projekt 2 - Szablon strony dla sklepu z kosmetykami. Html i css. Pracuję jeszcze nad wersją mobilną i ostatnimi porawkami estetycznymi.
 Projekt 1 - Strona główna dla kawiarni. Pracuję jeszcze nad wersją mobilną i ostatnimi porawkami estetycznymi.
 
-
-
-Szablon strony, z którego czerpałam inspirację:
-
-http://themes.g5plus.net/april/home-01/
+Link do projektu grupowego Monster Hunt - aplikacji webowej w React
+https://monster-hunt-v1.web.app/
