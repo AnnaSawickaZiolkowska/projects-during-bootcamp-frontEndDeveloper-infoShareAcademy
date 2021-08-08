@@ -21,6 +21,7 @@ https://monster-hunt-v1.web.app/
 
 </div>
 <br>
+
 * Projekt 5 - ToDo Lista z timerem zadań. HTML, CSS, JS. Projekt do dokończenia. 
 * Projekt 4 - Countdown w JS. Odlicza czas do 24 grudnia 2021 00:00:00.
 <div align="center"; width="100%" display="flex">
@@ -29,7 +30,7 @@ https://monster-hunt-v1.web.app/
 </div>
 <br>
 
-* Projekt 3 - Strona logowania instagram.com 1 do 1 - responsywna i początkowo stworzona wyłącznie poprzez html i css. W późniejszym etapie dodałam elementy JS i                 zrobiłam rejestrację i logowania, korzystając z Firebase Auth.
+* Projekt 3 - Strona logowania instagram.com 1 do 1 - responsywna i początkowo stworzona wyłącznie poprzez html i css. W późniejszym etapie dodałam elementy JS i zrobiłam rejestrację i logowania, korzystając z Firebase Auth.
 * Projekt 2 - Szablon strony dla sklepu z kosmetykami. Html i css. Pracuję jeszcze nad wersją mobilną i ostatnimi porawkami estetycznymi.
 <div align="center"; width="100%" display="flex">
 <img  src="./img/instagram.png"  alt="" width="45%" >
