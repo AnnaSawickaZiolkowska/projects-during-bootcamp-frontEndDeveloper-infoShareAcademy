@@ -36,18 +36,17 @@ body{
     transform: translate3d(-70.5%, 9.5%, 0);
     width: 240px;
     height: 427px;
-    background: url(/img/slide-1.jpg);
+    background: url("/projekt-3/img/slide-1.jpg");
     animation: slide 30s infinite;
 }
 
 @keyframes slide {
-20% { background: url(/img/slide-2.jpg); }
-40% { background: url(/img/slide-3.jpg); }
-60% { background: url(/img/slide-4.jpg); }
-80% { background: url(/img/slide-5.jpg); }
-100% { background: url(/img/slide-1.jpg);}
-}
-
+    20% { background: url("/projekt-3/img/slide-2.jpg"); }
+    40% { background: url("/projekt-3/img/slide-3.jpg"); }
+    60% { background: url("/projekt-3/img/slide-4.jpg"); }
+    80% { background: url("/projekt-3/img/slide-5.jpg"); }
+    100% { background: url("/projekt-3/img/slide-1.jpg");}
+    }
 
 .modal__hidden {
     display: none;
@@ -91,21 +90,19 @@ body{
     background-color: #fff;
     
 }
+.logo {
+    width: 185px;
+    margin: 15px auto 0 auto;
+}
 
 .form-box__logo{
-    background-image: url(https://logofirmy.net/wp-content/uploads/2020/04/Instagram-Logo-680x383.png);
-    background-size: 184px;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    margin: 0px;
-    height: 100px;
-    padding-bottom: 42px;
+    background: url(img/instagram-text.png);   
+    width: 100%;
 } 
 .form-box__form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-image: */
 }
 
 .form__input{
