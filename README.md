@@ -31,7 +31,8 @@ https://monster-hunt-v1.web.app/
 </div>
 <br>
 
-* Projekt 3 - Strona logowania instagram.com 1 do 1 - responsywna i początkowo stworzona wyłącznie poprzez html i css. W późniejszym etapie dodałam elementy JS i zrobiłam rejestrację i logowania, korzystając z Firebase Auth.
+* Projekt 3 - Strona logowania instagram.com 1 do 1 - responsywna i początkowo stworzona wyłącznie poprzez html i css. W późniejszym etapie dodałam elementy JS i zrobiłam rejestrację i logowania, korzystając z Firebase Auth. <br>
+  Live Demo: https://annasawickaziolkowska.github.io/Instagram-Clone-with-Firebase-Auth/ <br>
 * Projekt 2 - Szablon strony dla sklepu z kosmetykami. Html i css. Pracuję jeszcze nad wersją mobilną i ostatnimi porawkami estetycznymi.
 <div align="center"; width="100%" display="flex">
 <img  src="./img/instagram.png"  alt="" width="45%" >
