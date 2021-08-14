@@ -13,7 +13,7 @@ https://monster-hunt-v1.web.app/
 <br>
 
 - Projekt 6 - Aplikacja napisana w JS na potrzeby aktualnej pracy. Plansza procesowa dla Points of You@ Polska.
-  Live Demo: https://annasawickaziolkowska.github.io/PointsOfYou-process-layout-chart/
+* Live Demo: https://annasawickaziolkowska.github.io/PointsOfYou-process-layout-chart/
 
 <div align="center"; width="100%" display="flex" >
 
