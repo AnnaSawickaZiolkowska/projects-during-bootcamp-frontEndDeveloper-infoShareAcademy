@@ -47,5 +47,6 @@ https://monster-hunt-v1.web.app/
 <img  src="./img/Strona-kawiarni.png"  alt="" width="45%" >
 </div>
 <br>
+<br>
 
 
