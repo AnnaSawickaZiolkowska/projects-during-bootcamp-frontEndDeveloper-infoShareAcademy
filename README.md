@@ -1,4 +1,4 @@
-# jfdzr3-projects-AnnaSawickaZiolkowska
+# Bootcamp projects
 
 
 ## Tutaj znajdziesz moje projekty w ramach kursu Junior FrontEnd Developer organizowanego przez infoShare Academy.
